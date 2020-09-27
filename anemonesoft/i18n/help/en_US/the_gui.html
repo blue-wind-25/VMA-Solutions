@@ -1,0 +1,151 @@
+<!-- ### -->
+<h1><center>Basics of the Graphical User Interface</center></h1>
+
+<p>Upon starting the application, one will be presented with the application splash-screen.
+After approximately three seconds, the splash-screen will disappear and the main application
+window will be displayed.</p>
+<center><a href='#images/app_splash_screen.png'>
+    <img src='images/app_splash_screen.png' width='207' height='165'/>
+</a></center>
+<center class='small'>(click image to enlarge)</center>
+
+<!-- ### -->
+<h2><a name='main_window'>The Main Application Window</a></h2>
+<p>An empty application main window is shown below. Please note that the actual appearance
+of the window may differ slightly between platforms and operating systems.</p>
+<center><a href='#images/app_main_window.png'>
+    <img src='images/app_main_window.png' width='360' height='270'/>
+</a></center>
+<center class='small'>(click to enlarge)</center>
+
+<p>Basically, the window can be divided into four major sections, from top to bottom:</p>
+<ul>
+    <li>The window-title area;</li>
+    <li>The menu area;</li>
+    <li>The toolbar area; and</li>
+    <li>The working area.</li>
+</ul>
+<p>The window-title area belongs to the operating system. The menu area contains all the commands
+that can be used to perform tasks, such as creating a new project, opening an existing project,
+saving the current project, creating plot, performing analysis, and so on. The toolbar are contains
+short-cuts to some of the most commonly used commands. Finally, the working are is the area in
+which one will be able to enter and process data. By default, upon application start, the working
+area will only contain the <b>Data Input</b> tab (the spreadsheet).</p>
+
+<h3><a name='menu_area'>The Menu Area</a></h3>
+<p>The <b>File</b> menu contains commands that are mostly related to project management. The contents
+of the menu are shown below:</p>
+<center><img src='images/mnu_file.png'/></center>
+<p>The <b>Spreadsheet</b> menu contains commands for manipulating the spreadsheet. The contents of the
+menu are shown below:</p>
+<center><img src='images/mnu_spreadsheet.png'/></center>
+<p>The <b>Plot</b> menu contains commands for creating plots. The contents of the menu are shown below:</p>
+<center><img src='images/mnu_plot.png'/></center>
+<p>The <b>Analysis</b> menu and sub-menu contain commands for performing analysis. The contents of the
+menu and sub-menu are shown below:</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='bottom'>
+    <td><img src='images/mnu_analysis.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/mnu_analysis_linearity.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/mnu_analysis_precision.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/mnu_analysis_ap.png'/></td>
+</tr></table></center>
+<p>The <b>Toolbox</b> menu contains some useful utilities. The contents of the menu are shown below:</p>
+<center><img src='images/mnu_toolbox.png'/></center>
+<p>Finally, the <b>Help</b> menu contains commands to obtains information about the application.
+The contents of the menu are shown below:</p>
+<center><img src='images/mnu_help.png'/></center>
+
+<h3><a name='toolbar_area'>The Toolbar Area</a></h3>
+<p>The toolbar area can be divided into three sections, from left to right:</p>
+<ul>
+    <li>The left-button area;</li>
+    <li>The middle-information area; and</li>
+    <li>The right-button area.</li>
+</ul>
+<p>The left-button area contains buttons that act as short-cuts to some of the commands in the <b>File</b> menu.
+The middle-information area displays the path of the currently open project. The right-button area contains buttons
+that act as short-cuts to the commands in the <b>Spreadsheet</b> menu. The pictures below show the function of the
+toolbar's buttons.</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='bottom'>
+    <td><img src='images/tlb_file.png'/></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><img src='images/tlb_spreadsheet.png'/></td>
+</tr></table></center>
+
+<!-- ### -->
+<h2><a name='tab_data_input'>The Data Input Tab</a></h2>
+<p>The data-input tab is the only tab that cannot be closed. One can use the spreadsheet in this tab to enter data.
+Simply click any cell to start entering data. Pressing <b>Enter</b> will move the cursor to the next row. One can also
+use arrows to navigate the cells. Press <b>F2</b> to edit the content of the active cell. The cells only accepts
+numeric values (numbers).</p>
+<center><a href='#images/tab_data_input.png'>
+    <img src='images/tab_data_input.png' width='354' height='226'/>
+</a></center>
+<center class='small'>(click image to enlarge)</center>
+<p>Click on a cell and drag the mouse pointer to select cells. One can also select cells by holding the <b>Shift</b>
+key while pressing the arrows. The selected cells can be cut, copied, and cleared by using the commands from the
+<b>Spreadsheet</b> menu, the buttons from the toolbar, or the keyboard short-cuts. Please have a look at the commands
+in the <b>Spreadsheet</b> menu for the keyboard short-cuts associated with the commands.</p>
+<p>One may enter both data (numbers) and comments in the cells. All non-number entries are assumed as comments.
+If comments are included in the input data range, they will be evaluated as if they were zeroes. If all cells in the
+first row (from all the selected rows) contain only comments, the row will be assumed as a header row.</p>
+<p>One can double-click the data input tab to change its caption.</p>
+
+<!-- ### -->
+<h2><a name='tab_plot'>The Plot Tab</a></h2>
+<p>The plot tab is the tab where plots are generated and displayed. Basically, the tab can be divided into three
+major sections:</p>
+<ul>
+    <li>The setting-accordion section (the left part of the tab);</li>
+    <li>The caption-setting section (the bottom-right part of the tab); and</li>
+    <li>The plot-display section (the top-right-part of the tab).</li>
+</ul>
+<p>The contents of each section may differ between plot types. The picture below depicts the appearance of
+a <b>box-whisker</b> plot tab:</p>
+<center><a href='#images/tab_plot.png'>
+    <img src='images/tab_plot.png' width='354' height='226'/>
+</a></center>
+<center class='small'>(click image to enlarge)</center>
+<p>One can use the setting-accordion section to specify the data range, data point (plot) style, axis scale, and
+some other settings. One can use the caption-setting section to set the plot captions. Finally, one can use the
+plot-display section to update the plot, zoom the plot in an external window, print the plot, and save the plot
+as image. Please note that changes in the settings will not be propagated to the plot until the update button is
+pressed.</p>
+<p>One can double-click the plot tab to change its caption.</p>
+
+<!-- ### -->
+<h2><a name='tab_analysis'>The Analysis Tab</a></h2>
+
+<p>The analysis tab is the tab where analysis are performed and results are displayed. Basically, the tab can be divided
+into three major sections:</p>
+<ul>
+    <li>The setting-accordion section (the left part of the tab);</li>
+    <li>The caption-setting section (the bottom-right part of the tab); and</li>
+    <li>The result (plot and report) section (the top-right-part of the tab).</li>
+</ul>
+<p>The contents of each section may differ between analysis types. The picture below depicts the appearance of
+a <b>1<sup>st</sup>-order-regression</b> analysis tab:</p>
+<center><a href='#images/tab_analysis.png'>
+    <img src='images/tab_analysis.png' width='354' height='226'/>
+</a></center>
+<center class='small'>(click image to enlarge)</center>
+<p>One can double-click the analysis tab to change its caption.</p>
+<p>One can use the setting-accordion section to specify the analysis setting, data range, plot style, axis scale, and
+some other settings. One can use the caption-setting section to set the plot captions. Finally, one can use the
+result section to update the plot/report, zoom the plot in an external window, print the plot/report, and save the
+plot/report to file. Just like the plot tab, changes in the settings will not be propagated to the plot/report until the
+update button is pressed.</p>
+<p>Unlike a plot tab, an analysis tab may display other results, in addition to the plot. Some analysis may even have
+no plot to display. One can choose which results to be displayed by clicking the tabs on the result section. In the
+case of the <b>1<sup>st</sup>-order-regression</b> tab, the available choices are:</p>
+<ul>
+    <li>The regression-plot tab;</li>
+    <li>The residual-plot tab;</li>
+    <li>The report-text tab; and</li>
+    <li>The content-calculation tab.</li>
+</ul>
+<p>Those choices correspond to the tabs shown below, from left to right.</p>
+<center><img src='images/tab_analysis_tab.png'/></center>

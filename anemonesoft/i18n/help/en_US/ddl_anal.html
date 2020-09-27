@@ -1,0 +1,138 @@
+<!-- ### -->
+<h1><center>Default Data Layout for Analysis</center></h1>
+<p>The input-data-range setting-panel connects the spreadsheet to the analysis system.
+Despite the fact that one can manually enter the data range into the text boxes in the panel,
+the application can automatically do this if one follows the default data layout for the
+corresponding analysis. Simply block (select) the cells that contains the analysis data and
+use the <b>Analysis</b> menu to start a new analysis. Please refer to the pictures below for
+more details.</p>
+<center><img src='images/oper_select.png'/></center>
+<br/>
+<center><img src='images/oper_new_anal.png'/></center>
+<p>The default data layout system is relative to the first selected cell (the top-left cell).
+Therefore, there is no need to always start from cell <b>A1</b>.</p>
+
+
+<!-- ### -->
+<h2><a name='linearity'>Linearity</a></h2>
+<p>The linearity analysis encompasses a first-order regression, a second-order regression, a mandel test,
+and a homogeneity test.</p>
+
+<!-- ### -->
+<h3><a name='1storeg'></a>First-Order Regression</h3>
+<p>Relative to the first selected cell, the application will take the first column as the
+X values, the second column as the Y-1 values, the third column as the Y-2 values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_1st_order_regression.png'/></center>
+<p>Fisher lack-of-fit test will be enabled if there are at least two Y samples (Y-1 values and Y-2 values).</p>
+
+<!-- ### -->
+<h3><a name='2ndoreg'></a>Second-Order Regression</h3>
+<p>Relative to the first selected cell, the application will take the first column as the
+X values, the second column as the Y-1 values, the third column as the Y-2 values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_2nd_order_regression.png'/></center>
+
+<!-- ### -->
+<h3><a name='mandel'></a>Mandel Test</h3>
+<p>Relative to the first selected cell, the application will take the first column as the
+X values, the second column as the Y-1 values, the third column as the Y-2 values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_mandel_test.png'/></center>
+
+<!-- ### -->
+<h3><a name='homogen'></a>Homogeneity Test</h3>
+<p>Relative to the first selected cell, the application will take the first column as the Y-1 values,
+the second column as the Y-2 values, and disregard the remaining columns.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_homogeneity.png'/></center>
+<p>Please note that one must put the lowest concentration values as Y-1 and the highest concentration
+values as Y-2.</p>
+
+<!-- ### -->
+<h2><a name='precision'>Precision</a></h2>
+<p>The precision analysis encompasses a simple RSD-based precision analysis and a 1-Way ANOVA analysis.</p>
+
+<!-- ### -->
+<h3><a name='prsd'>RSD</a></h3>
+<p>Relative to the first selected cell, the application will take the first column as the X values
+and disregard the other columns.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_precision_rsd.png'/></center>
+
+<!-- ### -->
+<h3><a name='powana'>1-Way ANOVA</a></h3>
+<p>Relative to the first selected cell, the application will take the first column as the X-1 values,
+the second column as the X-2 values, the third column as the X-3 values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly). One can safely ignore the <i>Measurement True Value</i> setting panel
+if one is not going to use the result of this robustness analysis in accuracy profile analysis.</p></p>
+<center><img src='images/ddl_anal_precision_owana.png'/></center>
+
+<!-- ### -->
+<h2><a name='accuracy'>Accuracy</a></h2>
+<p>Relative to the first selected cell, the application will take the first column as the
+Xc values, the second column as the Xf-1 values, the third column as the Xf-2 values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_accuracy.png'/></center>
+
+<!-- ### -->
+<h2><a name='robustness'>Robustness</a></h2>
+<p>Relative to the first selected cell, the application will take the first column as the
+response values, the second column as the 1st-factor values, the third column as the 2nd-factor values,
+and so on. Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly). One can safely ignore the <i>Measurement &#948;real</i> setting panel
+if one is not going to use the result of this robustness analysis in accuracy profile analysis.</p>
+<center><img src='images/ddl_anal_robustness.png'/></center>
+
+<p>The application provides a mechanism to generate the template for Plackett-Burmann Design. Simply
+select <b>Template for Plackett-Burmann Design</b> in the <b>Spreadsheet</b> menu to start generating
+the template. A dialog will be shown. Select the number of factors and press OK. Please note that the
+actual appearance of the dialog box may differ slightly between platforms and operating systems.</p>
+<center><img src='images/dlg_gen_pbd_template.png'/></center>
+<p>The application will then generate the template</p>
+<center><img src='images/ddl_anal_robustness_0.png'/></center>
+<p>Fill-in the response value in the first column (by default they all 0.0). Fill-in the factor values
+in the second, third, and so on columns (by default they all either -1.0 or +1.0). The -1.0 values are
+to be replaced with the minimum concentration/level/etc. of the factors, the +1.0 values are to be
+replaced with the maximum concentration/level/etc. of the factors.</p>
+<p>The template defines the minimum number of data that must be entered in order for the analysis can be
+carried out. However, one is free to add more data to the spreadsheet.</p>
+
+<!-- ### -->
+<h2><a name='aprofile'>Acuracy Profile</a></h2>
+<p>The acuracy profile analysis encompasses the Gonz&#225;les <i>et al.</i> and Rozet <i>et al.</i> methods.</p>
+
+<!-- ### -->
+<h3><a name='apgonza'>Gonz&#225;les <i>et al.</i> Method</a></h3>
+<p>One must perform some precision analyses (via 1-way ANOVA) and, optionally, the same number of
+robustness analyses. One must fill-in the <i>Measurement True Value</i> setting panels from within the precision
+(1-way ANOVA) analysis tabs. If any robustness analysis was also used, one must also fill-in the <i>Measurement &#948;real</i>
+setting panels from within the robustness analysis tabs. Only maximum 7 factors can be used in any of the
+robustness analyses.</p>
+<p>Currently, the results from all precision and robustness analysis tabs will be used as the inputs of the
+accuracy profile analysis. Therefore, it is recommended to put the accuracy profile analysis as the last tab.
+If robustness analysis is used, the the first robustness analysis will be associated with the first precision
+analysis, the second with the second, and so on. Hence, the order of the tabs matter.</p>
+
+<!-- ### -->
+<h3><a name='aprozet'>Rozet <i>et al.</i> Method</a></h3>
+<p>One must perform some precision analyses (via 1-way ANOVA).One must fill-in the <i>Measurement True Value</i>
+setting panels from within the precision (1-way ANOVA) analysis tabs.</p>
+<p>Currently, the results from all precision analysis tabs will be used as the inputs of the
+accuracy profile analysis. Therefore, it is recommended to put the accuracy profile analysis as the last tab.</p>
+
+<!-- ### -->
+<h2><a name='qcshewhart'>Quality Control (Shewhart Chart)</a></h2>
+<p>Relative to the first selected cell, the application will take the first column as the
+control values, the second column as the 1st-samples values, the third column as the 2nd-samples
+values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_anal_qc_shewhart.png'/></center>

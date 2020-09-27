@@ -1,0 +1,108 @@
+<!-- ### -->
+<h1><center>The Setting Panels</center></h1>
+<p>There are several setting-panels in the application. Each panel is meant to be used to configure
+a specific part of the process.</p>
+
+<!-- ### -->
+<h2><a name='pcapt'>The Plot-Caption Setting Panel</a></h2>
+<p>Using this panel, one can configure:</p>
+<ul>
+    <li>The plot's caption;</li>
+    <li>The plot's sub-caption;</li>
+    <li>The plot's X-axis' caption;</li>
+    <li>The plot's left Y-axis' caption; and</li>
+    <li>The plot's right Y-axis' caption (if the plot has it).</li>
+</ul>
+<center><img src='images/pnl_caption_setting_1.png'/></center>
+<p>In case there are multiple plots, then the plot-caption setting panel will have tabs in it.</p>
+<center><img src='images/pnl_caption_setting_2.png'/></center>
+<p>VMA supports inserting symbols, italic, superscript, and underscript. Simply click one of the buttons on
+the right side of the panel to insert symbols, italic, superscript, or underscript when editing the captions.
+The picture below depicts the appearance of the insert-symbol dialog. Please note that the actual appearance
+of the dialog box may differ slightly between platforms and operating systems.</p>
+<center><img src='images/dlg_insert_symbol.png'/></center>
+<p>VMA also supports using the cells' values as the captions. To use this feature, simply put the cells'
+references (such as <b>$[A1]</b>, <b>$[A2]</b>, <b>$[B1]</b>, <b>$[B2]</b>, and so on)
+as the captions.</p>
+
+<!-- ### -->
+<h2><a name='anal'>The Analysis Setting Panel</a></h2>
+<p>This panel would be the most simple setting panel. There are only two settings in this panel. The
+<b>Statistical Confidence</b> field defines how much error one can tolerate. In the picture below, it means
+<b>5%</b> error is acceptable.
+</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='top'>
+    <td><img src='images/pnl_analysis_setting_1.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_analysis_setting_2.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_analysis_setting_3.png'/></td>
+</tr></table></center>
+<p>
+The <b>Number of Determinations</b> field is only used for drawing prediction bands on regression plots.
+The <b>Tolerance Interval</b> field is only used in precision (RSD) analysis.
+The <b>&lambda;</b> field is only used in accuracy profile analysis.
+</p>
+
+<!-- ### -->
+<h2><a name='inputdr'>The Input-Data-Range Setting Panel</a></h2>
+<p>This is the setting panel that connects the spreadsheet to the plot-drawing and analysis system. The
+appearance of this panel can be different for different types of plot and analysis. In a plot that supports
+both left and right Y-axis, there will be check boxes to define whether the particular series should use
+the right Y-axis. The default is unchecked (all using the left Y-axis).</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='top'>
+    <td><img src='images/pnl_data_range_setting_1.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_data_range_setting_2.png'/></td>
+</tr></table></center>
+<p>Please note that, for the time being, the application does not support multiple columns for the same data
+range. In the above picture, the <b>X&nbsp;Values</b> is specified to use the data from spreadsheet cells
+<b>A1</b> to <b>A5</b>. If one changed that data range into multiple columns such as <b>A1-B5</b>, <b>F3-G5</b>,
+and so on, no plot will be drawn and nothing will be analyzed.</p>
+
+<!-- ### -->
+<h2><a name='drcapt'>The Data-Range-Caption Setting Panel</a></h2>
+<p>The X-axis tick values (labels) on most of the plots are generated automatically from the X-axis scale
+settings. However, there are plots that requires custom labels. One can specify those labels using this panel.
+The appearance and usage of this panel can be different for different types of plot and analysis.
+The pictures below depict the appearance of this panel from <b>Box-Whisker</b> plot and <b>Robustness</b>
+analysis.</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='top'>
+    <td><img src='images/pnl_data_range_caption_setting_1.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_data_range_caption_setting_2.png'/></td>
+</tr></table></center>
+<p>VMA also supports using the cells' values as the labels. To use this feature, simply put the cells'
+references (such as <b>$[A1]</b>, <b>$[A2]</b>, <b>$[B1]</b>, <b>$[B2]</b>, and so on)
+as the labels.</p>
+
+
+<!-- ### -->
+<h2><a name='pstyle'>The Plot-Style Setting Panel</a></h2>
+<p>One can use this setting panel to specify the color, symbol types, and line types for the plot. The appearance
+if this panel can be different for different types of plot and analysis, but their functions remain the same.</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='top'>
+    <td><img src='images/pnl_data_point_setting_1.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_data_point_setting_2.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_data_point_setting_3.png'/></td>
+</tr></table></center>
+
+<!-- ### -->
+<h2><a name='ascale'>The Axis-Scale Setting Panel</a></h2>
+<p>Selecting the correct axis scale would be crucial to produce a good plot. The application tries to find the
+best axis scale for the plot. However, one may want to change the axis scale to produce a more clean and clear plot.
+In a plot that supports both left and right Y-axis, there will be separated settings for each of the Y-axis.</p>
+<center><table cellspacing='0' cellpadding='0'><tr valign='top'>
+    <td><img src='images/pnl_axis_scale_setting_1.png'/></td>
+    <td>&nbsp;&nbsp;</td>
+    <td><img src='images/pnl_axis_scale_setting_2.png'/></td>
+</tr></table></center>
+
+<!-- ### -->
+<h2><a name='misc'>The Miscellaneous Setting Panel</a></h2>
+<p>One can change settings in this panel to change the plot's background and text colors. If one would like the
+application to draw the origin line and the grid line on the plot, simply select the line style to anything but
+<b>Invisible</b>.</p>
+<center><img src='images/pnl_misc_setting.png'/></center>

@@ -1,0 +1,13 @@
+# Copyright (C) 2010-2011 Aloysius Indrayanto
+#                         AnemoneSoft.com
+
+# Makefile.utils
+
+%.class: %.java
+	@echo Compiling "`pwd`/$<" ...
+	@CLASSPATH='$(CLASSPATH)' $(JAVAC) -O $<
+
+clean:
+	@echo Deleting generated files in `pwd` ...
+	@rm -f *.class
+	@for I in $(CLEAN_DIRS); do rm -f $$I/*.class; done;

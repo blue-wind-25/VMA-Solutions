@@ -1,0 +1,27 @@
+----------------------------------------------------------------------------------------------------
+{app_name_ver}
+{app_copyright}
+----------------------------------------------------------------------------------------------------
+
+=== {anal_name} ===
+
+{caption}
+{sub_caption}
+
+Number of series  = {P}
+Number of samples = {N}/series
+
+Overall mean = {Zmm}
+
+Within-condition variance (repeatability) (Sw²) = {Sw2}
+Between-condition variance                (Sb²) = {Sb2}
+Intermediate precision                    (Sr²) = {Sr2}
+
+Relative standard deviation of the within-condition       (RSDw) = {RSDw}%
+Relative standard deviation of the between-condition      (RSDb) = {RSDb}%
+Relative standard deviation of the intermediate precision (RSDr) = {RSDr}%
+
+----------------------------------------------------------------------------------------------------
+{date_time}
+{operator_name}
+----------------------------------------------------------------------------------------------------

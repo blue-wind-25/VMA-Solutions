@@ -1,0 +1,30 @@
+<!-- ### -->
+<h1><center>Default Data Layout for Plot</center></h1>
+<p>The input-data-range setting-panel connects the spreadsheet to the plot-drawing system.
+Despite the fact that one can manually enter the data range into the text boxes in the panel,
+the application can automatically do this if one follows the default data layout for the
+corresponding plot. Simply block (select) the cells that contains the plot data and use the
+<b>Plot</b> menu to create a new plot. Please refer to the pictures below for more details.</p>
+<center><img src='images/oper_select.png'/></center>
+<br/>
+<center><img src='images/oper_new_plot.png'/></center>
+<p>The default data layout system is relative to the first selected cell (the top-left cell).
+Therefore, there is no need to always start from cell <b>A1</b>.</p>
+
+<!-- ### -->
+<h2><a name='scatter_line'>Scatter-Line Plot</a></h2>
+<p>Relative to the first selected cell, the application will take the first column as the
+X values, the second column as the Y-1 values, the third column as the Y-2 values, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_plot_scatter_line.png'/></center>
+
+<!-- ### -->
+<h2><a name='box_whisker'>Box-Whisker Plot</a></h2>
+<p>Relative to the first selected cell, the application will take the first selected column as
+series A, the second column as series B, the third column as series C, and so on.
+Please refer to the picture below for more details (the selection block is not shown so that
+the picture can be seen more clearly).</p>
+<center><img src='images/ddl_plot_box_whisker.png'/></center>
+<p>Please note that for this plot, the first data row of the series defines its position in the
+X-Axis.</p>

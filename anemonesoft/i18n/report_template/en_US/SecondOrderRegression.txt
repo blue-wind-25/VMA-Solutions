@@ -1,0 +1,32 @@
+----------------------------------------------------------------------------------------------------
+{app_name_ver}
+{app_copyright}
+----------------------------------------------------------------------------------------------------
+
+=== {anal_name} ===
+
+{caption}
+{sub_caption}
+
+Number of samples = {N}
+
+t({N3}, {PP}%, one-sided) = {t1}
+t({N3}, {PP}%, two-sided) = {t2}
+
+Y = {a} {mo1} {b}X {mo2} {c}X²
+
+Mean
+    X = {Xm}
+    Y = {Ym}
+
+Coefficient of correlation    (r  ) = {r}
+Residual sum of squares       (RSS) = {RSS}
+Residual standard deviation   (Sy ) = {Sy}
+Sensitivity                   (E  ) = {E}
+Process standard deviation    (Sx0) = {Sx0}
+Process variation coefficient (Vx0) = {Vx0}%
+
+----------------------------------------------------------------------------------------------------
+{date_time}
+{operator_name}
+----------------------------------------------------------------------------------------------------

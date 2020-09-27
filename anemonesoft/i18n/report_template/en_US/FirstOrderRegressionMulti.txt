@@ -1,0 +1,71 @@
+----------------------------------------------------------------------------------------------------
+{app_name_ver}
+{app_copyright}
+----------------------------------------------------------------------------------------------------
+
+=== {anal_name} ===
+
+{caption}
+{sub_caption}
+
+Number of samples = {N}
+
+t({N2}, {PP}%, one-sided) = {t1}
+t({N2}, {PP}%, two-sided) = {t2}
+
+Y = {a} {mo1} {b}X
+
+Mean
+    X = {Xm}
+    Y = {Ym}
+
+Coefficient of correlation    (r  ) = {r}
+Residual sum of squares       (RSS) = {RSS}
+Residual standard deviation   (Sy ) = {Sy}
+Process standard deviation    (Sx0) = {Sx0}
+Process variation coefficient (Vx0) = {Vx0}%
+
+The g-value         (g     ) = {gValue}
+Quality coefficient (QCmean) = {QCmean}
+Linearity                    = {linearity}
+
+Standard deviation of the intercept       (Sa ) = {Sa}
+Standard deviation of the slope           (Sb ) = {Sb}
+Confidence interval of the intercept      (CIa) = {a} ± {CIa}
+Relative Confidence interval of the slope (CIb) = {b} ± {CIb}%
+
+Equivalence interval intercept
+    Lower limit (CL) = {CL}
+    Upper limit (CU) = {CU}
+
+Analytical imprecision at the lower end of the range
+    CI(x1)    = {CIx1}
+    CIrel(x1) = {CIrelx1}%
+
+Lower range limit 
+    Testing value for concentration zero (Ya) = {Ya}
+                                         (Xa) = {Xa}
+    Lowest X value of the samples        (X1) = {X1}
+    Detection limit                      (DL) = {DL}
+    Quantitation Limit                   (QL) = {QL}
+
+    {conclusion} {reason}
+
+Fisher lack-of-fit test
+    Number of replications = {Nr}
+    F({DFlof}, {DFe}, {PP}%, one-sided) = {F1}
+
+    Residual error sum of squares          (SSr  ) = {SSr}
+    Pure experimental error sum of squares (SSe  ) = {SSe}
+    Lack-of-fit error sum of squares       (SSlof) = {SSlof}
+    Residual variance                      (σ²r  ) = {Vr}
+    Pure experimental variance             (σ²e  ) = {Ve}
+    Lack-of-fit variance                   (σ²lof) = {Vlof}
+    Fisher variance ratio                  (Fr   ) = {Fr}
+
+    {conclusion2} {reason2}
+
+----------------------------------------------------------------------------------------------------
+{date_time}
+{operator_name}
+----------------------------------------------------------------------------------------------------
