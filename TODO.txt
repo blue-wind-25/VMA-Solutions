@@ -1,3 +1,4 @@
+
 Menu short-cut does not work in applet mode.
 
 $:VMA@AnemoneSoft.com:2:amd64:Linux:2.6.32.26-175.fc12.x86_64:154818260992:0090CCE7A931:$
