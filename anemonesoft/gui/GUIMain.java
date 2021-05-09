@@ -31,8 +31,8 @@ import anemonesoft.lic.*;
 //
 public class GUIMain extends JApplet implements ActionListener {
     // Application information constants
-    public static final String APP_VERSION       = "1.4.3a"; // Synchronize it with 'vma.nsi'
-    public static final String APP_COPY_YEAR     = "2011-2016";
+    public static final String APP_VERSION       = "1.4.3b"; // Synchronize it with 'vma.nsi'
+    public static final String APP_COPY_YEAR     = "2011-2020";
     public static final String APP_COPY_NAME     = "AnemoneSoft.com\u2122";
 
     public static final String APP_DATA_MAGIC    = "VMA-DS";
@@ -690,8 +690,8 @@ public class GUIMain extends JApplet implements ActionListener {
             _mnuToolboxCalcTI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ti"),     GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_T, -1, this);
             _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"),     GUtil.newImageIcon("mnu_toolbox_nd"),     KeyEvent.VK_P, -1, this);
             _mnuToolboxCalcDLQL = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_dlql"),   GUtil.newImageIcon("mnu_toolbox_dlql"),   KeyEvent.VK_D, -1, this);
-            mnuToolbox.addSeparator();
-            _mnuToolboxCOWPD    = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_cowpd"),  GUtil.newImageIcon("mnu_toolbox_cowpd" ), KeyEvent.VK_C, -1, this);
+          //mnuToolbox.addSeparator();
+          //_mnuToolboxCOWPD    = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_cowpd"),  GUtil.newImageIcon("mnu_toolbox_cowpd" ), KeyEvent.VK_C, -1, this);
         _mnbMain.add(mnuToolbox);
 
         // Initialize the "Help" menu
