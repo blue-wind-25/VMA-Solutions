@@ -31,9 +31,9 @@ import anemonesoft.lic.*;
 //
 public class GUIMain extends JApplet implements ActionListener {
     // Application information constants
-    public static final String APP_VERSION       = "1.4.3b"; // Synchronize it with 'vma.nsi'
+    public static final String APP_VERSION       = "1.5.0"; // Synchronize it with 'vma.nsi'
     public static final String APP_COPY_YEAR     = "2011-2021";
-    public static final String APP_COPY_NAME     = "AnemoneSoft.com\u2122";
+    public static final String APP_COPY_NAME     = "VMA Consultant\u2122";
 
     public static final String APP_DATA_MAGIC    = "VMA-DS";
     public static final int    APP_DATA_VERSION  = 2;
@@ -134,6 +134,7 @@ public class GUIMain extends JApplet implements ActionListener {
     private JMenuItem        _mnuAnalAPRozet     = null;
     private JMenuItem        _mnuAnalRobustness  = null;
     private JMenuItem        _mnuAnalQCShewhart  = null;
+    private JMenuItem        _mnuAnalZScore      = null;
 
     private JMenuItem        _mnuToolboxStudTTab = null;
     private JMenuItem        _mnuToolboxFishFTab = null;
@@ -678,6 +679,8 @@ public class GUIMain extends JApplet implements ActionListener {
             _mnuAnalAPRozet    = GUtil.newJMenuItem(mnuAnalAP,  _S("mnu_anal_ap_rozet"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_R, -1, this);
 
             _mnuAnalQCShewhart = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_qcshewhart"), GUtil.newImageIcon("mnu_anal_qcshewhart"), KeyEvent.VK_Q, -1, this);
+
+            _mnuAnalZScore     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zscore"    ), GUtil.newImageIcon("mnu_anal_zscore"    ), KeyEvent.VK_Z, -1, this);
         _mnbMain.add(mnuAnal);
 
         // Initialize the "Toolbox" menu
@@ -978,6 +981,9 @@ public class GUIMain extends JApplet implements ActionListener {
         // Analysis - Quality Control (Shewhart Chart)
         else if(eventSource == _mnuAnalQCShewhart) {
             nrpClass = QCShewhartPanel.class;
+        }
+        // Analysis - Z Score
+        else if(eventSource == _mnuAnalZScore) {
         }
 
         // Toolbox - COW & Peak Detection

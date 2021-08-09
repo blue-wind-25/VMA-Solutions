@@ -1,13 +1,13 @@
-!define PRD_VERSION   1.4.3.1 # Synchronize it with 'GUIMain.java'
-!define APP_VERSION   1.4.3b  # ---
+!define PRD_VERSION   1.5.0.0 # Synchronize it with 'GUIMain.java'
+!define APP_VERSION   1.5.0   # ---
 
 VIProductVersion      "${PRD_VERSION}"
 VIAddVersionKey       "FileDescription" "VMA Solutions Setup"
 VIAddVersionKey       "FileVersion"     "${APP_VERSION}"
 VIAddVersionKey       "ProductName"     "VMA Solutions"
 VIAddVersionKey       "ProductVersion"  "${APP_VERSION}"
-VIAddVersionKey       "LegalCopyright"  "Copyright (C) AnemoneSoft.com"
-VIAddVersionKey       "CompanyName"     "AnemoneSoft.com"
+VIAddVersionKey       "LegalCopyright"  "Copyright (C) VMA Consultant"
+VIAddVersionKey       "CompanyName"     "VMA Consultant"
 
 Name                  "VMA Solutions(tm) ${APP_VERSION}"
 OutFile               "vma-installer.exe"
