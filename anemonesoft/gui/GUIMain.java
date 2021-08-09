@@ -984,6 +984,7 @@ public class GUIMain extends JApplet implements ActionListener {
         }
         // Analysis - Z Score
         else if(eventSource == _mnuAnalZScore) {
+            nrpClass = ZScorePanel.class;
         }
 
         // Toolbox - COW & Peak Detection

@@ -25,11 +25,11 @@ runj: jar
 
 JAR_DIRS = anemonesoft appwrapper images examples Jama
 jar: default
-	@(                                                           \
+	@(                                                               \
 		mkdir tmp.$$$$;                                          \
 		cd tmp.$$$$;                                             \
 		for I in $(JAR_DIRS); do                                 \
-			cp -R ../$$I .;                                      \
+			cp -R ../$$I .;                                  \
 		done;                                                    \
 		find . -name 'Makefile' -print | xargs rm -f;            \
 		find . -name '*.java' -print | xargs rm -f;              \

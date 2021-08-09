@@ -63,7 +63,8 @@ CLS_TAB_MODULE = tab/SpreadsheetPanel.class     \
                  tab/PrecisionRSDPanel.class    \
                  tab/PrecisionOWANOPanel.class  \
                  tab/RobustnessPanel.class      \
-                 tab/QCShewhartPanel.class
+                 tab/QCShewhartPanel.class      \
+                 tab/ZScorePanel.class
 
 CLASSPATH  = ../..
 LIB_SOURCE = $(CLS_COMMON) $(CLS_DIALOG_BOX) $(CLS_TOOL_BOX) $(CLS_COMPONENT) $(CLS_CONTROL) $(CLS_TAB_MODULE)
