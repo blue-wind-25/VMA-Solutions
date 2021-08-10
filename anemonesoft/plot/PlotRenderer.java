@@ -236,6 +236,33 @@ public class PlotRenderer {
                     lastTag.setCharAt(0, '<');
                     inTag = true;
                 }
+                // Found an '&' character
+                else if(c == '&') {
+                    // 01234567
+                    // &#nnnn;
+                    final char cn  = str.charAt(i + 1);
+                    final char cd3 = str.charAt(i + 2);
+                    final char cd2 = str.charAt(i + 3);
+                    final char cd1 = str.charAt(i + 4);
+                    final char cd0 = str.charAt(i + 5);
+                    final char csc = str.charAt(i + 6);
+                    // Check if it is in the correct form
+                    if(cn == '#' && csc == ';') {
+                        // Generate and append the unicode character
+                        final int code = ( Character.getNumericValue(cd3) * 1000 +
+                                           Character.getNumericValue(cd2) * 100  +
+                                           Character.getNumericValue(cd1) * 10   +
+                                           Character.getNumericValue(cd0)
+                                         );
+                        lastString.append(Character.toString((char) code));
+                        // Incement the index
+                        i = i + 6;
+                    }
+                    // Not in a valid form, just append to the current string
+                    else {
+                        lastString.append(c);
+                    }
+                }
                 // Other characters, just append to the current string
                 else {
                     lastString.append(c);
