@@ -96,29 +96,27 @@ public class ZScorePanel extends ResultPanel implements Saveable {
         ZScore zsc = new ZScore(cda, sda);
 
         // Generate the details
-        int maxSLen = 0;
+        int maxSLen = _S("str_x_values_zscore_y").length();
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%.5g", sda[i]).length();
             if(len > maxSLen) maxSLen = len;
         }
-        if(maxSLen < _S("str_x_values_zscore_y").length()) maxSLen = _S("str_x_values_zscore_y").length();
 
-        int maxZLen = 0;
+        int maxZLen = _S("str_x_values_zscore_y").length();
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%+.5f", zsc.getZs(i)).length();
             if(len > maxZLen) maxZLen = len;
         }
-        if(maxZLen < _S("str_x_values_zscore_y").length()) maxZLen = _S("str_x_values_zscore_zs").length();
 
         String formatStrC = "    %-" + maxSLen +   "s    %-" + maxZLen + "s\n";
         String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxZLen + ".5f";
 
         StringBuilder details = new StringBuilder();
 
-        details.append( StringTranslator.format(formatStrC, _S("str_x_values_zscore_y"), _S("str_x_values_zscore_zs")) );
+        details.append(StringTranslator.format(formatStrC, _S("str_x_values_zscore_y"), _S("str_x_values_zscore_zs")));
 
         for(int i = 0; i < sda.length; ++i) {
-            details.append( StringTranslator.format(formatStrI, sda[i], zsc.getZs(i)) );
+            details.append(StringTranslator.format(formatStrI, sda[i], zsc.getZs(i)));
             if(i < sda.length - 1) details.append("\n");
         }
 
@@ -129,8 +127,8 @@ public class ZScorePanel extends ResultPanel implements Saveable {
             "sub_caption", scapt,
             "C",           "" + zsc.getC(),
             "S",           "" + zsc.getS(),
-            "Cm",          "" + zsc.getCm(),
-            "Sc",          "" + zsc.getSc(),
+            "Cm",          "" + StringTranslator.format("%.5g", zsc.getCm()),
+            "Sc",          "" + StringTranslator.format("%.5g", zsc.getSc()),
             "details",     details.toString()
         };
 
@@ -184,7 +182,7 @@ public class ZScorePanel extends ResultPanel implements Saveable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Construct a accuracy-test class
+    // Construct a z-score class
     public ZScorePanel()
     {
         super(1, null, null, true, false);

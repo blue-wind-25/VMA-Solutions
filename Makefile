@@ -55,3 +55,5 @@ clean:
 	@$(MAKE) -s -C appzgl      clean
 	@echo Deleting generated files in `pwd` ...
 	@rm -f $(APP_JAR_FILE) $(APP_MAP_FILE)
+
+# git commit -S -a -m 'Working on Z Score' && git push && git status
