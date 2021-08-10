@@ -55,8 +55,8 @@ public class ZScorePanel extends ResultPanel implements Saveable {
     public void initSettingsAccordion(String[] title, JComponent pane[])
     {
         String[] drsCapt = new String[NUM_OF_Y_AXIS + 1];
-        drsCapt[0] = _S("str_x_values_zscore_x");
-        drsCapt[1] = _S("str_x_values_zscore_y");
+        drsCapt[0] = _S("str_x_values_control");
+        drsCapt[1] = _S("str_x_values_sample" );
 
         _inputDataRangeSP = new StdPlotDataRangeSettingPanel(NUM_OF_Y_AXIS, false, drsCapt);
         title[0] = _S("str_acrs_data_range");
@@ -96,13 +96,13 @@ public class ZScorePanel extends ResultPanel implements Saveable {
         ZScore zsc = new ZScore(cda, sda);
 
         // Generate the details
-        int maxSLen = _S("str_x_values_zscore_y").length();
+        int maxSLen = _S("str_x_values_sample").length();
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%.5g", sda[i]).length();
             if(len > maxSLen) maxSLen = len;
         }
 
-        int maxZLen = _S("str_x_values_zscore_y").length();
+        int maxZLen = _S("str_x_values_sample").length();
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%+.5f", zsc.getZs(i)).length();
             if(len > maxZLen) maxZLen = len;
@@ -113,7 +113,7 @@ public class ZScorePanel extends ResultPanel implements Saveable {
 
         StringBuilder details = new StringBuilder();
 
-        details.append(StringTranslator.format(formatStrC, _S("str_x_values_zscore_y"), _S("str_x_values_zscore_zs")));
+        details.append(StringTranslator.format(formatStrC, _S("str_x_values_sample"), _S("res_zscore_zs")));
 
         for(int i = 0; i < sda.length; ++i) {
             details.append(StringTranslator.format(formatStrI, sda[i], zsc.getZs(i)));

@@ -84,6 +84,7 @@ public class GUIMain extends JApplet implements ActionListener {
 
         "QC-Shewhart.vma",              "mnu_anal_qcshewhart",
 
+        "ZFactor.vma",                  "mnu_anal_zfactor",
         "ZScore.vma",                   "mnu_anal_zscore",
         "GrubbsTest.vma",               "mnu_anal_grubbs",
 
@@ -138,6 +139,7 @@ public class GUIMain extends JApplet implements ActionListener {
     private JMenuItem        _mnuAnalAPRozet     = null;
     private JMenuItem        _mnuAnalRobustness  = null;
     private JMenuItem        _mnuAnalQCShewhart  = null;
+    private JMenuItem        _mnuAnalZFactor     = null;
     private JMenuItem        _mnuAnalZScore      = null;
     private JMenuItem        _mnuAnalGrubbs      = null;
 
@@ -185,6 +187,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(cls.equals(APRozetPanel        .class)) return "APRozet";
         if(cls.equals(RobustnessPanel     .class)) return "Robustness";
         if(cls.equals(QCShewhartPanel     .class)) return "QCShewhart";
+      //if(cls.equals(ZFactorPanel        .class)) return "ZFactor";
         if(cls.equals(ZScorePanel         .class)) return "ZScore";
         if(cls.equals(GrubbsTestPanel     .class)) return "GrubbsTest";
         return null;
@@ -207,6 +210,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(name.equals("APRozet"        )) return APRozetPanel        .class;
         if(name.equals("Robustness"     )) return RobustnessPanel     .class;
         if(name.equals("QCShewhart"     )) return QCShewhartPanel     .class;
+      //if(name.equals("ZFactor"        )) return ZFactorPanel        .class;
         if(name.equals("ZScore"         )) return ZScorePanel         .class;
         if(name.equals("GrubbsTest"     )) return GrubbsTestPanel     .class;
         return null;
@@ -689,9 +693,9 @@ public class GUIMain extends JApplet implements ActionListener {
 
             _mnuAnalQCShewhart = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_qcshewhart"), GUtil.newImageIcon("mnu_anal_qcshewhart"), KeyEvent.VK_Q, -1, this);
 
-            _mnuAnalZScore     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zscore"    ), GUtil.newImageIcon("mnu_anal_zscore"    ), KeyEvent.VK_Z, -1, this);
-
-            _mnuAnalGrubbs     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_grubbs"    ), GUtil.newImageIcon("mnu_anal_grubbs"    ), KeyEvent.VK_B, -1, this);
+            _mnuAnalZFactor    = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zfactor"   ), GUtil.newImageIcon("mnu_anal_zfactor"   ), KeyEvent.VK_F, -1, this);
+            _mnuAnalZScore     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zscore"    ), GUtil.newImageIcon("mnu_anal_zscore"    ), KeyEvent.VK_S, -1, this);
+            _mnuAnalGrubbs     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_grubbs"    ), GUtil.newImageIcon("mnu_anal_grubbs"    ), KeyEvent.VK_G, -1, this);
         _mnbMain.add(mnuAnal);
 
         // Initialize the "Toolbox" menu
@@ -992,6 +996,10 @@ public class GUIMain extends JApplet implements ActionListener {
         // Analysis - Quality Control (Shewhart Chart)
         else if(eventSource == _mnuAnalQCShewhart) {
             nrpClass = QCShewhartPanel.class;
+        }
+        // Analysis - Z Factor
+        else if(eventSource == _mnuAnalZFactor) {
+          //nrpClass = ZFactorPanel.class;
         }
         // Analysis - Z Score
         else if(eventSource == _mnuAnalZScore) {

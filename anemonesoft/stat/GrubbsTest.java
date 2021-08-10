@@ -11,94 +11,79 @@ package anemonesoft.stat;
 public class GrubbsTest {
     // Data
     private int      _N       = 0;
-    private int      _S       = 0;
-
     private int      _N2      = 0;
     private double   _pp      = 0;
-    private double   _t2      = 0;
+    private double   _tc      = 0;
     private double   _gc      = 0;
 
-    private double[] _nValues = null;
+    private double   _mean    = 0;
+    private double   _Sd      = 0;
+
     private double[] _sValues = null;
-    private double[] _mValues = null;
-    private double[] _dValues = null;
     private double[] _gValues = null;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Construct Grubbs-test class
-    public GrubbsTest(double[] n, double[] s, double pp) throws Exception
+    public GrubbsTest(double[] s, double pp) throws Exception
     {
         // Check the number of data
-        if(n.length < 3 || s.length < 1) throw new RuntimeException("Not enough data!");
+        if(n.length < 3) throw new RuntimeException("Not enough data!");
 
         // Store the number of data
         _N = n.length;
-        _S = s.length;
 
         // Allocate memory for the value arrays
-        _nValues = new double[_N];
-        _sValues = new double[_S];
-        _mValues = new double[_S];
-        _dValues = new double[_S];
-        _gValues = new double[_S];
+        _sValues = new double[_N];
+        _gValues = new double_N[_S];
 
         // Copy the input values
-        System.arraycopy(n, 0, _nValues, 0, _N);
-        System.arraycopy(s, 0, _sValues, 0, _S);
+        System.arraycopy(s, 0, _sValues, 0, _N);
 
-        // Calculate N2 and t2
+        // Calculate N2 and tc
         _pp = pp;
-        _N2 = _N + 1 - 2; // +1 because of the addition of one suspect
-        _t2 = DistTable.t2(_pp, _N2);
+        _N2 = _N - 2;
+        _tc = DistTable.t2(100.0 - ((100.0 - _pp) / _N), _N2);
 
         // Calculate the G-Crit
-        _gc = ( (_N + 1 - 1) * _t2 ) // +1 because of the addition of one suspect
+        _gc = ( (_N - 1) * _tc )
               /
               Math.sqrt
               (
-                  (_N + 1) // +1 because of the addition of one suspect
+                  _N
                   *
-                  (_N + 1 - 2 + _t2 * _t2) // +1 because of the addition of one suspect
+                  (_N - 2 + _tc * _tc)
               );
+
+        // Calculate the mean
+        for(int j = 0; j < _sValues.length; ++j) {
+            _mean += _sValues[j];
+        }
+        _mean /= (_N + 1);
+
+        // Calculate the Sd
+        for(int j = 0; j < _sValues.length; ++j) {
+            double dif = _sValues[j] - mean;
+            _Sd += (dif * dif);
+        }
+        _Sd = Math.sqrt(_Sd / (_N - 1));
 
         // Calculate the G
         for(int i = 0; i < _sValues.length; ++i) {
-            // Calculate the mean of the control values
-            double mean = _sValues[i];
-            for(int j = 0; j < _nValues.length; ++j) {
-                mean += _nValues[j];
-            }
-            mean /= (_N + 1); // +1 because of the addition of one suspect
-            _mValues[i] = mean;
-            // Calculate the Sd
-            double sd = 0;
-            for(int j = 0; j < _nValues.length; ++j) {
-                double dif = _nValues[j] - mean;
-                sd += (dif * dif);
-            }
-            if(true) {
-                double dif = _sValues[i] - mean;
-                sd += (dif * dif);
-            }
-            sd = Math.sqrt(sd / (_N + 0)); // +1 because of the addition of one suspect
-            _dValues[i] = sd;
-            // Calculate G
-            _gValues[i] = Math.abs( (_sValues[i] - mean) / sd );
+            _gValues[i] = Math.abs( (_sValues[i] - _mean) / _Sd );
         }
     }
 
     // Getters
-    public int    getN()         { return _N; }
-    public int    getS()         { return _S; }
-    public int    getN2()        { return _N2; }
+    public int    getN()      { return _N; }
+    public int    getN2()     { return _N2; }
 
-    public double getPP()        { return _pp; }
-    public double getT2()        { return _t2; }
+    public double getPP()     { return _pp; }
+    public double getTC()     { return _tc; }
 
-    public double getMean(int i) { return _mValues[i]; }
-    public double getSd(int i)   { return _dValues[i]; }
+    public double getMean()   { return _mean; }
+    public double getSd()     { return _sd; }
 
-    public double getGC()        { return _gc; }
-    public double getG(int i)    { return _gValues[i]; }
+    public double getGC()     { return _gc; }
+    public double getG(int i) { return _gValues[i]; }
 }
