@@ -84,7 +84,7 @@ public class ZScorePanel extends ResultPanel implements Saveable {
             return "";
         }
 
-        double[][] sda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
+        double[] sda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0)[0];
         if(sda == null || sda.length <= 0) {
             GUtil.showNoDDialogReport();
             return "";
@@ -93,23 +93,17 @@ public class ZScorePanel extends ResultPanel implements Saveable {
         String mcapt = _regCaptionSP.getMainCaption();
         String scapt = _regCaptionSP.getSubCaption ();
 
-        ZScore zsc = new ZScore(cda, sda[0]);
+        ZScore zsc = new ZScore(cda, sda);
 
         // Generate the details
-        /*
-        if(html) {
-            if(aOK) resA = _F("res_acc_include",     new String[]{ "CI<sub>af</sub>", "af = 0" });
-            else    resA = _F("res_acc_not_include", new String[]{ "CI<sub>af</sub>", "af = 0" });
-            if(bOK) resB = _F("res_acc_include",     new String[]{ "CI<sub>bf</sub>", "bf = 1" });
-            else    resB = _F("res_acc_not_include", new String[]{ "CI<sub>bf</sub>", "bf = 1" });
+        StringBuilder details = new StringBuilder();
+
+        details.append( StringTranslator.format("%20s %20s\n", _S("str_x_values_zscore_y"), _S("str_x_values_zscore_zs")) );
+
+        for(int i = 0; i < sda.length; ++i) {
+            details.append( StringTranslator.format("%20.5g %20.5g", sda[i], zsc.getZs(i)) );
+            if(i < sda.length - 1) details.append("\n");
         }
-        else {
-            if(aOK) resA = _F("res_acc_include",     new String[]{ "CIaf", "af = 0" });
-            else    resA = _F("res_acc_not_include", new String[]{ "CIaf", "af = 0" });
-            if(bOK) resB = _F("res_acc_include",     new String[]{ "CIbf", "bf = 1" });
-            else    resB = _F("res_acc_not_include", new String[]{ "CIbf", "bf = 1" });
-        }
-        */
 
         // Prepare the value-key pairs
         String[] kvps = new String[]{
@@ -120,7 +114,7 @@ public class ZScorePanel extends ResultPanel implements Saveable {
             "S",           "" + zsc.getS(),
             "Cm",          "" + zsc.getCm(),
             "Sc",          "" + zsc.getSc(),
-            "details",     ""
+            "details",     details.toString()
         };
 
         // Generate and return the report
@@ -148,6 +142,9 @@ public class ZScorePanel extends ResultPanel implements Saveable {
     // Save data to the given stream
     public void save(DataOutputStream ds) throws Exception
     {
+        ds.writeInt(_regCaptionSP.interfaceVersion());
+        _regCaptionSP.save(ds);
+
         ds.writeInt(_inputDataRangeSP.interfaceVersion());
         _inputDataRangeSP.save(ds);
     }
@@ -158,6 +155,9 @@ public class ZScorePanel extends ResultPanel implements Saveable {
         if(interfaceVersion != INTERFACE_VERSION) return false;
 
         int ifv;
+
+        ifv = ds.readInt();
+        if(!_regCaptionSP.load(ifv, ds)) return false;
 
         ifv = ds.readInt();
         if(!_inputDataRangeSP.load(ifv, ds)) return false;

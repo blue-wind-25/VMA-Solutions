@@ -183,6 +183,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(cls.equals(APRozetPanel        .class)) return "APRozet";
         if(cls.equals(RobustnessPanel     .class)) return "Robustness";
         if(cls.equals(QCShewhartPanel     .class)) return "QCShewhart";
+        if(cls.equals(ZScorePanel         .class)) return "ZScore";
         return null;
     }
 
@@ -203,6 +204,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(name.equals("APRozet"        )) return APRozetPanel        .class;
         if(name.equals("Robustness"     )) return RobustnessPanel     .class;
         if(name.equals("QCShewhart"     )) return QCShewhartPanel     .class;
+        if(name.equals("ZScore"         )) return ZScorePanel         .class;
         return null;
     }
 
@@ -383,7 +385,7 @@ public class GUIMain extends JApplet implements ActionListener {
                 // Get the component
                 Saveable           tab = (Saveable          ) _tbpMain.getComponentAt   (i);
                 TabButtonComponent com = (TabButtonComponent) _tbpMain.getTabComponentAt(i);
-                String   tid = _tabIDForTabObject(tab);
+                String             tid = _tabIDForTabObject(tab);
                 if(tid == null) continue;
                 // Save the class name, caption, interface version, and data
                 ds.writeUTF(tid);
