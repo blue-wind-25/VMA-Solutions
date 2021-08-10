@@ -102,7 +102,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             if(len > maxSLen) maxSLen = len;
         }
 
-        int maxGLen = _S("res_grubbs_gl").length();
+        int maxGLen = 1; // "G"
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%+.5f", grb.getG(i)).length();
             if(len > maxGLen) maxGLen = len;
@@ -118,7 +118,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
         details.append(StringTranslator.format(
             formatStrC,
             _S("str_x_values_sample"),
-            _S("res_grubbs_gl"      ),
+            "G",
             _S("res_grubbs_out"     )
         ));
 
@@ -139,6 +139,8 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             "caption",     mcapt,
             "sub_caption", scapt,
             "N",           "" + grb.getN(),
+            "pp",          StringTranslator.format("%.1f", grb.getPP  ()),
+            "ac",          StringTranslator.format("%.5g", grb.getAC  ()),
             "tc",          StringTranslator.format("%.5g", grb.getTC  ()),
             "gc",          StringTranslator.format("%.5g", grb.getGC  ()),
             "mean",        StringTranslator.format("%.5g", grb.getMean()),

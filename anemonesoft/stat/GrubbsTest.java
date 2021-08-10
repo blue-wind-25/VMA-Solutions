@@ -13,6 +13,7 @@ public class GrubbsTest {
     private int      _N       = 0;
     private int      _N2      = 0;
     private double   _pp      = 0;
+    private double   _ppc     = 0;
     private double   _tc      = 0;
     private double   _gc      = 0;
 
@@ -40,10 +41,14 @@ public class GrubbsTest {
         // Copy the input values
         System.arraycopy(s, 0, _sValues, 0, _N);
 
-        // Calculate N2 and tc
-        _pp = pp;
-        _N2 = _N - 2;
-        _tc = DistTable.t2(100.0 - ((100.0 - _pp) / _N), _N2);
+        // Calculate N2, PPC, and tc
+        double a  = (100.0 - pp) / 100.0;
+        double ac = a / _N;
+
+        _N2  = _N - 2;
+        _pp  = pp;
+        _ppc = (1.0 - ac) * 100.0;
+        _tc  = DistTable.t1(_ppc, _N2);
 
         // Calculate the G-Crit
         _gc = ( (_N - 1) * _tc )
@@ -56,14 +61,14 @@ public class GrubbsTest {
               );
 
         // Calculate the mean
-        for(int j = 0; j < _sValues.length; ++j) {
-            _mean += _sValues[j];
+        for(int i = 0; i < _sValues.length; ++i) {
+            _mean += _sValues[i];
         }
-        _mean /= (_N + 1);
+        _mean /= _N;
 
         // Calculate the Sd
-        for(int j = 0; j < _sValues.length; ++j) {
-            double dif = _sValues[j] - _mean;
+        for(int i = 0; i < _sValues.length; ++i) {
+            double dif = _sValues[i] - _mean;
             _Sd += (dif * dif);
         }
         _Sd = Math.sqrt(_Sd / (_N - 1));
@@ -79,6 +84,7 @@ public class GrubbsTest {
     public int    getN2()     { return _N2; }
 
     public double getPP()     { return _pp; }
+    public double getAC()     { return (100.0 - _pp) / 100.0; }
     public double getTC()     { return _tc; }
 
     public double getMean()   { return _mean; }
