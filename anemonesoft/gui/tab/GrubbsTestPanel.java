@@ -109,6 +109,18 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             if(len > maxSLen) maxSLen = len;
         }
 
+        int maxMLen = _S("str_x_values_grubbs_m").length();
+        for(int i = 0; i < sda.length; ++i) {
+            final int len = StringTranslator.format("%+.5f", grb.getMean(i)).length();
+            if(len > maxMLen) maxMLen = len;
+        }
+
+        int maxDLen = _S("str_x_values_grubbs_sd").length();
+        for(int i = 0; i < sda.length; ++i) {
+            final int len = StringTranslator.format("%+.5f", grb.getSd(i)).length();
+            if(len > maxDLen) maxDLen = len;
+        }
+
         int maxGLen = _S("str_x_values_grubbs_gl").length();
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%+.5f", grb.getG(i)).length();
@@ -117,18 +129,27 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
         int maxOLen = _S("str_x_values_grubbs_out").length();
 
-        String formatStrC = "    %-" + maxSLen +   "s    %-" + maxGLen +   "s    %-" + maxOLen + "s\n";
-        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxGLen + ".5f    %-" + maxOLen + "c";
+        String formatStrC = "    %-" + maxSLen +   "s    %-" + maxMLen +   "s    %-" + maxDLen +   "s    %-" + maxGLen +   "s    %-" + maxOLen + "s\n";
+        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxMLen + ".5f    %+" + maxDLen + ".5f    %+" + maxGLen + ".5f    %-" + maxOLen + "c";
 
         StringBuilder details = new StringBuilder();
 
-        details.append(StringTranslator.format(formatStrC, _S("str_x_values_grubbs_y"), _S("str_x_values_grubbs_gl"), _S("str_x_values_grubbs_out")));
+        details.append(StringTranslator.format(
+            formatStrC,
+            _S("str_x_values_grubbs_y"  ),
+            _S("str_x_values_grubbs_m"  ),
+            _S("str_x_values_grubbs_sd" ),
+            _S("str_x_values_grubbs_gl" ),
+            _S("str_x_values_grubbs_out")
+        ));
 
         for(int i = 0; i < sda.length; ++i) {
-            double g  = grb.getG(i);
+            double g = grb.getG(i);
             details.append(StringTranslator.format(
                 formatStrI,
                 sda[i],
+                grb.getMean(i),
+                grb.getSd(i),
                 g,
                 (g > grb.getGC()) ? '*' : ' '
             ));
@@ -205,7 +226,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Construct a z-score class
+    // Construct a Grubbs-test class
     public GrubbsTestPanel()
     {
         super(2, null, null, true, false);

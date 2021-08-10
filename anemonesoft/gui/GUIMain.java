@@ -997,7 +997,6 @@ public class GUIMain extends JApplet implements ActionListener {
         else if(eventSource == _mnuAnalZScore) {
             nrpClass = ZScorePanel.class;
         }
-
         // Analysis - Grubbs Test
         else if(eventSource == _mnuAnalGrubbs) {
             nrpClass = GrubbsTestPanel.class;

@@ -20,6 +20,8 @@ public class GrubbsTest {
 
     private double[] _nValues = null;
     private double[] _sValues = null;
+    private double[] _mValues = null;
+    private double[] _dValues = null;
     private double[] _gValues = null;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +39,8 @@ public class GrubbsTest {
         // Allocate memory for the value arrays
         _nValues = new double[_N];
         _sValues = new double[_S];
+        _mValues = new double[_S];
+        _dValues = new double[_S];
         _gValues = new double[_S];
 
         // Copy the input values
@@ -66,7 +70,7 @@ public class GrubbsTest {
                 mean += _nValues[j];
             }
             mean /= (_N + 1); // +1 because of the addition of one suspect
-            System.out.println(mean);
+            _mValues[i] = mean;
             // Calculate the Sd
             double sd = 0;
             for(int j = 0; j < _nValues.length; ++j) {
@@ -78,21 +82,23 @@ public class GrubbsTest {
                 sd += (dif * dif);
             }
             sd = Math.sqrt(sd / (_N + 0)); // +1 because of the addition of one suspect
-            System.out.println(sd);
-            System.out.println();
+            _dValues[i] = sd;
             // Calculate G
             _gValues[i] = Math.abs( (_sValues[i] - mean) / sd );
         }
     }
 
     // Getters
-    public int      getN()       { return _N; }
-    public int      getS()       { return _S; }
-    public int      getN2()      { return _N2; }
+    public int    getN()         { return _N; }
+    public int    getS()         { return _S; }
+    public int    getN2()        { return _N2; }
 
-    public double   getPP()      { return _pp; }
-    public double   getT2()      { return _t2; }
+    public double getPP()        { return _pp; }
+    public double getT2()        { return _t2; }
 
-    public double   getGC()      { return _gc; }
-    public double   getG(int i)  { return _gValues[i]; }
+    public double getMean(int i) { return _mValues[i]; }
+    public double getSd(int i)   { return _dValues[i]; }
+
+    public double getGC()        { return _gc; }
+    public double getG(int i)    { return _gValues[i]; }
 }

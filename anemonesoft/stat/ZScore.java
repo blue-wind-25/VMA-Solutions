@@ -61,11 +61,11 @@ public class ZScore {
     }
 
     // Getters
-    public int      getC()       { return _C; }
-    public int      getS()       { return _S; }
+    public int    getC()       { return _C; }
+    public int    getS()       { return _S; }
 
-    public double   getCm()      { return _Cm; }
-    public double   getSc()      { return _Sc; }
+    public double getCm()      { return _Cm; }
+    public double getSc()      { return _Sc; }
 
-    public double   getZs(int i) { return _zValues[i]; }
+    public double getZs(int i) { return _zValues[i]; }
 }
