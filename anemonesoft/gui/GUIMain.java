@@ -83,9 +83,12 @@ public class GUIMain extends JApplet implements ActionListener {
         "",                             "",
 
         "QC-Shewhart.vma",              "mnu_anal_qcshewhart",
+
+        "ZScore.vma",                   "mnu_anal_zscore",
+
         null,                           null,
 
-        "CellsAsCaptionsAndLabels.vma",  "mnu_cell_as_cl"
+        "CellsAsCaptionsAndLabels.vma", "mnu_cell_as_cl"
     };
 
     // Reference to the root frame object (if any)

@@ -25,7 +25,7 @@ public class ZScore {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Construct z-scoren class
-    public ZScore(double[] c, double[][] s) throws Exception
+    public ZScore(double[] c, double[] s) throws Exception
     {
         // Check the number of data
         if(c.length < 7 || s.length < 1) throw new RuntimeException("Not enough data!");

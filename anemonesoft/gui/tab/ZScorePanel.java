@@ -17,7 +17,7 @@ import anemonesoft.i18n.*;
 import anemonesoft.stat.*;
 
 //
-// Tab module - accuracy-test panel
+// Tab module - z-score panel
 //
 public class ZScorePanel extends ResultPanel implements Saveable {
     // Version of the panel interface
@@ -77,44 +77,26 @@ public class ZScorePanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
-        /*
         // Perform some calculations
-        double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
-        if(xda == null || xda.length <= 2) {
+        double[] cda = getXDataArray(_ssPanel, _inputDataRangeSP);
+        if(cda == null || cda.length <= 2) {
             GUtil.showNoDDialogReport();
             return "";
         }
 
-        double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
-        if(yda == null || yda.length <= 0) {
+        double[][] sda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
+        if(sda == null || sda.length <= 0) {
             GUtil.showNoDDialogReport();
             return "";
         }
-
-        double pp = StdAnalysisSettingPanel.PREDEFINED_PROBABILITY[_analysisSP.getProbability()];
-        */
 
         String mcapt = _regCaptionSP.getMainCaption();
         String scapt = _regCaptionSP.getSubCaption ();
 
+        ZScore zsc = new ZScore(cda, sda[0]);
+
+        // Generate the details
         /*
-        Accuracy acc = new Accuracy(xda, yda, pp);
-
-        double  CIa = acc.getCIaf();
-        double  a   = acc.getA();
-        double  a0  = a - CIa;
-        double  a1  = a + CIa;
-        boolean aOK = (a0 <= 0) && (0 <= a1);
-
-        double  CIb = acc.getCIbf();
-        double  b   = acc.getB();
-        double  b0  = b - CIb;
-        double  b1  = b + CIb;
-        boolean bOK = (b0 <= 1) && (1 <= b1);
-
-        String resA = null;
-        String resB = null;
-
         if(html) {
             if(aOK) resA = _F("res_acc_include",     new String[]{ "CI<sub>af</sub>", "af = 0" });
             else    resA = _F("res_acc_not_include", new String[]{ "CI<sub>af</sub>", "af = 0" });
@@ -134,10 +116,10 @@ public class ZScorePanel extends ResultPanel implements Saveable {
             "anal_name",   _S("res_anal_zscore"),
             "caption",     mcapt,
             "sub_caption", scapt,
-            "C",           "" + 0, //acc.getC(),
-            "N",           "" + 0, //acc.getN(),
-            "Cm",          "" + 0, //acc.getC(),
-            "Sc",          "" + 0, //acc.getC(),
+            "C",           "" + zsc.getC(),
+            "S",           "" + zsc.getS(),
+            "Cm",          "" + zsc.getCm(),
+            "Sc",          "" + zsc.getSc(),
             "details",     ""
         };
 

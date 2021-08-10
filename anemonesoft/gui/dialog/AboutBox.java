@@ -57,7 +57,7 @@ public class AboutBox extends JDialog implements ActionListener {
         GUtil.addWithGbc(mainPanel, gbc, new JLabel(_S("dlg_abox_devel_by"), null, JLabel.CENTER));
         GUtil.addWithGbc(mainPanel, gbc, new JLabel("Aloysius Indrayanto " + _S("dlg_abox_and") + " Gunawan Indrayanto", null, JLabel.CENTER));
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
-        GUtil.addWithGbc(mainPanel, gbc, new JLabel(_S("dlg_abox_freeware"), null, JLabel.CENTER));
+        GUtil.addWithGbc(mainPanel, gbc, new JLabel(_S("dlg_abox_git_repo"), null, JLabel.CENTER));
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
         GUtil.addWithGbc(mainPanel, gbc, new JLabel(_F("dlg_abox_copyright_T", copyright), null, JLabel.CENTER));
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 5)));
