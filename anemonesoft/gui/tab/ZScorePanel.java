@@ -14,7 +14,6 @@ import anemonesoft.gui.*;
 import anemonesoft.gui.component.*;
 import anemonesoft.gui.control.*;
 import anemonesoft.i18n.*;
-import anemonesoft.plot.*;
 import anemonesoft.stat.*;
 
 //
@@ -134,29 +133,12 @@ public class ZScorePanel extends ResultPanel implements Saveable {
         String[] kvps = new String[]{
             "anal_name",   _S("res_anal_zscore"),
             "caption",     mcapt,
-            "sub_caption", scapt/*,
-            "N",           "" + acc.getN(),
-            "N2",          "" + acc.getN2(),
-            "PP",          StringTranslator.format("%.1f", acc.getPP   ()),
-            "t2",          StringTranslator.format("%.5g", acc.getT2   ()),
-            "af",          StringTranslator.format("%.5g", a             ),
-            "mo1",         (b < 0) ? "-" : "+",
-            "bf",          StringTranslator.format("%.5g", Math.abs(b)   ),
-            "Xc",          StringTranslator.format("%.5g", acc.getXMean()),
-            "Xf",          StringTranslator.format("%.5g", acc.getYMean()),
-            "r",           StringTranslator.format("%.5g", acc.getR    ()),
-            "RSS",         StringTranslator.format("%.5g", acc.getRSS  ()),
-            "Sy",          StringTranslator.format("%.5g", acc.getSy   ()),
-            "Sx0",         StringTranslator.format("%.5g", acc.getSx0  ()),
-            "Vx0",         StringTranslator.format("%.5g", acc.getVx0  ()),
-            "Saf",         StringTranslator.format("%.5g", acc.getSaf  ()),
-            "Sbf",         StringTranslator.format("%.5g", acc.getSbf  ()),
-            "CIaf",        StringTranslator.format("%.5g", CIa           ),
-            "CIbf",        StringTranslator.format("%.5g", CIb           ),
-            "pR",          StringTranslator.format("%.5g", acc.getPR   ()),
-            "pRSd",        StringTranslator.format("%.5g", acc.getPRSd ()),
-            "conclusion",  (aOK && bOK) ? _S("res_res_good") : _S("res_res_bad"),
-            "reason",      "(" + resA + ", " + resB + ")"*/
+            "sub_caption", scapt,
+            "C",           "" + 0, //acc.getC(),
+            "N",           "" + 0, //acc.getN(),
+            "Cm",          "" + 0, //acc.getC(),
+            "Sc",          "" + 0, //acc.getC(),
+            "details",     ""
         };
 
         // Generate and return the report

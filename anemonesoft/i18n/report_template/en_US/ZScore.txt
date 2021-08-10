@@ -8,32 +8,23 @@
 {caption}
 {sub_caption}
 
-Number of samples = {N}
+Number of controls = {C}
+Number of samples  = {S}
 
-t({N2}, {PP}%, two-sided) = {t2}
+Mean of the control               = {Cm}
+Standard deviation of the control = {Sc}
 
-Recovery curve
-    Xf = {af} {mo1} {bf}Xc
+{details}
 
-Mean
-    Xc = {Xc}
-    Xf = {Xf}
+In case of chemical analysis:
+        |Zs| < 2 is generally regarded as having performed satisfactory.
+    2 ≤ |Zs| ≤ 3 is generally regarded as questionable.
+        |Zs| > 3 is generally regarded as unacceptable.
 
-Coefficient of correlation    (r  ) = {r}
-Residual sum of squares       (RSS) = {RSS}
-Residual standard deviation   (Sy ) = {Sy}
-Process standard deviation    (Sx0) = {Sx0}
-Process variation coefficient (Vx0) = {Vx0}%
-
-Standard deviation of the intercept  (Saf ) = {Saf}
-Standard deviation of the slope      (Sbf ) = {Sbf}
-Confidence interval of the intercept (CIaf) = {af} ± {CIaf}
-Confidence interval of the slope     (CIbf) = {bf} ± {CIbf}
-
-Percent recovery (%R) = {pR}% ± {pRSd}%
-
-{conclusion}
-{reason}
+In case of bioassay analysis:
+    False positive if |Zs| > 2 for solvent or blank.
+    False negative if |Zs| < 2 for positive control.
+    Hit value      if |Zs| > 2 for tested samples.
 
 ----------------------------------------------------------------------------------------------------
 {date_time}
