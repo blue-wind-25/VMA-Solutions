@@ -8,12 +8,13 @@
 {caption}
 {sub_caption}
 
-Number of data    = {N}
-Number of suspect = {S}
+Number of samples = {N}
 
-t({N2}, {PP}%, two-sided) = {t2}
-
+t Critical = {tc}
 G Critical = {gc}
+
+Mean of the samples               = {mean}
+Standard deviation of the samples = {Sd}
 
 {details}
 

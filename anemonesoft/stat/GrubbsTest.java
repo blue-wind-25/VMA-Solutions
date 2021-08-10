@@ -28,14 +28,14 @@ public class GrubbsTest {
     public GrubbsTest(double[] s, double pp) throws Exception
     {
         // Check the number of data
-        if(n.length < 3) throw new RuntimeException("Not enough data!");
+        if(s.length < 3) throw new RuntimeException("Not enough data!");
 
         // Store the number of data
-        _N = n.length;
+        _N = s.length;
 
         // Allocate memory for the value arrays
         _sValues = new double[_N];
-        _gValues = new double_N[_S];
+        _gValues = new double[_N];
 
         // Copy the input values
         System.arraycopy(s, 0, _sValues, 0, _N);
@@ -63,7 +63,7 @@ public class GrubbsTest {
 
         // Calculate the Sd
         for(int j = 0; j < _sValues.length; ++j) {
-            double dif = _sValues[j] - mean;
+            double dif = _sValues[j] - _mean;
             _Sd += (dif * dif);
         }
         _Sd = Math.sqrt(_Sd / (_N - 1));
@@ -82,7 +82,7 @@ public class GrubbsTest {
     public double getTC()     { return _tc; }
 
     public double getMean()   { return _mean; }
-    public double getSd()     { return _sd; }
+    public double getSd()     { return _Sd; }
 
     public double getGC()     { return _gc; }
     public double getG(int i) { return _gValues[i]; }
