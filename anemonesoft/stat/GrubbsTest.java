@@ -51,29 +51,35 @@ public class GrubbsTest {
         _N2 = _N - 2;
         _t2 = DistTable.t2(_pp, _N2);
 
-
-
-
-/*
-
-        // Calculate the mean of the control values
-        for(int i = 0; i < _cValues.length; ++i) {
-            _Cm += _cValues[i];
-        }
-        _Cm /= _C;
-
-        // Calculate the Sd
-        for(int i = 0; i < _cValues.length; ++i) {
-            double dif = _cValues[i] - _Cm;
-            _Sc += (dif * dif);
-        }
-        _Sc = Math.sqrt(_Sc / (_C - 1));
-
-        // Calculate the Zs
+        // Calculate the G and G-Crit
         for(int i = 0; i < _sValues.length; ++i) {
-            _zValues[i] = (_sValues[i] - _Cm) / _Sc;
+            // Calculate the mean of the control values
+            double mean = _sValues[i];
+            for(int j = 0; j < _nValues.length; ++j) {
+                mean += _nValues[j];
+            }
+            mean /= (_N + 1);
+            // Calculate the Sd
+            double sd = 0;
+            for(int j = 0; j < _nValues.length; ++j) {
+                double dif = _nValues[j] - mean;
+                sd += (dif * dif);
+            }
+            double dif = _sValues[i] - mean;
+            sd += (dif * dif);
+            sd = Math.sqrt(sd / _N);
+            // Calculate G
+            _gValues[i] = (_sValues[i] - mean) / sd;
+            // Calculate G-Crit
+            _cValues[i] = ( (_N - 1) * _t2 )
+                          /
+                          Math.sqrt
+                          (
+                               _N
+                               *
+                               ( _N - 2 + _t2 * _t2 )
+                          );
         }
-        */
     }
 
     // Getters

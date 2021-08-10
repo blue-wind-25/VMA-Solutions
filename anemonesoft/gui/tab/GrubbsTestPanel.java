@@ -46,7 +46,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
     // Return the tab caption
     public String getTabCaption()
-    { return _S("str_anal_zscore"); }
+    { return _S("str_anal_grubbs"); }
 
     // Return the tab icon
     public ImageIcon getTabIcon()
@@ -60,8 +60,8 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
         pane [0] = _analysisSP;
 
         String[] drsCapt = new String[NUM_OF_Y_AXIS + 1];
-        drsCapt[0] = _S("str_x_values_zscore_x");
-        drsCapt[1] = _S("str_x_values_zscore_y");
+        drsCapt[0] = _S("str_x_values_grubbs_x");
+        drsCapt[1] = _S("str_x_values_grubbs_y");
 
         _inputDataRangeSP = new StdPlotDataRangeSettingPanel(NUM_OF_Y_AXIS, false, drsCapt);
         title[1] = _S("str_acrs_data_range");
@@ -102,34 +102,47 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
         GrubbsTest grb = new GrubbsTest(dda, sda, pp);
 
-        /*
         // Generate the details
-        int maxSLen = _S("str_x_values_zscore_y").length();
+        int maxSLen = _S("str_x_values_grubbs_y").length();
         for(int i = 0; i < sda.length; ++i) {
             final int len = StringTranslator.format("%.5g", sda[i]).length();
             if(len > maxSLen) maxSLen = len;
         }
 
-        int maxZLen = _S("str_x_values_zscore_y").length();
+        int maxGLen = _S("str_x_values_grubbs_gl").length();
         for(int i = 0; i < sda.length; ++i) {
-            final int len = StringTranslator.format("%+.5f", zsc.getZs(i)).length();
-            if(len > maxZLen) maxZLen = len;
+            final int len = StringTranslator.format("%.5g", grb.getG(i)).length();
+            if(len > maxGLen) maxGLen = len;
         }
 
-        String formatStrC = "    %-" + maxSLen +   "s    %-" + maxZLen + "s\n";
-        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxZLen + ".5f";
-        */
+        int maxCLen = _S("str_x_values_grubbs_gc").length();
+        for(int i = 0; i < sda.length; ++i) {
+            final int len = StringTranslator.format("%.5g", grb.getGc(i)).length();
+            if(len > maxCLen) maxCLen = len;
+        }
+
+        int maxOLen = _S("str_x_values_grubbs_out").length();
+
+        String formatStrC = "    %-" + maxSLen +   "s    %-" + maxGLen +   "s    %-" + maxCLen +   "s    %-" + maxOLen + "s\n";
+        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxGLen + ".5f    %+" + maxCLen + ".5f    %"  + maxOLen + "c";
 
         StringBuilder details = new StringBuilder();
 
-        /*
-        details.append(StringTranslator.format(formatStrC, _S("str_x_values_zscore_y"), _S("str_x_values_zscore_zs")));
+        details.append(StringTranslator.format(formatStrC, _S("str_x_values_grubbs_y"), _S("str_x_values_grubbs_gl"), _S("str_x_values_grubbs_gc"), _S("str_x_values_grubbs_out")));
 
         for(int i = 0; i < sda.length; ++i) {
-            details.append(StringTranslator.format(formatStrI, sda[i], zsc.getZs(i)));
+            double g  = grb.getG(i);
+            double gc = grb.getGc(i);
+
+            details.append(StringTranslator.format(
+                formatStrI,
+                sda[i],
+                g,
+                gc,
+                (g > gc) ? '*' : ' '
+            ));
             if(i < sda.length - 1) details.append("\n");
         }
-        */
 
         // Prepare the value-key pairs
         String[] kvps = new String[]{
