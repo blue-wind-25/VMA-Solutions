@@ -5,8 +5,6 @@
 
 package anemonesoft.stat;
 
-import Jama.*;
-
 //
 // A Grubbs-test class
 //
@@ -75,9 +73,11 @@ public class GrubbsTest {
                 double dif = _nValues[j] - mean;
                 sd += (dif * dif);
             }
-            double dif = _sValues[i] - mean;
-            sd += (dif * dif);
-            sd = Math.sqrt(sd / (_N + 1)); // +1 because of the addition of one suspect
+            if(true) {
+                double dif = _sValues[i] - mean;
+                sd += (dif * dif);
+            }
+            sd = Math.sqrt(sd / (_N + 0)); // +1 because of the addition of one suspect
             System.out.println(sd);
             System.out.println();
             // Calculate G

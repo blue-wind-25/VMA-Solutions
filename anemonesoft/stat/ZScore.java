@@ -5,8 +5,6 @@
 
 package anemonesoft.stat;
 
-import Jama.*;
-
 //
 // A z-score class
 //
