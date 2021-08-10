@@ -111,35 +111,26 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
         int maxGLen = _S("str_x_values_grubbs_gl").length();
         for(int i = 0; i < sda.length; ++i) {
-            final int len = StringTranslator.format("%.5g", grb.getG(i)).length();
+            final int len = StringTranslator.format("%+.5f", grb.getG(i)).length();
             if(len > maxGLen) maxGLen = len;
-        }
-
-        int maxCLen = _S("str_x_values_grubbs_gc").length();
-        for(int i = 0; i < sda.length; ++i) {
-            final int len = StringTranslator.format("%.5g", grb.getGc(i)).length();
-            if(len > maxCLen) maxCLen = len;
         }
 
         int maxOLen = _S("str_x_values_grubbs_out").length();
 
-        String formatStrC = "    %-" + maxSLen +   "s    %-" + maxGLen +   "s    %-" + maxCLen +   "s    %-" + maxOLen + "s\n";
-        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxGLen + ".5f    %+" + maxCLen + ".5f    %"  + maxOLen + "c";
+        String formatStrC = "    %-" + maxSLen +   "s    %-" + maxGLen +   "s    %-" + maxOLen + "s\n";
+        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxGLen + ".5f    %-" + maxOLen + "c";
 
         StringBuilder details = new StringBuilder();
 
-        details.append(StringTranslator.format(formatStrC, _S("str_x_values_grubbs_y"), _S("str_x_values_grubbs_gl"), _S("str_x_values_grubbs_gc"), _S("str_x_values_grubbs_out")));
+        details.append(StringTranslator.format(formatStrC, _S("str_x_values_grubbs_y"), _S("str_x_values_grubbs_gl"), _S("str_x_values_grubbs_out")));
 
         for(int i = 0; i < sda.length; ++i) {
             double g  = grb.getG(i);
-            double gc = grb.getGc(i);
-
             details.append(StringTranslator.format(
                 formatStrI,
                 sda[i],
                 g,
-                gc,
-                (g > gc) ? '*' : ' '
+                (g > grb.getGC()) ? '*' : ' '
             ));
             if(i < sda.length - 1) details.append("\n");
         }
@@ -154,6 +145,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             "N2",          "" + grb.getN2(),
             "PP",          StringTranslator.format("%.1f", grb.getPP()),
             "t2",          StringTranslator.format("%.5g", grb.getT2()),
+            "gc",          StringTranslator.format("%.5g", grb.getGC()),
             "details",     details.toString()
         };
 

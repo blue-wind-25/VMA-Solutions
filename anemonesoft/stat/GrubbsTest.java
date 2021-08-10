@@ -18,11 +18,11 @@ public class GrubbsTest {
     private int      _N2      = 0;
     private double   _pp      = 0;
     private double   _t2      = 0;
+    private double   _gc      = 0;
 
     private double[] _nValues = null;
     private double[] _sValues = null;
     private double[] _gValues = null;
-    private double[] _cValues = null;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,7 +40,6 @@ public class GrubbsTest {
         _nValues = new double[_N];
         _sValues = new double[_S];
         _gValues = new double[_S];
-        _cValues = new double[_S];
 
         // Copy the input values
         System.arraycopy(n, 0, _nValues, 0, _N);
@@ -48,17 +47,28 @@ public class GrubbsTest {
 
         // Calculate N2 and t2
         _pp = pp;
-        _N2 = _N - 2;
+        _N2 = _N + 1 - 2; // +1 because of the addition of one suspect
         _t2 = DistTable.t2(_pp, _N2);
 
-        // Calculate the G and G-Crit
+        // Calculate the G-Crit
+        _gc = ( (_N + 1 - 1) * _t2 ) // +1 because of the addition of one suspect
+              /
+              Math.sqrt
+              (
+                  (_N + 1) // +1 because of the addition of one suspect
+                  *
+                  (_N + 1 - 2 + _t2 * _t2) // +1 because of the addition of one suspect
+              );
+
+        // Calculate the G
         for(int i = 0; i < _sValues.length; ++i) {
             // Calculate the mean of the control values
             double mean = _sValues[i];
             for(int j = 0; j < _nValues.length; ++j) {
                 mean += _nValues[j];
             }
-            mean /= (_N + 1);
+            mean /= (_N + 1); // +1 because of the addition of one suspect
+            System.out.println(mean);
             // Calculate the Sd
             double sd = 0;
             for(int j = 0; j < _nValues.length; ++j) {
@@ -67,18 +77,11 @@ public class GrubbsTest {
             }
             double dif = _sValues[i] - mean;
             sd += (dif * dif);
-            sd = Math.sqrt(sd / _N);
+            sd = Math.sqrt(sd / (_N + 1)); // +1 because of the addition of one suspect
+            System.out.println(sd);
+            System.out.println();
             // Calculate G
-            _gValues[i] = (_sValues[i] - mean) / sd;
-            // Calculate G-Crit
-            _cValues[i] = ( (_N - 1) * _t2 )
-                          /
-                          Math.sqrt
-                          (
-                               _N
-                               *
-                               ( _N - 2 + _t2 * _t2 )
-                          );
+            _gValues[i] = Math.abs( (_sValues[i] - mean) / sd );
         }
     }
 
@@ -90,6 +93,6 @@ public class GrubbsTest {
     public double   getPP()      { return _pp; }
     public double   getT2()      { return _t2; }
 
+    public double   getGC()      { return _gc; }
     public double   getG(int i)  { return _gValues[i]; }
-    public double   getGc(int i) { return _cValues[i]; }
 }
