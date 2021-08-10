@@ -140,7 +140,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             "sub_caption", scapt,
             "N",           "" + grb.getN(),
             "pp",          StringTranslator.format("%.1f", grb.getPP  ()),
-            "ac",          StringTranslator.format("%.5g", grb.getAC  ()),
+            "ac",          StringTranslator.format("%.7f", grb.getAC  ()),
             "tc",          StringTranslator.format("%.5g", grb.getTC  ()),
             "gc",          StringTranslator.format("%.5g", grb.getGC  ()),
             "mean",        StringTranslator.format("%.5g", grb.getMean()),

@@ -84,7 +84,7 @@ public class GrubbsTest {
     public int    getN2()     { return _N2; }
 
     public double getPP()     { return _pp; }
-    public double getAC()     { return (100.0 - _pp) / 100.0; }
+    public double getAC()     { return (100.0 - _ppc) / 100.0; }
     public double getTC()     { return _tc; }
 
     public double getMean()   { return _mean; }
