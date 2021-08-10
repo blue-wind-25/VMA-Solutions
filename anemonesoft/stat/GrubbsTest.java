@@ -8,9 +8,9 @@ package anemonesoft.stat;
 import Jama.*;
 
 //
-// A z-score class
+// A Grubbs-test class
 //
-public class ZScore {
+public class GrubbsTest {
     // Data
     private int      _C       = 0;
     private int      _S       = 0;
@@ -24,8 +24,8 @@ public class ZScore {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Construct z-score class
-    public ZScore(double[] c, double[] s) throws Exception
+    // Construct Grubbs-test class
+    public GrubbsTest(double[] c, double[] s) throws Exception
     {
         // Check the number of data
         if(c.length < 3 || s.length < 1) throw new RuntimeException("Not enough data!");

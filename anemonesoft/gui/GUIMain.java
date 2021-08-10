@@ -85,6 +85,7 @@ public class GUIMain extends JApplet implements ActionListener {
         "QC-Shewhart.vma",              "mnu_anal_qcshewhart",
 
         "ZScore.vma",                   "mnu_anal_zscore",
+        "GrubbsTest.vma",               "mnu_anal_grubbs",
 
         null,                           null,
 
@@ -138,6 +139,7 @@ public class GUIMain extends JApplet implements ActionListener {
     private JMenuItem        _mnuAnalRobustness  = null;
     private JMenuItem        _mnuAnalQCShewhart  = null;
     private JMenuItem        _mnuAnalZScore      = null;
+    private JMenuItem        _mnuAnalGrubbs      = null;
 
     private JMenuItem        _mnuToolboxStudTTab = null;
     private JMenuItem        _mnuToolboxFishFTab = null;
@@ -184,6 +186,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(cls.equals(RobustnessPanel     .class)) return "Robustness";
         if(cls.equals(QCShewhartPanel     .class)) return "QCShewhart";
         if(cls.equals(ZScorePanel         .class)) return "ZScore";
+        if(cls.equals(GrubbsTestPanel     .class)) return "GrubbsTest";
         return null;
     }
 
@@ -205,6 +208,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(name.equals("Robustness"     )) return RobustnessPanel     .class;
         if(name.equals("QCShewhart"     )) return QCShewhartPanel     .class;
         if(name.equals("ZScore"         )) return ZScorePanel         .class;
+        if(name.equals("GrubbsTest"     )) return GrubbsTestPanel     .class;
         return null;
     }
 
@@ -686,6 +690,8 @@ public class GUIMain extends JApplet implements ActionListener {
             _mnuAnalQCShewhart = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_qcshewhart"), GUtil.newImageIcon("mnu_anal_qcshewhart"), KeyEvent.VK_Q, -1, this);
 
             _mnuAnalZScore     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zscore"    ), GUtil.newImageIcon("mnu_anal_zscore"    ), KeyEvent.VK_Z, -1, this);
+
+            _mnuAnalGrubbs     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_grubbs"    ), GUtil.newImageIcon("mnu_anal_grubbs"    ), KeyEvent.VK_B, -1, this);
         _mnbMain.add(mnuAnal);
 
         // Initialize the "Toolbox" menu
@@ -990,6 +996,11 @@ public class GUIMain extends JApplet implements ActionListener {
         // Analysis - Z Score
         else if(eventSource == _mnuAnalZScore) {
             nrpClass = ZScorePanel.class;
+        }
+
+        // Analysis - Grubbs Test
+        else if(eventSource == _mnuAnalGrubbs) {
+            nrpClass = GrubbsTestPanel.class;
         }
 
         // Toolbox - COW & Peak Detection
