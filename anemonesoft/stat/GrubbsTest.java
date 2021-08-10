@@ -12,36 +12,49 @@ import Jama.*;
 //
 public class GrubbsTest {
     // Data
-    private int      _C       = 0;
+    private int      _N       = 0;
     private int      _S       = 0;
 
-    private double[] _cValues = null;
-    private double[] _sValues = null;
-    private double[] _zValues = null;
+    private int      _N2      = 0;
+    private double   _pp      = 0;
+    private double   _t2      = 0;
 
-    private double   _Cm      = 0;
-    private double   _Sc      = 0;
+    private double[] _nValues = null;
+    private double[] _sValues = null;
+    private double[] _gValues = null;
+    private double[] _cValues = null;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Construct Grubbs-test class
-    public GrubbsTest(double[] c, double[] s) throws Exception
+    public GrubbsTest(double[] n, double[] s, double pp) throws Exception
     {
         // Check the number of data
-        if(c.length < 3 || s.length < 1) throw new RuntimeException("Not enough data!");
+        if(n.length < 3 || s.length < 1) throw new RuntimeException("Not enough data!");
 
         // Store the number of data
-        _C = c.length;
+        _N = n.length;
         _S = s.length;
 
         // Allocate memory for the value arrays
-        _cValues = new double[_C];
+        _nValues = new double[_N];
         _sValues = new double[_S];
-        _zValues = new double[_S];
+        _gValues = new double[_S];
+        _cValues = new double[_S];
 
         // Copy the input values
-        System.arraycopy(c, 0, _cValues, 0, _C);
+        System.arraycopy(n, 0, _nValues, 0, _N);
         System.arraycopy(s, 0, _sValues, 0, _S);
+
+        // Calculate N2 and t2
+        _pp = pp;
+        _N2 = _N - 2;
+        _t2 = DistTable.t2(_pp, _N2);
+
+
+
+
+/*
 
         // Calculate the mean of the control values
         for(int i = 0; i < _cValues.length; ++i) {
@@ -60,14 +73,17 @@ public class GrubbsTest {
         for(int i = 0; i < _sValues.length; ++i) {
             _zValues[i] = (_sValues[i] - _Cm) / _Sc;
         }
+        */
     }
 
     // Getters
-    public int      getC()       { return _C; }
+    public int      getN()       { return _N; }
     public int      getS()       { return _S; }
+    public int      getN2()      { return _N2; }
 
-    public double   getCm()      { return _Cm; }
-    public double   getSc()      { return _Sc; }
+    public double   getPP()      { return _pp; }
+    public double   getT2()      { return _t2; }
 
-    public double   getZs(int i) { return _zValues[i]; }
+    public double   getG(int i)  { return _gValues[i]; }
+    public double   getGc(int i) { return _cValues[i]; }
 }

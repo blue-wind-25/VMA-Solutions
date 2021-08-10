@@ -83,8 +83,8 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
         // Perform some calculations
-        double[] cda = getXDataArray(_ssPanel, _inputDataRangeSP);
-        if(cda == null || cda.length <= 2) {
+        double[] dda = getXDataArray(_ssPanel, _inputDataRangeSP);
+        if(dda == null || dda.length <= 2) {
             GUtil.showNoDDialogReport();
             return "";
         }
@@ -95,12 +95,14 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             return "";
         }
 
+        double pp = StdAnalysisSettingPanel.PREDEFINED_PROBABILITY[_analysisSP.getProbability()];
+
         String mcapt = _regCaptionSP.getMainCaption();
         String scapt = _regCaptionSP.getSubCaption ();
 
-        /*
-        ZScore zsc = new ZScore(cda, sda);
+        GrubbsTest grb = new GrubbsTest(dda, sda, pp);
 
+        /*
         // Generate the details
         int maxSLen = _S("str_x_values_zscore_y").length();
         for(int i = 0; i < sda.length; ++i) {
@@ -116,9 +118,11 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
         String formatStrC = "    %-" + maxSLen +   "s    %-" + maxZLen + "s\n";
         String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxZLen + ".5f";
+        */
 
         StringBuilder details = new StringBuilder();
 
+        /*
         details.append(StringTranslator.format(formatStrC, _S("str_x_values_zscore_y"), _S("str_x_values_zscore_zs")));
 
         for(int i = 0; i < sda.length; ++i) {
@@ -129,14 +133,15 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
 
         // Prepare the value-key pairs
         String[] kvps = new String[]{
-            "anal_name",   _S("res_anal_zscore"),
+            "anal_name",   _S("res_anal_grubbs"),
             "caption",     mcapt,
-            "sub_caption", scapt/*,
-            "C",           "" + zsc.getC(),
-            "S",           "" + zsc.getS(),
-            "Cm",          "" + StringTranslator.format("%.5g", zsc.getCm()),
-            "Sc",          "" + StringTranslator.format("%.5g", zsc.getSc()),
-            "details",     details.toString()*/
+            "sub_caption", scapt,
+            "N",           "" + grb.getN(),
+            "S",           "" + grb.getS(),
+            "N2",          "" + grb.getN2(),
+            "PP",          StringTranslator.format("%.1f", grb.getPP()),
+            "t2",          StringTranslator.format("%.5g", grb.getT2()),
+            "details",     details.toString()
         };
 
         // Generate and return the report
