@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // A second-order-regression class
 //
@@ -51,7 +53,7 @@ public class SecondOrderRegression {
     public SecondOrderRegression(double[] x, double[][] y, double pp) throws Exception
     {
         // Check the number of data
-        if(x.length < 4 || y.length < 1) throw new RuntimeException("Not enough data!");
+        if(x.length < 4 || y.length < 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data and probability
         _N  = x.length;
@@ -243,6 +245,6 @@ public class SecondOrderRegression {
     public double   getE()       { return _E; }
     public double   getSx0()     { return _Sx0; }
     public double   getVx0()     { return _Vx0; }
-    
+
     public double   getR()       { return _r; }
 }

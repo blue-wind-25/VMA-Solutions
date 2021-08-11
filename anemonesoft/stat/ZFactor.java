@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // A z-factor class
 //
@@ -19,7 +21,7 @@ public class ZFactor {
     private double _Sdt = 0;
     private double _Sdb = 0;
 
-    private double _Z   = 0;
+    private double _Zf  = 0;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +29,7 @@ public class ZFactor {
     public ZFactor(double[] t, double[] b) throws Exception
     {
         // Check the number of data
-        if(t.length < 3 || b.length < 3) throw new RuntimeException("Not enough data!");
+        if(t.length < 3 || b.length < 3) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data
         _T = t.length;
@@ -57,8 +59,8 @@ public class ZFactor {
         }
         _Sdb = Math.sqrt(_Sdb / (_B - 1));
 
-        // Calculate the Z
-        _Z = 1.0 - ((3.0 * (_Sdt - _Sdb)) / (_Mt - _Mb));
+        // Calculate the Z factor
+        _Zf = 1.0 - ((3.0 * (_Sdt - _Sdb)) / (_Mt - _Mb));
     }
 
     // Getters
@@ -71,5 +73,5 @@ public class ZFactor {
     public double getSdt() { return _Sdt; }
     public double getSdb() { return _Sdb; }
 
-    public double getZ()   { return _Z; }
+    public double getZf()  { return _Zf; }
 }

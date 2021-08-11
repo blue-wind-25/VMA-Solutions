@@ -62,7 +62,11 @@ public class StringTranslator {
     // Return a locale indentifier string
     public static String getLocaleIDString()
     { return _locale.getLanguage() + "_" + _locale.getCountry(); }
-    
+
+    // Return an i18n string for "not enough data"
+    public static String strNED()
+    { return _rbundle.getString("res_not_enough_data"); }
+
     // Return an i18n string with the given key
     public static String getString(String key)
     { return _rbundle.getString(key); }
@@ -135,7 +139,7 @@ public class StringTranslator {
                     "/anemonesoft/i18n/report_template/en_US/" + templateName + (html ? ".html" : ".txt")
                 );
             }
-            
+
             // Load the template data
             char[]            rb  = new char[1024];
             StringBuilder     sb  = new StringBuilder(1024);

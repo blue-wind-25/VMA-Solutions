@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 import Jama.*;
 
 //
@@ -32,7 +34,7 @@ public class FourthOrderRegression {
     public FourthOrderRegression(double[] x, double[][] y) throws Exception
     {
         // Check the number of data
-        if(x.length < 6 || y.length < 1) throw new RuntimeException("Not enough data!");
+        if(x.length < 6 || y.length < 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data and probability
         _N  = x.length;

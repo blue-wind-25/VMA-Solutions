@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // A z-score class
 //
@@ -26,7 +28,7 @@ public class ZScore {
     public ZScore(double[] c, double[] s) throws Exception
     {
         // Check the number of data
-        if(c.length < 3 || s.length < 1) throw new RuntimeException("Not enough data!");
+        if(c.length < 3 || s.length < 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data
         _C = c.length;

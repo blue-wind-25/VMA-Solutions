@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // A Grubbs-test class
 //
@@ -29,7 +31,7 @@ public class GrubbsTest {
     public GrubbsTest(double[] s, double pp) throws Exception
     {
         // Check the number of data
-        if(s.length < 3) throw new RuntimeException("Not enough data!");
+        if(s.length < 3) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data
         _N = s.length;

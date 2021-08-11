@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // A first-order-regression class
 //
@@ -17,7 +19,7 @@ public class FirstOrderRegression {
     private double     _Ni        = 0;
     private double     _t1        = 0;
     private double     _t2        = 0;
-    
+
     private double[]   _xValues   = null;
     private double[]   _yValues   = null;
     private double[][] _yValuesA  = null;
@@ -32,7 +34,7 @@ public class FirstOrderRegression {
     private double     _r         = 0;
     private double     _RSS       = 0;
     private double     _b         = 0;
-    
+
     private double     _a         = 0;
     private double     _Sy        = 0;
 
@@ -43,7 +45,7 @@ public class FirstOrderRegression {
 
     private double     _CIx1      = 0;
     private double     _CIrelx1   = 0;
-    
+
     private double     _CIb       = 0;
     private double     _CIa       = 0;
     private double     _ya        = 0;
@@ -84,7 +86,7 @@ public class FirstOrderRegression {
     public FirstOrderRegression(double[] x, double[][] y, double pp) throws Exception
     {
         // Check the number of data
-        if(x.length < 3 || y.length < 1) throw new RuntimeException("Not enough data!");
+        if(x.length < 3 || y.length < 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data, the number of replications, and probability
         _N  = x.length;
@@ -135,7 +137,7 @@ public class FirstOrderRegression {
             xDiffs[i] = _xValues[i] - _xMean;
             yDiffs[i] = _yValues[i] - _yMean;
         }
-        
+
         // Calculate Qxx, Qyy, and Qxy
         for(int i = 0; i < _N; ++i) _Qxx += xDiffs[i] * xDiffs[i];
         for(int i = 0; i < _N; ++i) _Qyy += yDiffs[i] * yDiffs[i];
@@ -149,7 +151,7 @@ public class FirstOrderRegression {
         // Calculate a and Sy
         _a  = _yMean - _b * _xMean;
         _Sy = Math.sqrt(_RSS / _N2);
-        
+
         // Calculate Sb, Sa, _Sx0, and _Vx0
         _Sb  = Math.sqrt(_Sy * _Sy / _Qxx);
         _Sa  = _Sy * Math.sqrt( _Ni + (_xMean * _xMean / _Qxx) );
@@ -160,12 +162,12 @@ public class FirstOrderRegression {
         double xd1 = _xValues[0] - _xMean;
         _CIx1    = _Sx0 * _t2 * Math.sqrt(_Ni + 1 + xd1 * xd1 / _Qxx);
         _CIrelx1 = 100 * _CIx1 / _xValues[0];
-        
+
         // Calculate CIb, CIa, and ya
         _CIb = 100 * _t2 * _Sb / _b;
         _CIa = _t2 * _Sa;
         _ya  = _a + _Sy * _t1 * Math.sqrt( _Ni + 1 + (_xMean * _xMean / _Qxx) );
-        
+
         // Calculate xa, CL, CU, DL, and QL
         double yaym  = _ya - _yMean;
         double bbqxx = _b * _b * _Qxx;
@@ -189,7 +191,7 @@ public class FirstOrderRegression {
 
         // Calculate the linearity
         _linearity = 1 - _Sb / _b;
-        
+
         // Calculate the residual values and their range
         double min =  Double.MAX_VALUE;
         double max = -Double.MAX_VALUE;
@@ -211,7 +213,7 @@ public class FirstOrderRegression {
 
         // No need to continue if there is only one set of Y-value
         if(_Nr <= 1) return;
-        
+
         // Calculate the average Y at every X
         double[] yim = new double[_N];
         for(int i = 0; i < _N; ++i) {
@@ -221,7 +223,7 @@ public class FirstOrderRegression {
             }
             yim[i] /= _Nr;
         }
-        
+
         // Calculate SSr, SSe, and SSlof
         for(int i = 0; i < _N; ++i) {
             double yi = _a + _b * _xValues[i];
@@ -266,7 +268,7 @@ public class FirstOrderRegression {
         double ci = _t2 * _Sy * Math.sqrt(_Ni + xd * xd / _Qxx);
         return new double[]{ yi - ci, yi + ci };
     }
-    
+
     // Calculate and return the prediction interval at xi
     public double[] calcPIi(double xi, double m)
     {
@@ -282,18 +284,18 @@ public class FirstOrderRegression {
     public double     getPP()        { return _pp; }
     public double     getT1()        { return _t1; }
     public double     getT2()        { return _t2; }
-    
+
     public double[]   getXValues()   { return _xValues; }
     public double[]   getYValues()   { return _yValues; }
     public double[][] getYValuesA()  { return _yValuesA; }
-    
+
     public double     getXMean()     { return _xMean; }
     public double     getYMean()     { return _yMean; }
 
     public double     getA()         { return _a; }
     public double     getSa()        { return _Sa; }
     public double     getCIa()       { return _CIa; }
-    
+
     public double     getB()         { return _b; }
     public double     getSb()        { return _Sb; }
     public double     getCIb()       { return _CIb; }
@@ -312,7 +314,7 @@ public class FirstOrderRegression {
     public double     getGValue()    { return _gValue; }
     public double     getQCMean()    { return _QCmean; }
     public double     getLinearity() { return _linearity; }
-        
+
     public double     getCL()        { return _CL; }
     public double     getCU()        { return _CU; }
 

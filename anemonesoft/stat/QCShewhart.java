@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // A quality-control-shewhart class
 //
@@ -25,7 +27,7 @@ public class QCShewhart {
     public QCShewhart(double[] y) throws Exception
     {
         // Check the number of data
-        if(y.length < 1) throw new RuntimeException("Not enough data!");
+        if(y.length < 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data
         _N = y.length;

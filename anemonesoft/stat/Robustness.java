@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 import Jama.*;
 
 //
@@ -43,7 +45,7 @@ public class Robustness {
     public Robustness(double[] deltaReal, double[] response, double[][] factors, double pp) throws Exception
     {
         // Check the number of data
-        if(response.length < 3 || factors.length < 1) throw new RuntimeException("Not enough data!");
+        if(response.length < 3 || factors.length < 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of response, number of response factors, and probability
         _N  = response.length;
@@ -74,7 +76,7 @@ public class Robustness {
         // Calculate NK1 and t2
         _NK1 = _N - _K - 1;
         _t2  = DistTable.t2(_pp, _NK1);
-        
+
         // Calculate NK1s and t2s
         _NK1s = _N * _K - 1;
         _t2s  = DistTable.t2(_pp, _NK1s);
@@ -88,7 +90,7 @@ public class Robustness {
 
         // Copy the response
         System.arraycopy(response, 0, _response, 0, _N);
-        
+
         // Copy the factors
         double[] fctr = new double[_K];
         double[] frng = new double[_K];
@@ -135,7 +137,7 @@ public class Robustness {
 
         _b = b.getRowPackedCopy();
         _e = e.getRowPackedCopy();
-        
+
         // Calculate Sy
         double[][] r_x = X.getArray();
         double     Sy2 = 0;
@@ -154,7 +156,7 @@ public class Robustness {
         double min  =  Double.MAX_VALUE;
         double max  = -Double.MAX_VALUE;
 
-        // Calculate Sb, CIb, and CIb_range, 
+        // Calculate Sb, CIb, and CIb_range,
         double[][] r_ci = C.getArray();
         for(int k = 0; k <= _K; ++k) {
             double Sb2 = Sy2 * r_ci[k][k];
@@ -182,7 +184,7 @@ public class Robustness {
     // Getters
     public double[]   getResponse()  { return _response; }
     public double[][] getFactors()   { return _factors; }
-    
+
     public double[]   getDeltaReal() { return _deltaReal; }
     public double[]   getDeltaTest() { return _deltaTest; }
 
@@ -204,5 +206,5 @@ public class Robustness {
     public double[]   getCIbRange() { return _CIbRange; }
 
     public boolean[]  getIsSig()    { return _isSig; }
-}   
+}
 

@@ -95,7 +95,7 @@ public class ZFactorPanel extends ResultPanel implements Saveable {
 
         ZFactor zfc = new ZFactor(tda, bda);
 
-        double Z = zfc.getZ();
+        double Zf = zfc.getZf();
 
         // Prepare the value-key pairs
         String[] kvps = new String[]{
@@ -108,14 +108,15 @@ public class ZFactorPanel extends ResultPanel implements Saveable {
             "Mb",          "" + StringTranslator.format("%.5g", zfc.getMb ()),
             "Sdt",         "" + StringTranslator.format("%.5g", zfc.getSdt()),
             "Sdb",         "" + StringTranslator.format("%.5g", zfc.getSdb()),
-            "Z",           "" + StringTranslator.format("%.5g", Z           ),
-            "conclusion",    (Z <= 0.0) ? _S("res_res_unaccept" )
-                           : (Z <= 0.5) ? _S("res_res_moderate" )
-                           :              _S("res_res_excellent"),
-            "reason",        (Z <= 0.0) ? "(Z' ≤ 0)"
-                           : (Z <= 0.5) ? "(0 < Z' ≤ 0.5)"
-                           :              "(Z > 0.5)",
+            "Zf",          "" + StringTranslator.format("%.5g", Zf          ),
+            "conclusion",    (Zf <= 0.0) ? _S("res_res_unaccept" )
+                           : (Zf <= 0.5) ? _S("res_res_moderate" )
+                           :               _S("res_res_excellent"),
+            "reason",        (Zf <= 0.0) ? "(Z' ≤ 0)"
+                           : (Zf <= 0.5) ? "(0 < Z' ≤ 0.5)"
+                           :               "(Z' > 0.5)",
         };
+
         // Generate and return the report
         return StringTranslator.generateReportFromTemplate("ZFactor", kvps, html, withNonEmptyDoubleLineBreak);
     }

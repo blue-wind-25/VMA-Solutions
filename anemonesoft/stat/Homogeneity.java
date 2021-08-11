@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // An homogeneity-test class
 //
@@ -32,7 +34,7 @@ public class Homogeneity {
     public Homogeneity(double[] y1, double[] y2, double pp) throws Exception
     {
         // Check the number of data
-        if(y1.length <= 1 || y2.length <= 1) throw new RuntimeException("Not enough data!");
+        if(y1.length <= 1 || y2.length <= 1) throw new RuntimeException(StringTranslator.strNED());
 
         // Store the number of data and probability
         _N  = y1.length;

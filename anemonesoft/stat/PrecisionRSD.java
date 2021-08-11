@@ -5,6 +5,8 @@
 
 package anemonesoft.stat;
 
+import anemonesoft.i18n.*;
+
 //
 // An RSD-based precision-test class
 //
@@ -23,8 +25,8 @@ public class PrecisionRSD {
     public PrecisionRSD(double v[]) throws Exception
     {
         // Check the number of data
-        if(v.length < 3) throw new RuntimeException("Not enough data!");
-        
+        if(v.length < 3) throw new RuntimeException(StringTranslator.strNED());
+
         // Store the number of data
         _N  = v.length;
 
@@ -53,7 +55,7 @@ public class PrecisionRSD {
     public int      getN()       { return _N; }
 
     public double[] getXValues() { return _values; }
-    
+
     public double   getMean()    { return _mean; }
     public double   getSd()      { return _Sd; }
     public double   getRSD()     { return _RSD; }
