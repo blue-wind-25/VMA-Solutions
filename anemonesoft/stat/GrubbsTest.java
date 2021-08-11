@@ -15,9 +15,14 @@ public class GrubbsTest {
     private int      _N       = 0;
     private int      _N2      = 0;
     private double   _pp      = 0;
-    private double   _ppc     = 0;
-    private double   _tc      = 0;
-    private double   _gc      = 0;
+
+    private double   _ppc1    = 0;
+    private double   _tc1     = 0;
+    private double   _gc1     = 0;
+
+    private double   _ppc2    = 0;
+    private double   _tc2     = 0;
+    private double   _gc2     = 0;
 
     private double   _mean    = 0;
     private double   _Sd      = 0;
@@ -43,24 +48,40 @@ public class GrubbsTest {
         // Copy the input values
         System.arraycopy(s, 0, _sValues, 0, _N);
 
-        // Calculate N2, PPC, and tc
-        double a  = (100.0 - pp) / 100.0;
-        double ac = a / _N;
+        // Calculate N2, PPC1, tc1, PPC2, and tc2
+        double a1  = (100.0 - pp) / 100.0;
+        double ac1 = a1 / _N;
 
-        _N2  = _N - 2;
-        _pp  = pp;
-        _ppc = (1.0 - ac) * 100.0;
-        _tc  = DistTable.t1(_ppc, _N2);
+        double a2  = (100.0 - pp) / 100.0;
+        double ac2 = a2 / (2 * _N);
 
-        // Calculate the G-Crit
-        _gc = ( (_N - 1) * _tc )
-              /
-              Math.sqrt
-              (
-                  _N
-                  *
-                  (_N - 2 + _tc * _tc)
-              );
+        _N2   = _N - 2;
+        _pp   = pp;
+
+        _ppc1 = (1.0 - ac1) * 100.0;
+        _tc1  = DistTable.t1(_ppc1, _N2);
+
+        _ppc2 = (1.0 - ac2) * 100.0;
+        _tc2  = DistTable.t2(_ppc2, _N2);
+
+        // Calculate the G-Crit 1 and 2
+        _gc1 = ( (_N - 1) * _tc1 )
+               /
+               Math.sqrt
+               (
+                   _N
+                   *
+                   (_N - 2 + _tc1 * _tc1)
+               );
+
+        _gc2 = ( (_N - 1) * _tc2 )
+               /
+               Math.sqrt
+               (
+                   _N
+                   *
+                   (_N - 2 + _tc2 * _tc2)
+               );
 
         // Calculate the mean
         for(int i = 0; i < _sValues.length; ++i) {
@@ -86,12 +107,17 @@ public class GrubbsTest {
     public int    getN2()     { return _N2; }
 
     public double getPP()     { return _pp; }
-    public double getAC()     { return (100.0 - _ppc) / 100.0; }
-    public double getTC()     { return _tc; }
+
+    public double getAC1()    { return (100.0 - _ppc1) / 100.0; }
+    public double getTC1()    { return _tc1; }
+
+    public double getAC2()    { return (100.0 - _ppc2) / 100.0; }
+    public double getTC2()    { return _tc2; }
 
     public double getMean()   { return _mean; }
     public double getSd()     { return _Sd; }
 
-    public double getGC()     { return _gc; }
+    public double getGC1()    { return _gc1; }
+    public double getGC2()    { return _gc2; }
     public double getG(int i) { return _gValues[i]; }
 }
