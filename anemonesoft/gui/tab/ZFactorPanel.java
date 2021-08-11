@@ -95,19 +95,27 @@ public class ZFactorPanel extends ResultPanel implements Saveable {
 
         ZFactor zfc = new ZFactor(tda, bda);
 
+        double Z = zfc.getZ();
+
         // Prepare the value-key pairs
         String[] kvps = new String[]{
             "anal_name",   _S("res_anal_zfactor"),
             "caption",     mcapt,
-            "sub_caption", scapt/*,
-            "C",           "" + zsc.getC(),
-            "S",           "" + zsc.getS(),
-            "Cm",          "" + StringTranslator.format("%.5g", zsc.getCm()),
-            "Sc",          "" + StringTranslator.format("%.5g", zsc.getSc()),
-            "details",     details.toString()
-            */
+            "sub_caption", scapt,
+            "T",           "" + zfc.getT(),
+            "B",           "" + zfc.getB(),
+            "Mt",          "" + StringTranslator.format("%.5g", zfc.getMt ()),
+            "Mb",          "" + StringTranslator.format("%.5g", zfc.getMb ()),
+            "Sdt",         "" + StringTranslator.format("%.5g", zfc.getSdt()),
+            "Sdb",         "" + StringTranslator.format("%.5g", zfc.getSdb()),
+            "Z",           "" + StringTranslator.format("%.5g", Z           ),
+            "conclusion",    (Z <= 0.0) ? _S("res_res_unaccept" )
+                           : (Z <= 0.5) ? _S("res_res_moderate" )
+                           :              _S("res_res_excellent"),
+            "reason",        (Z <= 0.0) ? "(Z' ≤ 0)"
+                           : (Z <= 0.5) ? "(0 < Z' ≤ 0.5)"
+                           :              "(Z > 0.5)",
         };
-
         // Generate and return the report
         return StringTranslator.generateReportFromTemplate("ZFactor", kvps, html, withNonEmptyDoubleLineBreak);
     }
