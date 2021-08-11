@@ -62,10 +62,13 @@ public class AboutBox extends JDialog implements ActionListener {
         GUtil.addWithGbc(mainPanel, gbc, new JLabel(_F("dlg_abox_copyright_T", copyright), null, JLabel.CENTER));
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 5)));
         GUtil.addWithGbc(mainPanel, gbc, new JLabel(null, GUtil.newImage("anemonesoft.png"), JLabel.CENTER));
+        GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
+        GUtil.addWithGbc(mainPanel, gbc, new JLabel(_S("dlg_abox_donation"), null, JLabel.CENTER));
 
         // Add some reference texts
         if(!asSplashScreen) {
             String strRef = "<html><body>"
+                          + "<b>" + _S("dlg_abox_3rd_party") + "</b><br><br>"
                           + "<u>JAMA : A Java Matrix Package</u><br>"
                           + "http://math.nist.gov/javanumerics/jama<br><br>"
                           + "JAMA is a cooperative product of The MathWorks and the<br>"
@@ -76,11 +79,14 @@ public class AboutBox extends JDialog implements ActionListener {
                 pnlRefs.setLayout(new BoxLayout(pnlRefs, BoxLayout.Y_AXIS));
                 pnlRefs.add(new JLabel(strRef));
             GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
+            GUtil.addWithGbc(mainPanel, gbc, new JLabel("──────────", null, JLabel.CENTER));
+            GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
             GUtil.addWithGbc(mainPanel, gbc, pnlRefs);
             GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
         }
-        else
+        else {
             GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 5)));
+        }
 
         // Create the dialog
         JPanel dialogPanel = new JPanel(new BorderLayout(), true);

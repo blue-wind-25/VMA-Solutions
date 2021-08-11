@@ -125,9 +125,11 @@ public class GUIMain extends JApplet implements ActionListener {
     private JMenuItem        _mnuSSheetPrint     = null;
     private JMenuItem        _mnuSSheetPBTmpl    = null;
 
+    private JMenu            _mnuPlot            = null;
     private JMenuItem        _mnuPlotScatterLine = null;
-    private JMenuItem        _mnuPlotBoxWhisker = null;
+    private JMenuItem        _mnuPlotBoxWhisker  = null;
 
+    private JMenu            _mnuAnal            = null;
     private JMenuItem        _mnuAnalFor         = null;
     private JMenuItem        _mnuAnalSor         = null;
     private JMenuItem        _mnuAnalMandel      = null;
@@ -566,11 +568,13 @@ public class GUIMain extends JApplet implements ActionListener {
             public void stateChanged(ChangeEvent event)
             {
                 boolean enabled = (_tbpMain.getSelectedComponent() == _tabSpreadsheet);
-                _mnuSSheet    .setEnabled(enabled);
-                _btnCutCells  .setEnabled(enabled);
-                _btnCopyCells .setEnabled(enabled);
-                _btnPasteCells.setEnabled(enabled);
-                _btnClearCells.setEnabled(enabled);
+                _mnuSSheet    .setEnabled(!enabled);
+                _mnuPlot      .setEnabled(!enabled);
+                _mnuAnal      .setEnabled(!enabled);
+                _btnCutCells  .setEnabled( enabled);
+                _btnCopyCells .setEnabled( enabled);
+                _btnPasteCells.setEnabled( enabled);
+                _btnClearCells.setEnabled( enabled);
             }
         });
 
@@ -665,38 +669,38 @@ public class GUIMain extends JApplet implements ActionListener {
         _mnbMain.add(_mnuSSheet);
 
         // Initialize the "Plot" menu
-        JMenu mnuPlot = new JMenu(_S("mnu_plot"));
-            mnuPlot.setMnemonic(KeyEvent.VK_P);
-            _mnuPlotScatterLine = GUtil.newJMenuItem(mnuPlot, _S("mnu_plot_sct_ln"), GUtil.newImageIcon("mnu_plot_scatter_line"), KeyEvent.VK_S, -1, this);
-            _mnuPlotBoxWhisker  = GUtil.newJMenuItem(mnuPlot, _S("mnu_plot_box_wk"), GUtil.newImageIcon("mnu_plot_box_whisker" ), KeyEvent.VK_B, -1, this);
-        _mnbMain.add(mnuPlot);
+        _mnuPlot = new JMenu(_S("mnu_plot"));
+            _mnuPlot.setMnemonic(KeyEvent.VK_P);
+            _mnuPlotScatterLine = GUtil.newJMenuItem(_mnuPlot, _S("mnu_plot_sct_ln"), GUtil.newImageIcon("mnu_plot_scatter_line"), KeyEvent.VK_S, -1, this);
+            _mnuPlotBoxWhisker  = GUtil.newJMenuItem(_mnuPlot, _S("mnu_plot_box_wk"), GUtil.newImageIcon("mnu_plot_box_whisker" ), KeyEvent.VK_B, -1, this);
+        _mnbMain.add(_mnuPlot);
 
         // Initialize the "Analysis" menu
-        JMenu mnuAnal = new JMenu(_S("mnu_anal"));
-            mnuAnal.setMnemonic(KeyEvent.VK_A);
-            JMenu mnuAnalLin   = GUtil.newSubJMenu (mnuAnal,    _S("mnu_anal_linearity" ), GUtil.newImageIcon("mnu_anal_linearity" ), KeyEvent.VK_L,     this);
-            _mnuAnalFor        = GUtil.newJMenuItem(mnuAnalLin, _S("mnu_anal_for"       ), GUtil.newImageIcon("mnu_anal_for"       ), KeyEvent.VK_F, -1, this);
-            _mnuAnalSor        = GUtil.newJMenuItem(mnuAnalLin, _S("mnu_anal_sor"       ), GUtil.newImageIcon("mnu_anal_sor"       ), KeyEvent.VK_S, -1, this);
-            _mnuAnalMandel     = GUtil.newJMenuItem(mnuAnalLin, _S("mnu_anal_mandel"    ), GUtil.newImageIcon("mnu_anal_mandel"    ), KeyEvent.VK_M, -1, this);
-            _mnuAnalHomogen    = GUtil.newJMenuItem(mnuAnalLin, _S("mnu_anal_homogen"   ), GUtil.newImageIcon("mnu_anal_homogen"   ), KeyEvent.VK_H, -1, this);
+        _mnuAnal = new JMenu(_S("mnu_anal"));
+            _mnuAnal.setMnemonic(KeyEvent.VK_A);
+            JMenu _mnuAnalLin   = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_linearity" ), GUtil.newImageIcon("mnu_anal_linearity" ), KeyEvent.VK_L,     this);
+            _mnuAnalFor        = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_for"       ), GUtil.newImageIcon("mnu_anal_for"       ), KeyEvent.VK_F, -1, this);
+            _mnuAnalSor        = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_sor"       ), GUtil.newImageIcon("mnu_anal_sor"       ), KeyEvent.VK_S, -1, this);
+            _mnuAnalMandel     = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_mandel"    ), GUtil.newImageIcon("mnu_anal_mandel"    ), KeyEvent.VK_M, -1, this);
+            _mnuAnalHomogen    = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_homogen"   ), GUtil.newImageIcon("mnu_anal_homogen"   ), KeyEvent.VK_H, -1, this);
 
-            JMenu mnuAnalPre   = GUtil.newSubJMenu (mnuAnal,    _S("mnu_anal_precision" ), GUtil.newImageIcon("mnu_anal_precision" ), KeyEvent.VK_P,     this);
-            _mnuAnalPrecisionR = GUtil.newJMenuItem(mnuAnalPre, _S("mnu_anal_prec_rsd"  ), GUtil.newImageIcon("mnu_anal_prec_rsd"  ), KeyEvent.VK_R, -1, this);
-            _mnuAnalPrecisionA = GUtil.newJMenuItem(mnuAnalPre, _S("mnu_anal_prec_owano"), GUtil.newImageIcon("mnu_anal_prec_owano"), KeyEvent.VK_N, -1, this);
+            JMenu _mnuAnalPre   = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_precision" ), GUtil.newImageIcon("mnu_anal_precision" ), KeyEvent.VK_P,     this);
+            _mnuAnalPrecisionR = GUtil.newJMenuItem(_mnuAnalPre, _S("mnu_anal_prec_rsd"  ), GUtil.newImageIcon("mnu_anal_prec_rsd"  ), KeyEvent.VK_R, -1, this);
+            _mnuAnalPrecisionA = GUtil.newJMenuItem(_mnuAnalPre, _S("mnu_anal_prec_owano"), GUtil.newImageIcon("mnu_anal_prec_owano"), KeyEvent.VK_N, -1, this);
 
-            _mnuAnalAccuracy   = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_accuracy"  ), GUtil.newImageIcon("mnu_anal_accuracy"  ), KeyEvent.VK_A, -1, this);
-            _mnuAnalRobustness = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_robustness"), GUtil.newImageIcon("mnu_anal_robustness"), KeyEvent.VK_R, -1, this);
+            _mnuAnalAccuracy   = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_accuracy"  ), GUtil.newImageIcon("mnu_anal_accuracy"  ), KeyEvent.VK_A, -1, this);
+            _mnuAnalRobustness = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_robustness"), GUtil.newImageIcon("mnu_anal_robustness"), KeyEvent.VK_R, -1, this);
 
-            JMenu mnuAnalAP    = GUtil.newSubJMenu (mnuAnal,    _S("mnu_anal_ap"        ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_A,     this);
-            _mnuAnalAPGonzales = GUtil.newJMenuItem(mnuAnalAP,  _S("mnu_anal_ap_gonza"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_G, -1, this);
-            _mnuAnalAPRozet    = GUtil.newJMenuItem(mnuAnalAP,  _S("mnu_anal_ap_rozet"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_R, -1, this);
+            JMenu _mnuAnalAP    = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_ap"        ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_A,     this);
+            _mnuAnalAPGonzales = GUtil.newJMenuItem(_mnuAnalAP,  _S("mnu_anal_ap_gonza"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_G, -1, this);
+            _mnuAnalAPRozet    = GUtil.newJMenuItem(_mnuAnalAP,  _S("mnu_anal_ap_rozet"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_R, -1, this);
 
-            _mnuAnalQCShewhart = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_qcshewhart"), GUtil.newImageIcon("mnu_anal_qcshewhart"), KeyEvent.VK_Q, -1, this);
+            _mnuAnalQCShewhart = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_qcshewhart"), GUtil.newImageIcon("mnu_anal_qcshewhart"), KeyEvent.VK_Q, -1, this);
 
-            _mnuAnalZFactor    = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zfactor"   ), GUtil.newImageIcon("mnu_anal_zfactor"   ), KeyEvent.VK_F, -1, this);
-            _mnuAnalZScore     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_zscore"    ), GUtil.newImageIcon("mnu_anal_zscore"    ), KeyEvent.VK_S, -1, this);
-            _mnuAnalGrubbs     = GUtil.newJMenuItem(mnuAnal,    _S("mnu_anal_grubbs"    ), GUtil.newImageIcon("mnu_anal_grubbs"    ), KeyEvent.VK_G, -1, this);
-        _mnbMain.add(mnuAnal);
+            _mnuAnalZFactor    = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_zfactor"   ), GUtil.newImageIcon("mnu_anal_zfactor"   ), KeyEvent.VK_F, -1, this);
+            _mnuAnalZScore     = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_zscore"    ), GUtil.newImageIcon("mnu_anal_zscore"    ), KeyEvent.VK_S, -1, this);
+            _mnuAnalGrubbs     = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_grubbs"    ), GUtil.newImageIcon("mnu_anal_grubbs"    ), KeyEvent.VK_G, -1, this);
+        _mnbMain.add(_mnuAnal);
 
         // Initialize the "Toolbox" menu
         JMenu mnuToolbox = new JMenu(_S("mnu_toolbox"));
