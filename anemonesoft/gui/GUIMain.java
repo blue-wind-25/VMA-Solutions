@@ -147,6 +147,7 @@ public class GUIMain extends JApplet implements ActionListener {
 
     private JMenuItem        _mnuToolboxStudTTab = null;
     private JMenuItem        _mnuToolboxFishFTab = null;
+    private JMenuItem        _mnuToolboxGrubCTab = null;
     private JMenuItem        _mnuToolboxCalcPMC  = null;
     private JMenuItem        _mnuToolboxCalcTI   = null;
     private JMenuItem        _mnuToolboxCalcND   = null;
@@ -678,20 +679,20 @@ public class GUIMain extends JApplet implements ActionListener {
         // Initialize the "Analysis" menu
         _mnuAnal = new JMenu(_S("mnu_anal"));
             _mnuAnal.setMnemonic(KeyEvent.VK_A);
-            JMenu _mnuAnalLin   = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_linearity" ), GUtil.newImageIcon("mnu_anal_linearity" ), KeyEvent.VK_L,     this);
+            JMenu _mnuAnalLin   = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_linearity"), GUtil.newImageIcon("mnu_anal_linearity" ), KeyEvent.VK_L,     this);
             _mnuAnalFor        = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_for"       ), GUtil.newImageIcon("mnu_anal_for"       ), KeyEvent.VK_F, -1, this);
             _mnuAnalSor        = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_sor"       ), GUtil.newImageIcon("mnu_anal_sor"       ), KeyEvent.VK_S, -1, this);
             _mnuAnalMandel     = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_mandel"    ), GUtil.newImageIcon("mnu_anal_mandel"    ), KeyEvent.VK_M, -1, this);
             _mnuAnalHomogen    = GUtil.newJMenuItem(_mnuAnalLin, _S("mnu_anal_homogen"   ), GUtil.newImageIcon("mnu_anal_homogen"   ), KeyEvent.VK_H, -1, this);
 
-            JMenu _mnuAnalPre   = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_precision" ), GUtil.newImageIcon("mnu_anal_precision" ), KeyEvent.VK_P,     this);
+            JMenu _mnuAnalPre   = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_precision"), GUtil.newImageIcon("mnu_anal_precision" ), KeyEvent.VK_P,     this);
             _mnuAnalPrecisionR = GUtil.newJMenuItem(_mnuAnalPre, _S("mnu_anal_prec_rsd"  ), GUtil.newImageIcon("mnu_anal_prec_rsd"  ), KeyEvent.VK_R, -1, this);
             _mnuAnalPrecisionA = GUtil.newJMenuItem(_mnuAnalPre, _S("mnu_anal_prec_owano"), GUtil.newImageIcon("mnu_anal_prec_owano"), KeyEvent.VK_N, -1, this);
 
             _mnuAnalAccuracy   = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_accuracy"  ), GUtil.newImageIcon("mnu_anal_accuracy"  ), KeyEvent.VK_A, -1, this);
             _mnuAnalRobustness = GUtil.newJMenuItem(_mnuAnal,    _S("mnu_anal_robustness"), GUtil.newImageIcon("mnu_anal_robustness"), KeyEvent.VK_R, -1, this);
 
-            JMenu _mnuAnalAP    = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_ap"        ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_A,     this);
+            JMenu _mnuAnalAP    = GUtil.newSubJMenu (_mnuAnal,    _S("mnu_anal_ap"       ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_A,     this);
             _mnuAnalAPGonzales = GUtil.newJMenuItem(_mnuAnalAP,  _S("mnu_anal_ap_gonza"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_G, -1, this);
             _mnuAnalAPRozet    = GUtil.newJMenuItem(_mnuAnalAP,  _S("mnu_anal_ap_rozet"  ), GUtil.newImageIcon("mnu_anal_ap"        ), KeyEvent.VK_R, -1, this);
 
@@ -705,13 +706,14 @@ public class GUIMain extends JApplet implements ActionListener {
         // Initialize the "Toolbox" menu
         JMenu mnuToolbox = new JMenu(_S("mnu_toolbox"));
             mnuToolbox.setMnemonic(KeyEvent.VK_T);
-            _mnuToolboxStudTTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_studtt"), GUtil.newImageIcon("mnu_toolbox_ttable"), KeyEvent.VK_S, -1, this);
-            _mnuToolboxFishFTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ft"),     GUtil.newImageIcon("mnu_toolbox_ftable"), KeyEvent.VK_F, -1, this);
+            _mnuToolboxStudTTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_studtt" ), GUtil.newImageIcon("mnu_toolbox_ttable"), KeyEvent.VK_S, -1, this);
+            _mnuToolboxFishFTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ft"     ), GUtil.newImageIcon("mnu_toolbox_ftable"), KeyEvent.VK_F, -1, this);
+            _mnuToolboxGrubCTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_grubbsc"), GUtil.newImageIcon("mnu_toolbox_ttable"), KeyEvent.VK_G, -1, this);
             mnuToolbox.addSeparator();
-            _mnuToolboxCalcPMC  = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pmc"),    GUtil.newImageIcon("mnu_toolbox_pmc"),    KeyEvent.VK_C, -1, this);
-            _mnuToolboxCalcTI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ti"),     GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_T, -1, this);
-            _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"),     GUtil.newImageIcon("mnu_toolbox_nd"),     KeyEvent.VK_P, -1, this);
-            _mnuToolboxCalcDLQL = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_dlql"),   GUtil.newImageIcon("mnu_toolbox_dlql"),   KeyEvent.VK_D, -1, this);
+            _mnuToolboxCalcPMC  = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pmc"    ), GUtil.newImageIcon("mnu_toolbox_pmc"),    KeyEvent.VK_C, -1, this);
+            _mnuToolboxCalcTI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ti"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_T, -1, this);
+            _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"     ), GUtil.newImageIcon("mnu_toolbox_nd"),     KeyEvent.VK_P, -1, this);
+            _mnuToolboxCalcDLQL = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_dlql"   ), GUtil.newImageIcon("mnu_toolbox_dlql"),   KeyEvent.VK_D, -1, this);
           //mnuToolbox.addSeparator();
           //_mnuToolboxCOWPD    = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_cowpd"),  GUtil.newImageIcon("mnu_toolbox_cowpd" ), KeyEvent.VK_C, -1, this);
         _mnbMain.add(mnuToolbox);
@@ -1020,6 +1022,9 @@ public class GUIMain extends JApplet implements ActionListener {
         }
         else if(eventSource == _mnuToolboxFishFTab) {
             FisherFTable.showToolbox(getRootFrame());
+        }
+        else if(eventSource == _mnuToolboxGrubCTab) {
+            GrubbsCTable.showToolbox(getRootFrame());
         }
         else if(eventSource == _mnuToolboxCalcPMC) {
             CalcPMC.showToolbox(getRootFrame());

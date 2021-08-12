@@ -48,23 +48,25 @@ public class GrubbsTest {
         // Copy the input values
         System.arraycopy(s, 0, _sValues, 0, _N);
 
-        // Calculate N2, PPC1, tc1, PPC2, and tc2
+        // Save PP and calculate N2
+        _pp = pp;
+        _N2 = _N - 2;
+
+        // Calculate PPC1 and tc1
         double a1  = (100.0 - pp) / 100.0;
         double ac1 = a1 / _N;
-
-        double a2  = (100.0 - pp) / 100.0;
-        double ac2 = a2 / (2 * _N);
-
-        _N2   = _N - 2;
-        _pp   = pp;
 
         _ppc1 = (1.0 - ac1) * 100.0;
         _tc1  = DistTable.t1(_ppc1, _N2);
 
+        // Calculate PPC2 and tc2
+        double a2  = (100.0 - pp) / 100.0;
+        double ac2 = a2 / (2 * _N);
+
         _ppc2 = (1.0 - ac2) * 100.0;
         _tc2  = DistTable.t2(_ppc2, _N2);
 
-        // Calculate the G-Crit 1 and 2
+        // Calculate the G1
         _gc1 = ( (_N - 1) * _tc1 )
                /
                Math.sqrt
@@ -74,14 +76,9 @@ public class GrubbsTest {
                    (_N - 2 + _tc1 * _tc1)
                );
 
-        _gc2 = ( (_N - 1) * _tc2 )
-               /
-               Math.sqrt
-               (
-                   _N
-                   *
-                   (_N - 2 + _tc2 * _tc2)
-               );
+        // Calculate the G2
+        double tc2sq = _tc2 * _tc2;
+        _gc2 = (_N - 1) / Math.sqrt(_N) * Math.sqrt(tc2sq / (_N2 + tc2sq));
 
         // Calculate the mean
         for(int i = 0; i < _sValues.length; ++i) {
@@ -98,7 +95,7 @@ public class GrubbsTest {
 
         // Calculate the G
         for(int i = 0; i < _sValues.length; ++i) {
-            _gValues[i] = Math.abs( (_sValues[i] - _mean) / _Sd );
+            _gValues[i] = Math.abs((_sValues[i] - _mean) / _Sd);
         }
     }
 

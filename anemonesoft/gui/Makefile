@@ -24,6 +24,7 @@ CLS_DIALOG_BOX = dialog/AboutBox.class              \
 
 CLS_TOOL_BOX   = toolbox/StudentTTable.class       \
                  toolbox/FisherFTable.class        \
+                 toolbox/GrubbsCTable.class        \
                  toolbox/CalcPMC.class             \
                  toolbox/CalcTI.class              \
                  toolbox/CalcND.class              \
