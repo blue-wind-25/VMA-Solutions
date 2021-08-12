@@ -56,4 +56,4 @@ clean:
 	@echo Deleting generated files in `pwd` ...
 	@rm -f $(APP_JAR_FILE) $(APP_MAP_FILE)
 
-# git commit -S -a -m 'Bug fix and improvement' && git push && git status
+# git commit -S -a -m 'Bug fix' && git push && git status

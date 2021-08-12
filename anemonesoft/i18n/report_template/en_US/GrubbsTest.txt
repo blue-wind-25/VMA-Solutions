@@ -11,9 +11,9 @@
 Number of samples      = {N}
 Statistical confidence = {pp}%
 
-α Critical = {ac}
-t Critical = {tc}
-G Critical = {gc}
+α-Critical = {ac}
+t-Critical = {tc}
+G-Critical = {gc}
 
 Mean of the samples               = {mean}
 Standard deviation of the samples = {Sd}
