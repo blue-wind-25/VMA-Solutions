@@ -128,7 +128,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
                 formatStrI,
                 sda[i],
                 g,
-                (g > grb.getGC()) ? '✖' : ' '
+                (g > grb.getGC()) ? '❌' : ' '
             ));
             if(i < sda.length - 1) details.append("\n");
         }
