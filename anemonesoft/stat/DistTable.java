@@ -58,7 +58,7 @@ public class DistTable {
         return 1 -a + c;
     }
 
-    // Calculate and return the one-tailed F-table value from the given probability (in procentage) and degrees of freedom.
+    // Calculate and return the one-tailed F-table value from the given probability (in percentage) and degrees of freedom.
     public static double F1(double pp, int df1, int df2)
     {
         double p = 1 - pp / 100;
@@ -81,7 +81,7 @@ public class DistTable {
     ///// t-Table                                     //////////////////////////////////////////////
     ///// Adapted from http://statpages.org/pdfs.html //////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     private static double _studT(double t, int  n)
     {
         t = Math.abs(t);
@@ -114,19 +114,34 @@ public class DistTable {
         return t;
     }
 
-    // Calculate and return the two-tailed t-table value from the given probability (in procentage) and degree of freedom.
+    // Calculate and return the two-tailed t-table value from the given probability (in percentage) and degree of freedom.
     public static double t2(double pp, int df)
     { return _t(1 - pp / 100, df); }
 
-    // Calculate and return the one-tailed t-table value from the given probability (in procentage) and degree of freedom.
+    // Calculate and return the one-tailed t-table value from the given probability (in percentage) and degree of freedom.
     public static double t1(double pp, int df)
     { return _t(2 * (1 - pp / 100), df); }
+
+    // Calculate and return the two-tailed Grubbs' test critical value from the given probability (in percentage) and number of samples.
+    public static double grubbs_ac(double pp, int ns)
+    { return ((100.0 - pp) / 100.0) / ns; }
+
+    public static double grubbs_tc(double pp, int ns)
+    { return _t(grubbs_ac(pp, ns), ns - 2); }
+
+    public static double grubbs_gc(double pp, int ns)
+    {
+        double tc   = grubbs_tc(pp, ns);
+        double tcsq = tc * tc;
+
+        return (ns - 1) / Math.sqrt(ns) * Math.sqrt(tcsq / ((ns - 2) + tcsq));
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///// t-Table with fractional degree of freedom                                           //////
     ///// Adapted from http://www.tutor-homework.com/statistics_tables/statistics_tables.html //////
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     private static double _normZ(double p) {
         double a0 =  2.5066282,  a1 = -18.6150006, a2 =  41.3911977, a3 = -25.4410605,
                b1 = -8.4735109,  b2 =  23.0833674, b3 = -21.0622410, b4 =   3.1308291,
@@ -179,7 +194,7 @@ public class DistTable {
 
         return t;
     }
-    
+
     private static double _T_z(double t, double df) {
         double A9 = df - 0.5;
         double B9 = 48 * A9 * A9;
@@ -228,11 +243,11 @@ public class DistTable {
         return t;
     }
 
-    // Calculate and return the one-tailed t-table value from the given probability (in procentage) and degree of freedom.
+    // Calculate and return the one-tailed t-table value from the given probability (in percentage) and degree of freedom.
     public static double ft1(double pp, double df)
     { return _backwardT(2 * (1 - pp / 100), df); }
 
-    // Calculate and return the two-tailed t-table value from the given probability (in procentage) and degree of freedom.
+    // Calculate and return the two-tailed t-table value from the given probability (in percentage) and degree of freedom.
     public static double ft2(double pp, double df)
     { return _backwardT(1 - pp / 100, df); }
 }

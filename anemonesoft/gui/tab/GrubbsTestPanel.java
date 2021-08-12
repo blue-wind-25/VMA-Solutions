@@ -108,10 +108,10 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             if(len > maxGLen) maxGLen = len;
         }
 
-        int maxOLen = _S("res_grubbs_out1_t").length();
+        int maxOLen = _S("res_grubbs_out_t").length();
 
-        String formatStrC = "    %-" + maxSLen +   "s   %-" + maxGLen +   "s    %-" + maxOLen + "s    %-" + maxOLen + "s\n";
-        String formatStrI = "    %"  + maxSLen + ".5g   %+" + maxGLen + ".5f    %-" + maxOLen + "c    %-" + maxOLen + "c";
+        String formatStrC = "    %-" + maxSLen +   "s   %-" + maxGLen +   "s    %-" + maxOLen + "s\n";
+        String formatStrI = "    %"  + maxSLen + ".5g   %+" + maxGLen + ".5f    %-" + maxOLen + "c";
 
         StringBuilder details = new StringBuilder();
 
@@ -119,8 +119,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             formatStrC,
             _S("str_x_values_sample"),
             "G",
-            html ? _S("res_grubbs_out1_h") : _S("res_grubbs_out1_t"),
-            html ? _S("res_grubbs_out2_h") : _S("res_grubbs_out2_t")
+            html ? _S("res_grubbs_out_h") : _S("res_grubbs_out_t")
         ));
 
         for(int i = 0; i < sda.length; ++i) {
@@ -129,8 +128,7 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
                 formatStrI,
                 sda[i],
                 g,
-                (g > grb.getGC1()) ? '*' : ' ',
-                (g > grb.getGC2()) ? '*' : ' '
+                (g > grb.getGC()) ? '*' : ' '
             ));
             if(i < sda.length - 1) details.append("\n");
         }
@@ -142,12 +140,9 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
             "sub_caption", scapt,
             "N",           "" + grb.getN(),
             "pp",          StringTranslator.format("%.1f", grb.getPP  ()),
-            "ac1",         StringTranslator.format("%.7f", grb.getAC1 ()),
-            "tc1",         StringTranslator.format("%.5g", grb.getTC1 ()),
-            "gc1",         StringTranslator.format("%.5g", grb.getGC1 ()),
-            "ac2",         StringTranslator.format("%.7f", grb.getAC2 ()),
-            "tc2",         StringTranslator.format("%.5g", grb.getTC2 ()),
-            "gc2",         StringTranslator.format("%.5g", grb.getGC2 ()),
+            "ac",          StringTranslator.format("%.7f", grb.getAC  ()),
+            "tc",          StringTranslator.format("%.5g", grb.getTC  ()),
+            "gc",          StringTranslator.format("%.5g", grb.getGC  ()),
             "mean",        StringTranslator.format("%.5g", grb.getMean()),
             "Sd",          StringTranslator.format("%.5g", grb.getSd  ()),
             "details",     details.toString()

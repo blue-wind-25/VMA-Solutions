@@ -16,13 +16,9 @@ public class GrubbsTest {
     private int      _N2      = 0;
     private double   _pp      = 0;
 
-    private double   _ppc1    = 0;
-    private double   _tc1     = 0;
-    private double   _gc1     = 0;
-
-    private double   _ppc2    = 0;
-    private double   _tc2     = 0;
-    private double   _gc2     = 0;
+    private double   _ac      = 0;
+    private double   _tc      = 0;
+    private double   _gc      = 0;
 
     private double   _mean    = 0;
     private double   _Sd      = 0;
@@ -52,33 +48,9 @@ public class GrubbsTest {
         _pp = pp;
         _N2 = _N - 2;
 
-        // Calculate PPC1 and tc1
-        double a1  = (100.0 - pp) / 100.0;
-        double ac1 = a1 / _N;
-
-        _ppc1 = (1.0 - ac1) * 100.0;
-        _tc1  = DistTable.t1(_ppc1, _N2);
-
-        // Calculate PPC2 and tc2
-        double a2  = (100.0 - pp) / 100.0;
-        double ac2 = a2 / (2 * _N);
-
-        _ppc2 = (1.0 - ac2) * 100.0;
-        _tc2  = DistTable.t2(_ppc2, _N2);
-
-        // Calculate the G1
-        _gc1 = ( (_N - 1) * _tc1 )
-               /
-               Math.sqrt
-               (
-                   _N
-                   *
-                   (_N - 2 + _tc1 * _tc1)
-               );
-
-        // Calculate the G2
-        double tc2sq = _tc2 * _tc2;
-        _gc2 = (_N - 1) / Math.sqrt(_N) * Math.sqrt(tc2sq / (_N2 + tc2sq));
+        _ac = DistTable.grubbs_ac(_pp, _N);
+        _tc = DistTable.grubbs_tc(_pp, _N);
+        _gc = DistTable.grubbs_gc(_pp, _N);
 
         // Calculate the mean
         for(int i = 0; i < _sValues.length; ++i) {
@@ -105,16 +77,12 @@ public class GrubbsTest {
 
     public double getPP()     { return _pp; }
 
-    public double getAC1()    { return (100.0 - _ppc1) / 100.0; }
-    public double getTC1()    { return _tc1; }
-
-    public double getAC2()    { return (100.0 - _ppc2) / 100.0; }
-    public double getTC2()    { return _tc2; }
+    public double getAC()     { return _ac; }
+    public double getTC()     { return _tc; }
 
     public double getMean()   { return _mean; }
     public double getSd()     { return _Sd; }
 
-    public double getGC1()    { return _gc1; }
-    public double getGC2()    { return _gc2; }
+    public double getGC()     { return _gc; }
     public double getG(int i) { return _gValues[i]; }
 }

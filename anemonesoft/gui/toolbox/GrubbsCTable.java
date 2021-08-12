@@ -35,17 +35,10 @@ public class GrubbsCTable extends JDialog {
     // Update result
     private void _updateResult()
     {
-        double pp   =       GUtil.str2d(_txtStatConfidence.getText());
-        int    n    = (int) GUtil.str2d(_txtNumOfSamples  .getText());
+        double pp =       GUtil.str2d(_txtStatConfidence.getText());
+        int    n  = (int) GUtil.str2d(_txtNumOfSamples  .getText());
 
-        double a    = (100.0 - pp) / 100.0;
-        double ac   = a / (2 * n);
-
-        double ppc  = (1.0 - ac) * 100.0;
-        double tc   = DistTable.t2(ppc, n - 2);
-
-        double tcsq = tc * tc;
-        double gc   = (n - 1) / Math.sqrt(n) * Math.sqrt(tcsq / ((n - 2) + tcsq));
+        double gc = DistTable.grubbs_gc(pp, n);
 
         _lblCriticalValue.setText(String.format("%.5f", gc));
     }

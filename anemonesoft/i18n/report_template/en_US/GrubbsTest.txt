@@ -11,15 +11,9 @@
 Number of samples      = {N}
 Statistical confidence = {pp}%
 
-One-sided
-    α1 Critical = {ac1}
-    t1 Critical = {tc1}
-    G1 Critical = {gc1}
-
-Two-sided
-    α2 Critical = {ac2}
-    t2 Critical = {tc2}
-    G2 Critical = {gc2}
+α Critical = {ac}
+t Critical = {tc}
+G Critical = {gc}
 
 Mean of the samples               = {mean}
 Standard deviation of the samples = {Sd}
