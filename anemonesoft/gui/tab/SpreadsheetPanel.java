@@ -15,6 +15,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import anemonesoft.gui.*;
@@ -39,9 +40,6 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
     public static final byte DT_NULL   = 0;
     public static final byte DT_DOUBLE = 1;
     public static final byte DT_STRING = 2;
-
-    // State variable for saving the last column that contains invalid cell data
-    private static char lastInvalidCol = 0;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -267,14 +265,10 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
         return valArray;
     }
 
-    // Reset the state variable for saving the last column that contains invalid cell data
-    public void resetLastInvalidColumn()
-    { lastInvalidCol = 0; }
-
     // Get the values of the cells in the give column and row-range (the values are returned as a one-dimensional array of doubles)
-    private static List<Character> _errCols = new ArrayList<>();
+    private static Runnable        _errTDsp = null;
     private static long            _errTime = 0;
-    private static Runnable        _errDsp  = null;
+    private static List<Character> _errCols = new ArrayList<>();
 
     public double[] getColValues(int col, int startRow, int endRow)
     {
@@ -300,18 +294,19 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
 
         // Qeueue warning message(s) as needed
         _errTime = System.currentTimeMillis();
+
         if(invData) {
             // Get the column
             char curInvalidCol = (char) ('A' + col);
-            if(lastInvalidCol != curInvalidCol) {
+            if(!_errCols.contains(curInvalidCol)) {
                 _errCols.add(Character.valueOf(curInvalidCol));
             }
-            lastInvalidCol = curInvalidCol;
             // Create the message displayer thread as needed
-            if(_errDsp == null) {
-                _errDsp = new Runnable() {
+            if(_errTDsp == null) {
+                _errTDsp = new Runnable() {
                     public void run() {
-                        while(System.currentTimeMillis() - _errTime < 100);
+                        while(System.currentTimeMillis() - _errTime <= 250);
+                        Collections.sort(_errCols);
                         for(Character c : _errCols) {
                             GUtil.showInformationDialog(
                                 GUIMain.instance.getRootFrame(),
@@ -319,10 +314,10 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
                             );
                         }
                         _errCols.clear();
-                        _errDsp = null;
+                        _errTDsp = null;
                     }
                 };
-                SwingUtilities.invokeLater(_errDsp);
+                SwingUtilities.invokeLater(_errTDsp);
             }
         }
 

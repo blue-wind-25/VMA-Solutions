@@ -88,8 +88,6 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary)
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Get the X data array
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 0) {

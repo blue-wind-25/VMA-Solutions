@@ -77,8 +77,6 @@ public class ZFactorPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Perform some calculations
         double[] tda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(tda == null || tda.length <= 2) {

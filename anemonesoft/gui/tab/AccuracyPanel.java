@@ -98,8 +98,6 @@ public class AccuracyPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Get the X data array
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 2) {
@@ -199,8 +197,6 @@ public class AccuracyPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Perform some calculations
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 2) {

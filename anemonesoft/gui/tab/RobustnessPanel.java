@@ -115,8 +115,6 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Get the Y data array
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length <= 0) {
@@ -253,8 +251,6 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Get the Y data array
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length <= 0) {

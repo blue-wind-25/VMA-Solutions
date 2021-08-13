@@ -81,8 +81,6 @@ public class GrubbsTestPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Perform some calculations
         double[] sda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(sda == null || sda.length <= 2) {

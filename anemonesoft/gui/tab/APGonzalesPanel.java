@@ -91,8 +91,6 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Get the prerequisite analysis classes
         ResultPanel[] resOWANO      = GUIMain.instance.getTabsByClass(PrecisionOWANOPanel.class);
         ResultPanel[] resRobustness = GUIMain.instance.getTabsByClass(RobustnessPanel    .class);
@@ -242,8 +240,6 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
-        _ssPanel.resetLastInvalidColumn();
-
         // Get the prerequisite analysis classes
         ResultPanel[] resOWANO      = GUIMain.instance.getTabsByClass(PrecisionOWANOPanel.class);
         ResultPanel[] resRobustness = GUIMain.instance.getTabsByClass(RobustnessPanel    .class);
