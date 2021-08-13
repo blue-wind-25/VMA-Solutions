@@ -60,7 +60,7 @@ public class ZFactor {
         _Sdb = Math.sqrt(_Sdb / (_B - 1));
 
         // Calculate the Z factor
-        _Zf = 1.0 - ((3.0 * (_Sdt - _Sdb)) / (_Mt - _Mb));
+        _Zf = 1.0 - ((3.0 * (_Sdt + _Sdb)) / Math.abs(_Mt - _Mb));
     }
 
     // Getters
