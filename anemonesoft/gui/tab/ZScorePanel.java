@@ -102,21 +102,21 @@ public class ZScorePanel extends ResultPanel implements Saveable {
             if(len > maxSLen) maxSLen = len;
         }
 
-        int maxZLen = 2; // "Zs"
+        int maxZLen = 4; // "|Zs|"
         for(int i = 0; i < sda.length; ++i) {
-            final int len = StringTranslator.format("%+.5f", zsc.getZs(i)).length();
+            final int len = StringTranslator.format("%.5f", zsc.getZs(i)).length();
             if(len > maxZLen) maxZLen = len;
         }
 
         String formatStrC = "    %-" + maxSLen +   "s    %-" + maxZLen + "s\n";
-        String formatStrI = "    %"  + maxSLen + ".5g    %+" + maxZLen + ".5f";
+        String formatStrI = "    %"  + maxSLen + ".5g    %"  + maxZLen + ".5f";
 
         StringBuilder details = new StringBuilder();
 
         details.append(StringTranslator.format(
             formatStrC,
             _S("str_x_values_sample"),
-            html ? "Z<sub>s</sub>" : "Zs"
+            html ? "|Z<sub>s</sub>|" : "|Zs|"
         ));
 
         for(int i = 0; i < sda.length; ++i) {

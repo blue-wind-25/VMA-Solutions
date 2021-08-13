@@ -58,7 +58,7 @@ public class ZScore {
 
         // Calculate the Zs
         for(int i = 0; i < _sValues.length; ++i) {
-            _zValues[i] = (_sValues[i] - _Cm) / _Sc;
+            _zValues[i] = Math.abs((_sValues[i] - _Cm) / _Sc);
         }
     }
 
