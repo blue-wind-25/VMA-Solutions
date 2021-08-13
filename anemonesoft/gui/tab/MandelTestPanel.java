@@ -75,6 +75,8 @@ public class MandelTestPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the data and settings
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 3) {
@@ -192,7 +194,7 @@ public class MandelTestPanel extends ResultPanel implements Saveable {
             if(header.length >= 1) _captionSP.setMainCaption(header[0]);
             if(header.length >= 2) _captionSP.setSubCaption (header[1]);
         }
-        
+
         updateReport();
     }
 }

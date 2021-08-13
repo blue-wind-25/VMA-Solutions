@@ -48,7 +48,7 @@ public class GUtil {
     {
         try { return Double.parseDouble(str); }
         catch(Exception e) {}
-        return 0;
+        return 0.0;
     }
 
     // Convert string to integer without exception

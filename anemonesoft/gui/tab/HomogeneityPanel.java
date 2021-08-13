@@ -79,6 +79,8 @@ public class HomogeneityPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the data and settings
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length < 2 || yda[0].length <= 1 || yda[1].length <= 1) {
@@ -158,7 +160,7 @@ public class HomogeneityPanel extends ResultPanel implements Saveable {
             ifv = ds.readInt();
             if(!_captionSP.load(ifv, ds)) return false;
         }
-        
+
         ifv = ds.readInt();
         if(!_analysisSP.load(ifv, ds)) return false;
 
@@ -189,7 +191,7 @@ public class HomogeneityPanel extends ResultPanel implements Saveable {
             if(header.length >= 1) _captionSP.setMainCaption(header[0]);
             if(header.length >= 2) _captionSP.setSubCaption (header[1]);
         }
-        
+
         updateReport();
     }
 }

@@ -35,8 +35,8 @@ public class GrubbsCTable extends JDialog {
     // Update result
     private void _updateResult()
     {
-        double pp =       GUtil.str2d(_txtStatConfidence.getText());
-        int    n  = (int) GUtil.str2d(_txtNumOfSamples  .getText());
+        double pp = GUtil.str2d(_txtStatConfidence.getText());
+        int    n  = GUtil.str2i(_txtNumOfSamples  .getText());
 
         double gc = DistTable.grubbs_gc(pp, n);
 

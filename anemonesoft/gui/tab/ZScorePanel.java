@@ -77,6 +77,8 @@ public class ZScorePanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Perform some calculations
         double[] cda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(cda == null || cda.length <= 2) {

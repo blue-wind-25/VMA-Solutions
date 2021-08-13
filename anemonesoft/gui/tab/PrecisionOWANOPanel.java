@@ -85,6 +85,8 @@ public class PrecisionOWANOPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the Y data array
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length <= 2) {
@@ -110,7 +112,7 @@ public class PrecisionOWANOPanel extends ResultPanel implements Saveable {
             "RSDb",        StringTranslator.format("%.5g", pre.getRSDb()),
             "RSDr",        StringTranslator.format("%.5g", pre.getRSDr())
         };
-        
+
         // Generate and return the report
         return StringTranslator.generateReportFromTemplate("PrecisionOWANO", kvps, html, withNonEmptyDoubleLineBreak);
     }
@@ -152,10 +154,10 @@ public class PrecisionOWANOPanel extends ResultPanel implements Saveable {
     {
         ds.writeInt(_captionSP.interfaceVersion()); /** Available from interface version 3 */
         _captionSP.save(ds);
-        
+
         ds.writeInt(_inputDataRangeSP.interfaceVersion());
         _inputDataRangeSP.save(ds);
-        
+
         ds.writeInt(_afpTrueValue.interfaceVersion()); /** Available from interface version 2 */
         _afpTrueValue.save(ds);
     }
@@ -166,7 +168,7 @@ public class PrecisionOWANOPanel extends ResultPanel implements Saveable {
         if(interfaceVersion > INTERFACE_VERSION) return false;
 
         int ifv;
-        
+
         if(interfaceVersion >= 3) { /** Available from interface version 3 */
             ifv = ds.readInt();
             if(!_captionSP.load(ifv, ds)) return false;
@@ -181,7 +183,7 @@ public class PrecisionOWANOPanel extends ResultPanel implements Saveable {
         }
         else
             _afpTrueValue.resetAllValue(0);
-        
+
         return true;
     }
 

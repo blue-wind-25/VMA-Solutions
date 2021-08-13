@@ -14,6 +14,9 @@ import java.util.EventObject;
 import javax.swing.*;
 import javax.swing.table.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import anemonesoft.gui.*;
 import anemonesoft.gui.component.*;
 import anemonesoft.gui.control.*;
@@ -36,6 +39,9 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
     public static final byte DT_NULL   = 0;
     public static final byte DT_DOUBLE = 1;
     public static final byte DT_STRING = 2;
+
+    // State variable for saving the last column that contains invalid cell data
+    private static char lastInvalidCol = 0;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -261,7 +267,15 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
         return valArray;
     }
 
+    // Reset the state variable for saving the last column that contains invalid cell data
+    public void resetLastInvalidColumn()
+    { lastInvalidCol = 0; }
+
     // Get the values of the cells in the give column and row-range (the values are returned as a one-dimensional array of doubles)
+    private static List<Character> _errCols = new ArrayList<>();
+    private static long            _errTime = 0;
+    private static Runnable        _errDsp  = null;
+
     public double[] getColValues(int col, int startRow, int endRow)
     {
         // Check for invalid area
@@ -272,8 +286,44 @@ public class SpreadsheetPanel extends JPanel implements Saveable {
 
         // Get the cell values
         TableModel tableModel =_tblInput.getModel();
+        boolean    invData    = false;
         for(int r = startRow; r <= endRow; ++r) {
-            valArray[r - startRow] = GUtil.str2d((String) tableModel.getValueAt(r, col));
+            String str = (String) tableModel.getValueAt(r, col);
+            try {
+                valArray[r - startRow] = Double.parseDouble(str);
+            }
+            catch(Exception e) {
+                valArray[r - startRow] = 0.0;
+                invData                = true;
+            }
+        }
+
+        // Qeueue warning message(s) as needed
+        _errTime = System.currentTimeMillis();
+        if(invData) {
+            // Get the column
+            char curInvalidCol = (char) ('A' + col);
+            if(lastInvalidCol != curInvalidCol) {
+                _errCols.add(Character.valueOf(curInvalidCol));
+            }
+            lastInvalidCol = curInvalidCol;
+            // Create the message displayer thread as needed
+            if(_errDsp == null) {
+                _errDsp = new Runnable() {
+                    public void run() {
+                        while(System.currentTimeMillis() - _errTime < 100);
+                        for(Character c : _errCols) {
+                            GUtil.showInformationDialog(
+                                GUIMain.instance.getRootFrame(),
+                                StringTranslator.format(_S("err_cell_data_invalid"), c)
+                            );
+                        }
+                        _errCols.clear();
+                        _errDsp = null;
+                    }
+                };
+                SwingUtilities.invokeLater(_errDsp);
+            }
         }
 
         // Return the array

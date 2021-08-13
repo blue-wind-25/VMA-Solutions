@@ -61,7 +61,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
         _analysisSP = new StdAnalysisSettingPanel(true, true, false, false);
         title[0] = _S("str_acrs_anal");
         pane [0] = _analysisSP;
-        
+
         _inputDataRangeSP = new StdPlotDataRangeSettingPanel(NUM_OF_Y_AXIS, false, null);
         title[1] = _S("str_acrs_data_range");
         pane [1] = _inputDataRangeSP;
@@ -77,14 +77,14 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
         _regAxisScaleSP = new StdPlotAxisScaleSettingPanel(this, false);
         title[3] = _S("str_acrs_reg_axis");
         pane [3] = _regAxisScaleSP;
-        
+
         dpsSpec = new StdPlotDataPointSettingPanel.DPSSpec[2];
         dpsSpec[0] = new StdPlotDataPointSettingPanel.DPSSpec(_S("str_acrs_residual_plot"), true,  true);
         dpsSpec[1] = new StdPlotDataPointSettingPanel.DPSSpec(_S("str_acrs_res_stddev"   ), false, true);
         _resPlotStyleSP = new StdPlotDataPointSettingPanel(dpsSpec);
         title[4] = _S("str_acrs_res_pstyle");
         pane [4] = _resPlotStyleSP;
-        
+
         _resAxisScaleSP = new StdPlotAxisScaleSettingPanel(this, false);
         title[5] = _S("str_acrs_lin_res_axis");
         pane [5] = _resAxisScaleSP;
@@ -99,7 +99,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
     {
         _regCaptionSP = new StdPlotCaptionSettingPanel(false, false);
         _regCaptionSP.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLoweredBevelBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        
+
         _resCaptionSP = new StdPlotCaptionSettingPanel(false, false);
         _resCaptionSP.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLoweredBevelBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
@@ -114,6 +114,8 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the X data array
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 2) {
@@ -149,7 +151,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
         double ymax = pnlASetting.getLeftYMax();
         double ystp = pnlASetting.getLeftYStep();
         int    ysdv = pnlASetting.getLeftYSDiv();
-        
+
         // Get the general settings
         Color pbColor = StdPlotMiscSettingPanel.PREDEFINED_COLOR     [_miscSP.getPlotBackgroundColor()];
         Color pcColor = StdPlotMiscSettingPanel.PREDEFINED_COLOR     [_miscSP.getPlotCaptionColor   ()];
@@ -353,6 +355,8 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Perform some calculations
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 2) {
@@ -370,7 +374,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
 
         String mcapt = _regCaptionSP.getMainCaption();
         String scapt = _regCaptionSP.getSubCaption ();
-        
+
         FirstOrderRegression lin = new FirstOrderRegression(xda, yda, pp);
 
         double b  = lin.getB();
@@ -436,7 +440,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
             "conclusion2",  ( (Fr <= F1) ? _S("res_res_good") : _S("res_res_bad") ),
             "reason2",      ( (Fr <= F1) ? "(Fr ≤ F)" : "(Fr > F)" )
         };
-        
+
         // Generate and return the report
         return StringTranslator.generateReportFromTemplate(
             ed ? "FirstOrderRegressionMulti" : "FirstOrderRegressionSingle",
@@ -508,7 +512,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
 
         ds.writeInt(_analysisSP.interfaceVersion());
         _analysisSP.save(ds);
-       
+
         ds.writeInt(_inputDataRangeSP.interfaceVersion());
         _inputDataRangeSP.save(ds);
 
@@ -523,7 +527,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
 
         ds.writeInt(_resAxisScaleSP.interfaceVersion());
         _resAxisScaleSP.save(ds);
-        
+
         ds.writeInt(_miscSP.interfaceVersion());
         _miscSP.save(ds);
     }
@@ -540,7 +544,7 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
 
         ifv = ds.readInt();
         if(!_resCaptionSP.load(ifv, ds)) return false;
-        
+
         ifv = ds.readInt();
         if(!_analysisSP.load(ifv, ds)) return false;
 
@@ -555,10 +559,10 @@ public class FirstOrderRegPanel extends ResultPanel implements Saveable {
 
         ifv = ds.readInt();
         if(!_resPlotStyleSP.load(ifv, ds)) return false;
-        
+
         ifv = ds.readInt();
         if(!_resAxisScaleSP.load(ifv, ds)) return false;
-        
+
         ifv = ds.readInt();
         if(!_miscSP.load(ifv, ds)) return false;
 

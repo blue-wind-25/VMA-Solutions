@@ -45,7 +45,7 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
     { return StringTranslator.formatString(s, a); }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     // Return the tab caption
     public String getTabCaption()
     { return _S("str_plot_sct_ln"); }
@@ -88,6 +88,8 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary)
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the X data array
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 0) {
@@ -217,13 +219,13 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
         return true;
     }
 
-    // Calculate a content value
-    public double calcContentValue(double y)
-    { return 0; /* Not needed by this class */ }
-
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak)
     { return ""; /* Not needed by this class */ }
+
+    // Calculate a content value
+    public double calcContentValue(double y)
+    { return 0; /* Not needed by this class */ }
 
     // Return the data range (minimum and maximum values) of the X data
     public double[] getXDataRange(Object requestor)
@@ -244,7 +246,7 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
     {
         ds.writeInt(_captionSP.interfaceVersion());
         _captionSP.save(ds);
-        
+
         ds.writeInt(_inputDataRangeSP.interfaceVersion());
         _inputDataRangeSP.save(ds);
 
@@ -264,13 +266,13 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
         if(interfaceVersion != INTERFACE_VERSION) return false;
 
         int ifv;
-        
+
         ifv = ds.readInt();
         if(!_captionSP.load(ifv, ds)) return false;
-        
+
         ifv = ds.readInt();
         if(!_inputDataRangeSP.load(ifv, ds)) return false;
-        
+
         ifv = ds.readInt();
         if(!_plotStyleSP.load(ifv, ds)) return false;
 
@@ -279,7 +281,7 @@ public class ScatterLinePlotPanel extends ResultPanel implements Saveable {
 
         ifv = ds.readInt();
         if(!_miscSP.load(ifv, ds)) return false;
-        
+
         return true;
     }
 

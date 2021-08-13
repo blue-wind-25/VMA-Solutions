@@ -97,6 +97,8 @@ public class QCShewhartPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the X data array
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 1) {
@@ -205,7 +207,7 @@ public class QCShewhartPanel extends ResultPanel implements Saveable {
             pl.drawInfoText("-2Sd", xmin, y0, -1,  1, colIB, 2, 1);
             pl.drawInfoText("+2Sd", xmin, y1, -1, -1, colIB, 2, 1);
         }
-        
+
         // Draw the (3 * Sy) band
         Color colOB = StdPlotDataPointSettingPanel.PREDEFINED_COLOR     [_qctPlotStyleSP.getColor(2)];
         int   linOB = StdPlotDataPointSettingPanel.PREDEFINED_LINE_STYLE[_qctPlotStyleSP.getLine (2)];
@@ -250,6 +252,8 @@ public class QCShewhartPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Perform some calculations
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 1) {
@@ -280,16 +284,16 @@ public class QCShewhartPanel extends ResultPanel implements Saveable {
             details.append(tab);
             details.append(_F("res_qcs_smpl_n_T", new String[]{ "" + qcss.getN() }));
             details.append("\n");
-            
+
             details.append(tab);
             details.append(_F("res_qcs_smpl_mn_T", new String[]{ StringTranslator.format("%.5g", qcss.getYMean()) }));
             details.append("\n");
-            
+
             details.append(tab);
             details.append(_F("res_qcs_smpl_sy_T", new String[]{ StringTranslator.format("%.5g", qcss.getSy()) }));
             if(i < yda.length - 1) details.append("\n");
         }
-        
+
         // Prepare the value-key pairs
         String[] kvps = new String[]{
             "anal_name",   _S("res_anal_qcshewhart"),
@@ -316,7 +320,7 @@ public class QCShewhartPanel extends ResultPanel implements Saveable {
     {
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null) return new double[]{ 0, 0 };
-        
+
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null) return new double[]{ 0, 0 };
 

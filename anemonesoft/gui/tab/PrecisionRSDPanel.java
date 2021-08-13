@@ -55,7 +55,7 @@ public class PrecisionRSDPanel extends ResultPanel implements Saveable {
         _analysisSP = new StdAnalysisSettingPanel(false, false, false, true);
         title[0] = _S("str_acrs_anal");
         pane [0] = _analysisSP;
-        
+
         _inputDataRangeSP = new StdPlotDataRangeSettingPanel(NUM_OF_Y_AXIS, false, null);
         title[1] = _S("str_acrs_data_range");
         pane [1] = _inputDataRangeSP;
@@ -75,6 +75,8 @@ public class PrecisionRSDPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the data and settings
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= 1) {
@@ -87,10 +89,10 @@ public class PrecisionRSDPanel extends ResultPanel implements Saveable {
 
         double RSD = pre.getRSD();
         double TI  = _analysisSP.getTolIntv();
-        
+
         // Prepare the value-key pairs
         String strTI = "" + TI;
-        
+
         String[] kvps = new String[]{
             "anal_name",   _S("res_anal_prec_rsd"),
             "caption",     _captionSP.getMainCaption(),
@@ -183,7 +185,7 @@ public class PrecisionRSDPanel extends ResultPanel implements Saveable {
             if(header.length >= 1) _captionSP.setMainCaption(header[0]);
             if(header.length >= 2) _captionSP.setSubCaption (header[1]);
         }
-        
+
         updateReport();
     }
 }

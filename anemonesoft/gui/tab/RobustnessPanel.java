@@ -65,7 +65,7 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
         _analysisSP = new StdAnalysisSettingPanel(true, false, false, false);
         title[0] = _S("str_acrs_anal");
         pane [0] = _analysisSP;
-        
+
         String[] drsCapt = new String[NUM_OF_Y_AXIS + 1];
         drsCapt[0] = _S("str_x_values_response");
         for(int i = 1; i <= NUM_OF_Y_AXIS; ++i) {
@@ -78,7 +78,7 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
         String[] drcCapt = new String[NUM_OF_Y_AXIS + 1];
         for(int i = 0; i < NUM_OF_Y_AXIS; ++i) {
             drcCapt[i] = _F("str_y_values_factor_T", new String[] { "" + (i + 1) });
-        }        
+        }
         _inputDataCaptSP = new StdPlotDataRangeCaptionPanel(NUM_OF_Y_AXIS, drcCapt, "F-");
         title[2] = _S("str_acrs_drcapt_fname");
         pane [2] = _inputDataCaptSP;
@@ -115,6 +115,8 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the Y data array
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length <= 0) {
@@ -183,7 +185,7 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
             customXAxisTickStr = new String[customXAxisTick.size()];
             customXAxisTick.toArray(customXAxisTickStr);
         }
-                    
+
         // Draw the background, caption, and axis
         pl.drawBackground();
         pl.drawCaption(mcapt, scapt);
@@ -251,6 +253,8 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the Y data array
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length <= 0) {
@@ -275,7 +279,7 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
 
         // Generate the data for generating the result-details
         int maxIdxLen = (yda.length > 9) ? 2 : 1;
-        
+
         int maxNameLen = _S("res_rob_factor").length();
         for(int i = 0; i < yda.length; ++i) {
             String nm = _inputDataCaptSP.getCaption(i);
@@ -308,14 +312,14 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
             "%-" + maxIdxLen + "s    %-" + maxNameLen + "s    %-" + maxBLen + "s    %-" + maxCIbLen + "s      %s\n",
             "#", _S("res_rob_factor"), _S("res_rob_effect"), _S("res_rob_eci"), _S("res_rob_significant")
         ));
-        
+
         String format = "%-" + maxIdxLen + "d    %-" + maxNameLen + "s    %" + maxBLen + "s    ± %" + maxCIbLen + "s    %s";
         for(int i = 0; i < yda.length; ++i) {
             String nm = _inputDataCaptSP.getCaption(i);
             details.append(StringTranslator.format(format, i + 1, nm, strB[i + 1], strCIb[i + 1], isSig[i + 1] ? sigYes : sigNo));
             if(i < yda.length - 1) details.append("\n");
         }
-        
+
         // Prepare the value-key pairs
         String[] kvps = new String[]{
             "anal_name",   _S("res_anal_robustness"),
@@ -355,7 +359,7 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
         // Get the Y data array
         double[][] yda = getYDataArray(_ssPanel, _inputDataRangeSP, NUM_OF_Y_AXIS, false, 0);
         if(yda == null || yda.length <= 0) return new double[]{ 0, 0 };
-        
+
         // Get the X data array
         double[] xda = getXDataArray(_ssPanel, _inputDataRangeSP);
         if(xda == null || xda.length <= (yda.length + 1)) return new double[]{ 0, 0 };
@@ -408,13 +412,13 @@ public class RobustnessPanel extends ResultPanel implements Saveable {
 
         ds.writeInt(_analysisSP.interfaceVersion());
         _analysisSP.save(ds);
-       
+
         ds.writeInt(_inputDataRangeSP.interfaceVersion());
         _inputDataRangeSP.save(ds);
 
         ds.writeInt(_inputDataCaptSP.interfaceVersion());
         _inputDataCaptSP.save(ds);
-        
+
         ds.writeInt(_apfDeltaReal.interfaceVersion()); /** Available from interface version 2 */
         _apfDeltaReal.save(ds);
 

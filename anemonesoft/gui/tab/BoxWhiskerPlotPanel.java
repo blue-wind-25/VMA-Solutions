@@ -106,7 +106,7 @@ public class BoxWhiskerPlotPanel extends ResultPanel implements Saveable {
         lblInfo.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedBevelBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         _captionSP = new StdPlotCaptionSettingPanel(false, true);
-        
+
         JPanel pnlHodler = new JPanel(new BorderLayout(0, 5), true);
             pnlHodler.add(lblInfo, BorderLayout.NORTH);
             pnlHodler.add(_captionSP, BorderLayout.CENTER);
@@ -173,7 +173,7 @@ public class BoxWhiskerPlotPanel extends ResultPanel implements Saveable {
             customXAxisTickStr = new String[customXAxisTick.size()];
             customXAxisTick.toArray(customXAxisTickStr);
         }
-        
+
         // Process the left Y-axis
         if(hasLeft) {
             // Extract the data and instantiate the analysis class
@@ -280,13 +280,13 @@ public class BoxWhiskerPlotPanel extends ResultPanel implements Saveable {
         return true;
     }
 
-    // Calculate a content value
-    public double calcContentValue(double y)
-    { return 0; /* Not needed by this class */ }
-
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak)
     { return ""; /* Not needed by this class */ }
+
+    // Calculate a content value
+    public double calcContentValue(double y)
+    { return 0; /* Not needed by this class */ }
 
     // Return the data range (minimum and maximum values) of the X data
     public double[] getXDataRange(Object requestor)
@@ -313,7 +313,7 @@ public class BoxWhiskerPlotPanel extends ResultPanel implements Saveable {
 
         ds.writeInt(_inputDataCaptSP.interfaceVersion());
         _inputDataCaptSP.save(ds);
-        
+
         ds.writeInt(_plotStyleSP.interfaceVersion());
         _plotStyleSP.save(ds);
 
@@ -336,7 +336,7 @@ public class BoxWhiskerPlotPanel extends ResultPanel implements Saveable {
 
         ifv = ds.readInt();
         if(!_inputDataRangeSP.load(ifv, ds)) return false;
-        
+
         ifv = ds.readInt();
         if(!_inputDataCaptSP.load(ifv, ds)) return false;
 

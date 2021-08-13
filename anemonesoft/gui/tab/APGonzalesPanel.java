@@ -91,6 +91,8 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
     // Draw the primary/secondary plot to the given graphics context
     public boolean drawPlot(Graphics2D g, int w, int h, boolean draft, boolean secondary) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the prerequisite analysis classes
         ResultPanel[] resOWANO      = GUIMain.instance.getTabsByClass(PrecisionOWANOPanel.class);
         ResultPanel[] resRobustness = GUIMain.instance.getTabsByClass(RobustnessPanel    .class);
@@ -181,7 +183,7 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
             pl.drawInfoText("+\u03BB", xmin,  lambda, -1,  1, colLL, 2, 1);
             pl.drawInfoText("-\u03BB", xmin, -lambda, -1, -1, colLL, 2, 1);
         }
-        
+
         // Draw the delta-plot
         Color colDP = StdPlotDataPointSettingPanel.PREDEFINED_COLOR     [_apfPlotStyleSP.getColor (1)];
         int   symDP = StdPlotDataPointSettingPanel.PREDEFINED_SYMBOL    [_apfPlotStyleSP.getSymbol(1)];
@@ -224,7 +226,7 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
             if(symDP >= 0) pl.drawSymbolPoints(dlData, colBE, symBE);
             if(linDP >= 0) pl.drawPolyline    (dlData, colBE, linBE);
         }
-        
+
         // Draw the limit lines
         Color colLM = StdPlotDataPointSettingPanel.PREDEFINED_COLOR     [_apfPlotStyleSP.getColor(3)];
         int   linLM = StdPlotDataPointSettingPanel.PREDEFINED_LINE_STYLE[_apfPlotStyleSP.getLine (3)];
@@ -240,6 +242,8 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
     // Generate and return the report string
     public String genReport(boolean html, boolean withNonEmptyDoubleLineBreak) throws Exception
     {
+        _ssPanel.resetLastInvalidColumn();
+
         // Get the prerequisite analysis classes
         ResultPanel[] resOWANO      = GUIMain.instance.getTabsByClass(PrecisionOWANOPanel.class);
         ResultPanel[] resRobustness = GUIMain.instance.getTabsByClass(RobustnessPanel    .class);
@@ -294,14 +298,14 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
             int ln = strDelta[i].length();
             if(ln > maxDLen) maxDLen = ln;
         }
-        
+
         String[] strBETIh = StringTranslator.formatDoubles(apf.getBETIh(), 7);
         int      maxBLenH = _S("res_apf_beti").length();
         for(int i = 0; i < strBETIh.length; ++i) {
             int ln = strBETIh[i].length();
             if(ln > maxBLenH) maxBLenH = ln;
         }
-        
+
         String[] strBETIl = StringTranslator.formatDoubles(apf.getBETIl(), 7);
         int      maxBLenL = _S("res_apf_beti").length();
         for(int i = 0; i < strBETIl.length; ++i) {
