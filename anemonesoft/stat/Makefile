@@ -25,7 +25,9 @@ LIB_SOURCE = BoxWhisker.class            \
              APRozet.class               \
              Robustness.class            \
              QCShewhart.class            \
-             ZScore.class
+             ZScore.class                \
+             ZFactor.class               \
+             GrubbsTest.class
 
 default: $(LIB_SOURCE)
 	@echo > /dev/null

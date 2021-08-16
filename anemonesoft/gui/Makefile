@@ -66,6 +66,7 @@ CLS_TAB_MODULE = tab/SpreadsheetPanel.class     \
                  tab/RobustnessPanel.class      \
                  tab/QCShewhartPanel.class      \
                  tab/ZScorePanel.class          \
+                 tab/ZFactorPanel.class         \
                  tab/GrubbsTestPanel.class
 
 CLASSPATH  = ../..

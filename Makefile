@@ -56,4 +56,19 @@ clean:
 	@echo Deleting generated files in `pwd` ...
 	@rm -f $(APP_JAR_FILE) $(APP_MAP_FILE)
 
+arcv: clean
+	@(                                                                                \
+		COPY_NAME=VMA-GIT-`date +'%Y%m%d-%H%M'`;                                  \
+		echo -e "Copying the project tree ...";                                   \
+		cd ..;                                                                    \
+		cp -Rv VMA-GIT $$COPY_NAME > /dev/null;                                   \
+		echo -e "Deleting the '.git' directory from the copied project tree ..."; \
+		cd $$COPY_NAME;                                                           \
+		rm -rvf .git > /dev/null;                                                 \
+		echo -e "Archiving files from the copied project tree ...";               \
+		cd ..;                                                                    \
+		tar -cjvpf $${COPY_NAME}.tar.bz2 $$COPY_NAME > /dev/null;                 \
+		echo -e "Done '$${COPY_NAME}.tar.bz2'";                                   \
+	)
+
 # git commit -S -a -m 'Bug fix' && git push && git status
