@@ -123,9 +123,9 @@ public class CalcTI extends JDialog {
         double Lo2 = mean - k2 * sd;
         double Up2 = mean + k2 * sd;
 
-        _lblKf .setText(String.format("±%.5f", k2));
-        _lblTIL.setText(String.format("%.5f", Lo2));
-        _lblTIH.setText(String.format("%.5f", Up2));
+        _lblKf .setText(String.format("±%.5f", k2 ));
+        _lblTIL.setText(String.format("%.5f",  Lo2));
+        _lblTIH.setText(String.format("%.5f",  Up2));
     }
 
     // Private constructor

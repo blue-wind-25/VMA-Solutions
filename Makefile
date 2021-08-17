@@ -71,4 +71,4 @@ arcv: clean
 		echo -e "Done '$${COPY_NAME}.tar.bz2'";                                   \
 	)
 
-# git commit -S -a -m 'Cleanups' && git push && git status
+# git commit -S -a -m 'Bug fix' && git push && git status

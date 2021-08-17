@@ -64,8 +64,8 @@ public class CalcND extends JDialog {
         double sd    = GUtil.str2d(_txtSD   .getText());
         double var   = GUtil.str2d(_txtVar  .getText());
         double muc   = GUtil.str2d(_txtMUc  .getText());
-        double lower = GUtil.str2d(_txtLower.getText());
         double upper = GUtil.str2d(_txtUpper.getText());
+        double lower = GUtil.str2d(_txtLower.getText());
 
         if(useVariance) {
             sd = Math.sqrt(var);
@@ -93,8 +93,8 @@ public class CalcND extends JDialog {
             JLabel lblSD     = new JLabel(_S("tb_nd_sd"));
             JLabel lblVar    = new JLabel(_S("tb_nd_var"));
             JLabel lblMUc    = new JLabel(_S("tb_nd_muc"));
-            JLabel lblLower  = new JLabel(_S("tb_nd_lower"));
             JLabel lblUpper  = new JLabel(_S("tb_nd_upper"));
+            JLabel lblLower  = new JLabel(_S("tb_nd_lower"));
             JLabel lblProb   = new JLabel(_S("tb_nd_prob"));
             ipMainPanel.add(lblMean  ); ipMainPanel.add(_txtMean );
             ipMainPanel.add(lblSD    ); ipMainPanel.add(_txtSD   );
@@ -107,8 +107,8 @@ public class CalcND extends JDialog {
             lblSD    .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
             lblVar   .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
             lblMUc   .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
-            lblLower .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
             lblUpper .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
+            lblLower .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
             lblProb  .setPreferredSize(new Dimension(350, GUtil.DEFAULT_BOX_HEIGHT));
             _txtMean .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _txtSD   .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
@@ -126,8 +126,8 @@ public class CalcND extends JDialog {
             _txtSD   .setText("0.0");
             _txtVar  .setText("0.0");
             _txtMUc  .setText("0.0");
-            _txtLower.setText("0.0");
             _txtUpper.setText("0.0");
+            _txtLower.setText("0.0");
             GUtil.disableCutAndPasteOnTextField(_txtMean);
             GUtil.disableCutAndPasteOnTextField(_txtSD);
             GUtil.disableCutAndPasteOnTextField(_txtMUc);

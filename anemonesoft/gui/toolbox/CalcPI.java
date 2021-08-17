@@ -51,8 +51,8 @@ public class CalcPI extends JDialog {
         double ub = mean + i;
 
         _lblCP .setText(String.format("±%.5f", i ));
-        _lblCPL.setText(String.format("%.5f", lb));
-        _lblCPH.setText(String.format("%.5f", ub));
+        _lblCPH.setText(String.format("%.5f",  ub));
+        _lblCPL.setText(String.format("%.5f",  lb));
     }
 
     // Private constructor
@@ -68,8 +68,8 @@ public class CalcPI extends JDialog {
             JLabel lblMean = new JLabel(_S("tb_cp_mean"));
             JLabel lblSD   = new JLabel(_S("tb_cp_sd"));
             JLabel lblCP   = new JLabel(_S("tb_cp_title_pi"));
-            JLabel lblCPH  = new JLabel(_S("tb_cp_cp_l"));
-            JLabel lblCPL  = new JLabel(_S("tb_cp_cp_h"));
+            JLabel lblCPH  = new JLabel(_S("tb_cp_cp_h"));
+            JLabel lblCPL  = new JLabel(_S("tb_cp_cp_l"));
             ipMainPanel.add(lblPP  ); ipMainPanel.add(_txtPP  );
             ipMainPanel.add(lblN   ); ipMainPanel.add(_txtN   );
             ipMainPanel.add(lblMean); ipMainPanel.add(_txtMean);
