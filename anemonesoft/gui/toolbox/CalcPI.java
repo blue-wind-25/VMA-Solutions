@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2010-2011 Aloysius Indrayanto
-                            AnemoneSoft.com
+    Copyright (C) 2010-2021 Aloysius Indrayanto
+                            VMA Consultant
 */
 
 package anemonesoft.gui.toolbox;
@@ -95,7 +95,7 @@ public class CalcPI extends JDialog {
             _txtMean.setDocument(new NumericDocument(3, false));
             _txtSD  .setDocument(new NumericDocument(3, false));
             _txtPP  .setText("90" );
-            _txtN   .setText("10" );
+            _txtN   .setText("0"  );
             _txtMean.setText("0.0");
             _txtSD  .setText("0.0");
             GUtil.disableCutAndPasteOnTextField(_txtPP);

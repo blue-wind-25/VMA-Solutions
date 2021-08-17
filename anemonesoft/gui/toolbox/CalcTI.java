@@ -145,45 +145,45 @@ public class CalcTI extends JDialog {
             JLabel lblKf     = new JLabel(_S("tb_ti_kf"));
             JLabel lblTIH    = new JLabel(_S("tb_ti_ti_h"));
             JLabel lblTIL    = new JLabel(_S("tb_ti_ti_l"));
+            ipMainPanel.add(lblCL  ); ipMainPanel.add(_txtCL  );
+            ipMainPanel.add(lblCov ); ipMainPanel.add(_txtCov );
             ipMainPanel.add(lblN   ); ipMainPanel.add(_txtN   );
             ipMainPanel.add(lblMean); ipMainPanel.add(_txtMean);
             ipMainPanel.add(lblSD  ); ipMainPanel.add(_txtSD  );
             ipMainPanel.add(lblVar ); ipMainPanel.add(_txtVar );
-            ipMainPanel.add(lblCL  ); ipMainPanel.add(_txtCL  );
-            ipMainPanel.add(lblCov ); ipMainPanel.add(_txtCov );
             ipMainPanel.add(lblKf  ); ipMainPanel.add(_lblKf  );
             ipMainPanel.add(lblTIH ); ipMainPanel.add(_lblTIH );
             ipMainPanel.add(lblTIL ); ipMainPanel.add(_lblTIL );
+            lblCL   .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
+            lblCov  .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblN    .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblMean .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblSD   .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblVar  .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
-            lblCL   .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
-            lblCov  .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblKf   .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblTIH  .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
             lblTIL  .setPreferredSize(new Dimension(200, GUtil.DEFAULT_BOX_HEIGHT));
+            _txtCL  .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
+            _txtCov .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _txtN   .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _txtMean.setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _txtSD  .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _txtVar .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
-            _txtCL  .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
-            _txtCov .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _lblKf  .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _lblTIH .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
             _lblTIL .setPreferredSize(new Dimension(100, GUtil.DEFAULT_BOX_HEIGHT));
+            _txtCL  .setDocument(new NumericDocument(0, false));
+            _txtCov .setDocument(new NumericDocument(0, false));
             _txtN   .setDocument(new NumericDocument(0, false));
             _txtMean.setDocument(new NumericDocument(3, false));
             _txtSD  .setDocument(new NumericDocument(3, false));
             _txtVar .setDocument(new NumericDocument(3, false));
-            _txtCL  .setDocument(new NumericDocument(0, false));
-            _txtCov .setDocument(new NumericDocument(0, false));
+            _txtCL  .setText("90" );
+            _txtCov .setText("90" );
             _txtN   .setText("0"  );
             _txtMean.setText("0.0");
             _txtSD  .setText("0.0");
             _txtVar .setText("0.0");
-            _txtCL  .setText("95" );
-            _txtCov .setText("90" );
             GUtil.disableCutAndPasteOnTextField(_txtN);
             GUtil.disableCutAndPasteOnTextField(_txtMean);
             GUtil.disableCutAndPasteOnTextField(_txtSD);
@@ -207,6 +207,28 @@ public class CalcTI extends JDialog {
         setLocation((parentSize.width - dialogSize.width) / 2 + parentPos.x, (parentSize.height - dialogSize.height) / 2 + parentPos.y);
 
         // Initialize event handlers
+        _txtCL.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                _updateResult();
+            }
+        });
+        _txtCL.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent event) {}
+            public void focusLost  (FocusEvent event) {
+                _updateResult();
+            }
+        });
+        _txtCov.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                _updateResult();
+            }
+        });
+        _txtCov.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent event) {}
+            public void focusLost  (FocusEvent event) {
+                _updateResult();
+            }
+        });
         _txtN.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 _updateResult();
@@ -252,28 +274,6 @@ public class CalcTI extends JDialog {
             public void focusGained(FocusEvent event) {}
             public void focusLost  (FocusEvent event) {
                 useVariance = true;
-                _updateResult();
-            }
-        });
-        _txtCL.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                _updateResult();
-            }
-        });
-        _txtCL.addFocusListener(new FocusListener() {
-            public void focusGained(FocusEvent event) {}
-            public void focusLost  (FocusEvent event) {
-                _updateResult();
-            }
-        });
-        _txtCov.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                _updateResult();
-            }
-        });
-        _txtCov.addFocusListener(new FocusListener() {
-            public void focusGained(FocusEvent event) {}
-            public void focusLost  (FocusEvent event) {
                 _updateResult();
             }
         });

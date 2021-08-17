@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2010-2011 Aloysius Indrayanto
-                            AnemoneSoft.com
+    Copyright (C) 2010-2021 Aloysius Indrayanto
+                            VMA Consultant
 */
 
 package anemonesoft.gui;
@@ -149,9 +149,9 @@ public class GUIMain extends JApplet implements ActionListener {
     private JMenuItem        _mnuToolboxFishFTab = null;
     private JMenuItem        _mnuToolboxGrubCTab = null;
     private JMenuItem        _mnuToolboxCalcPMC  = null;
-    private JMenuItem        _mnuToolboxCalcTI   = null;
     private JMenuItem        _mnuToolboxCalcCI   = null;
     private JMenuItem        _mnuToolboxCalcPI   = null;
+    private JMenuItem        _mnuToolboxCalcTI   = null;
     private JMenuItem        _mnuToolboxCalcND   = null;
     private JMenuItem        _mnuToolboxCalcDLQL = null;
     private JMenuItem        _mnuToolboxCOWPD    = null;
@@ -708,18 +708,18 @@ public class GUIMain extends JApplet implements ActionListener {
         // Initialize the "Toolbox" menu
         JMenu mnuToolbox = new JMenu(_S("mnu_toolbox"));
             mnuToolbox.setMnemonic(KeyEvent.VK_T);
-            _mnuToolboxStudTTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_studtt" ), GUtil.newImageIcon("mnu_toolbox_ttable"), KeyEvent.VK_S, -1, this);
-            _mnuToolboxFishFTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ft"     ), GUtil.newImageIcon("mnu_toolbox_ftable"), KeyEvent.VK_F, -1, this);
-            _mnuToolboxGrubCTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_grubbsc"), GUtil.newImageIcon("mnu_toolbox_ttable"), KeyEvent.VK_G, -1, this);
+            _mnuToolboxStudTTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_studtt" ), GUtil.newImageIcon("mnu_toolbox_ttable" ), KeyEvent.VK_S, -1, this);
+            _mnuToolboxFishFTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ft"     ), GUtil.newImageIcon("mnu_toolbox_ftable" ), KeyEvent.VK_F, -1, this);
+            _mnuToolboxGrubCTab = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_grubbsc"), GUtil.newImageIcon("mnu_toolbox_gctable"), KeyEvent.VK_G, -1, this);
             mnuToolbox.addSeparator();
-            _mnuToolboxCalcPMC  = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pmc"    ), GUtil.newImageIcon("mnu_toolbox_pmc"),    KeyEvent.VK_C, -1, this);
-            _mnuToolboxCalcTI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ti"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_T, -1, this);
-            _mnuToolboxCalcCI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ci"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_C, -1, this);
-            _mnuToolboxCalcPI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pi"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_P, -1, this);
-            _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"     ), GUtil.newImageIcon("mnu_toolbox_nd"),     KeyEvent.VK_U, -1, this);
-            _mnuToolboxCalcDLQL = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_dlql"   ), GUtil.newImageIcon("mnu_toolbox_dlql"),   KeyEvent.VK_D, -1, this);
+            _mnuToolboxCalcPMC  = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pmc"    ), GUtil.newImageIcon("mnu_toolbox_pmc"    ), KeyEvent.VK_C, -1, this);
+            _mnuToolboxCalcCI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ci"     ), GUtil.newImageIcon("mnu_toolbox_ci"     ), KeyEvent.VK_C, -1, this);
+            _mnuToolboxCalcPI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pi"     ), GUtil.newImageIcon("mnu_toolbox_pi"     ), KeyEvent.VK_P, -1, this);
+            _mnuToolboxCalcTI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ti"     ), GUtil.newImageIcon("mnu_toolbox_ti"     ), KeyEvent.VK_T, -1, this);
+            _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"     ), GUtil.newImageIcon("mnu_toolbox_nd"     ), KeyEvent.VK_U, -1, this);
+            _mnuToolboxCalcDLQL = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_dlql"   ), GUtil.newImageIcon("mnu_toolbox_dlql"   ), KeyEvent.VK_D, -1, this);
           //mnuToolbox.addSeparator();
-          //_mnuToolboxCOWPD    = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_cowpd"),  GUtil.newImageIcon("mnu_toolbox_cowpd" ), KeyEvent.VK_C, -1, this);
+          //_mnuToolboxCOWPD    = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_cowpd"  ), GUtil.newImageIcon("mnu_toolbox_cowpd"  ), KeyEvent.VK_C, -1, this);
         _mnbMain.add(mnuToolbox);
 
         // Initialize the "Help" menu
@@ -1033,14 +1033,14 @@ public class GUIMain extends JApplet implements ActionListener {
         else if(eventSource == _mnuToolboxCalcPMC) {
             CalcPMC.showToolbox(getRootFrame());
         }
-        else if(eventSource == _mnuToolboxCalcTI) {
-            CalcTI.showToolbox(getRootFrame());
-        }
         else if(eventSource == _mnuToolboxCalcCI) {
             CalcCI.showToolbox(getRootFrame());
         }
         else if(eventSource == _mnuToolboxCalcPI) {
             CalcPI.showToolbox(getRootFrame());
+        }
+        else if(eventSource == _mnuToolboxCalcTI) {
+            CalcTI.showToolbox(getRootFrame());
         }
         else if(eventSource == _mnuToolboxCalcND) {
             CalcND.showToolbox(getRootFrame());

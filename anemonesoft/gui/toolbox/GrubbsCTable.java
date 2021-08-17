@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2010-2011 Aloysius Indrayanto
-                            AnemoneSoft.com
+    Copyright (C) 2010-2021 Aloysius Indrayanto
+                            VMA Consultant
 */
 
 package anemonesoft.gui.toolbox;
@@ -38,7 +38,7 @@ public class GrubbsCTable extends JDialog {
         double pp = GUtil.str2d(_txtStatConfidence.getText());
         int    n  = GUtil.str2i(_txtNumOfSamples  .getText());
 
-        double gc = DistTable.grubbs_gc(pp, n);
+        double gc = (n >= 3) ? DistTable.grubbs_gc(pp, n) : (0.0 / 0.0);
 
         _lblCriticalValue.setText(String.format("%.5f", gc));
     }

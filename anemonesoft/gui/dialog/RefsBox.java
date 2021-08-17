@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2010-2011 Aloysius Indrayanto
-                            AnemoneSoft.com
+    Copyright (C) 2010-2021 Aloysius Indrayanto
+                            VMA Consultant
 */
 
 package anemonesoft.gui.dialog;
