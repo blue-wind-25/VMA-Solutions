@@ -20,7 +20,7 @@ import anemonesoft.i18n.*;
 import anemonesoft.stat.*;
 
 //
-// A toolbox for calculating Process/Method Capability
+// A toolbox for calculating DL and QL of the samples
 //
 public class CalcDLQL extends JDialog {
     // Controls

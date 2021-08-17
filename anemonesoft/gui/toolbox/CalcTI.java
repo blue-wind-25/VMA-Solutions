@@ -20,7 +20,7 @@ import anemonesoft.i18n.*;
 import anemonesoft.stat.*;
 
 //
-// A toolbox for calculating Process/Method Capability
+// A toolbox for calculating tolerance interval
 //
 public class CalcTI extends JDialog {
     // Controls

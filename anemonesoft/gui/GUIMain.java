@@ -150,6 +150,8 @@ public class GUIMain extends JApplet implements ActionListener {
     private JMenuItem        _mnuToolboxGrubCTab = null;
     private JMenuItem        _mnuToolboxCalcPMC  = null;
     private JMenuItem        _mnuToolboxCalcTI   = null;
+    private JMenuItem        _mnuToolboxCalcCI   = null;
+    private JMenuItem        _mnuToolboxCalcPI   = null;
     private JMenuItem        _mnuToolboxCalcND   = null;
     private JMenuItem        _mnuToolboxCalcDLQL = null;
     private JMenuItem        _mnuToolboxCOWPD    = null;
@@ -712,7 +714,9 @@ public class GUIMain extends JApplet implements ActionListener {
             mnuToolbox.addSeparator();
             _mnuToolboxCalcPMC  = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pmc"    ), GUtil.newImageIcon("mnu_toolbox_pmc"),    KeyEvent.VK_C, -1, this);
             _mnuToolboxCalcTI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ti"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_T, -1, this);
-            _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"     ), GUtil.newImageIcon("mnu_toolbox_nd"),     KeyEvent.VK_P, -1, this);
+            _mnuToolboxCalcCI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_ci"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_C, -1, this);
+            _mnuToolboxCalcPI   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_pi"     ), GUtil.newImageIcon("mnu_toolbox_ti"),     KeyEvent.VK_P, -1, this);
+            _mnuToolboxCalcND   = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_nd"     ), GUtil.newImageIcon("mnu_toolbox_nd"),     KeyEvent.VK_U, -1, this);
             _mnuToolboxCalcDLQL = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_dlql"   ), GUtil.newImageIcon("mnu_toolbox_dlql"),   KeyEvent.VK_D, -1, this);
           //mnuToolbox.addSeparator();
           //_mnuToolboxCOWPD    = GUtil.newJMenuItem(mnuToolbox, _S("mnu_toolbox_cowpd"),  GUtil.newImageIcon("mnu_toolbox_cowpd" ), KeyEvent.VK_C, -1, this);
@@ -1031,6 +1035,12 @@ public class GUIMain extends JApplet implements ActionListener {
         }
         else if(eventSource == _mnuToolboxCalcTI) {
             CalcTI.showToolbox(getRootFrame());
+        }
+        else if(eventSource == _mnuToolboxCalcCI) {
+            CalcCI.showToolbox(getRootFrame());
+        }
+        else if(eventSource == _mnuToolboxCalcPI) {
+            //CalcPI.showToolbox(getRootFrame());
         }
         else if(eventSource == _mnuToolboxCalcND) {
             CalcND.showToolbox(getRootFrame());

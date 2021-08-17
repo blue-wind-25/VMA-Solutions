@@ -20,7 +20,7 @@ import anemonesoft.i18n.*;
 import anemonesoft.stat.*;
 
 //
-// A toolbox for calculating Process/Method Capability
+// A toolbox for calculating probability method according to USP medicines compendium
 //
 public class CalcND extends JDialog {
     // Controls

@@ -27,6 +27,7 @@ CLS_TOOL_BOX   = toolbox/StudentTTable.class       \
                  toolbox/GrubbsCTable.class        \
                  toolbox/CalcPMC.class             \
                  toolbox/CalcTI.class              \
+                 toolbox/CalcCI.class              \
                  toolbox/CalcND.class              \
                  toolbox/CalcDLQL.class            \
                  toolbox/COWAndPeakDetection.class
