@@ -1040,7 +1040,7 @@ public class GUIMain extends JApplet implements ActionListener {
             CalcCI.showToolbox(getRootFrame());
         }
         else if(eventSource == _mnuToolboxCalcPI) {
-            //CalcPI.showToolbox(getRootFrame());
+            CalcPI.showToolbox(getRootFrame());
         }
         else if(eventSource == _mnuToolboxCalcND) {
             CalcND.showToolbox(getRootFrame());
