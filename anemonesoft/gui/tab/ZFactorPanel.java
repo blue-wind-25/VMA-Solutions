@@ -112,9 +112,9 @@ public class ZFactorPanel extends ResultPanel implements Saveable {
             "conclusion",    (Zf <= 0.0) ? _S("res_res_unaccept" )
                            : (Zf <= 0.5) ? _S("res_res_moderate" )
                            :               _S("res_res_excellent"),
-            "reason",        (Zf <= 0.0) ? "(Z' ≤ 0)"
-                           : (Zf <= 0.5) ? "(0 < Z' ≤ 0.5)"
-                           :               "(Z' > 0.5)",
+            "reason",        (Zf <= 0.0) ? "(Z' ≤ 0.0)"
+                           : (Zf <= 0.5) ? "(0.0 < Z' ≤ 0.5)"
+                           :               "(0.5 < Z' < 1.0)"
         };
 
         // Generate and return the report

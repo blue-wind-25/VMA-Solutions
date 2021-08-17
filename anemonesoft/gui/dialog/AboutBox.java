@@ -63,17 +63,15 @@ public class AboutBox extends JDialog implements ActionListener {
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 5)));
         GUtil.addWithGbc(mainPanel, gbc, new JLabel(null, GUtil.newImage("anemonesoft.png"), JLabel.CENTER));
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
-        GUtil.addWithGbc(mainPanel, gbc, new JLabel(_S("dlg_abox_donation"), null, JLabel.CENTER));
+        GUtil.addWithGbc(mainPanel, gbc, new JLabel("<html><body><i>" + _S("dlg_abox_donation").replace(" ", "&nbsp;") + "</i></body></html>", null, JLabel.CENTER));
 
         // Add some reference texts
         if(!asSplashScreen) {
             String strRef = "<html><body>"
-                          + "<b>" + _S("dlg_abox_3rd_party") + "</b><br><br>"
+                          + "<b>" + _S("dlg_abox_3rd_party").replace(" ", "&nbsp;") + "</b><br><br>"
                           + "<u>JAMA : A Java Matrix Package</u><br>"
-                          + "http://math.nist.gov/javanumerics/jama<br><br>"
-                          + "JAMA is a cooperative product of The MathWorks and the<br>"
-                          + "National Institute of Standards and Technology (NIST)<br>"
-                          + "which has been released to the public domain.<br>"
+                          + "http://math.nist.gov/javanumerics/jama<br>"
+                          + "<b>Public Domain</b><br>"
                           + "</body></html>";
             JPanel pnlRefs = new JPanel(null, true);
                 pnlRefs.setLayout(new BoxLayout(pnlRefs, BoxLayout.Y_AXIS));
@@ -90,7 +88,7 @@ public class AboutBox extends JDialog implements ActionListener {
 
         // Create the dialog
         JPanel dialogPanel = new JPanel(new BorderLayout(), true);
-            dialogPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            dialogPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             dialogPanel.add(mainPanel, BorderLayout.CENTER);
             if(!asSplashScreen) {
                 dialogPanel.add(_btnOK, BorderLayout.SOUTH);

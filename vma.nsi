@@ -1,5 +1,5 @@
-!define PRD_VERSION   1.5.0.0 # Synchronize it with 'GUIMain.java'
-!define APP_VERSION   1.5.0   # ---
+!define PRD_VERSION   1.5.1.0 # Synchronize it with 'GUIMain.java'
+!define APP_VERSION   1.5.1   # ---
 
 VIProductVersion      "${PRD_VERSION}"
 VIAddVersionKey       "FileDescription" "VMA Solutions Setup"

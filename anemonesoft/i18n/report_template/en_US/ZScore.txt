@@ -17,14 +17,14 @@ Standard deviation of the control = {Sc}
 {details}
 
 In case of chemical analysis:
-        |Zs| < 2 is generally regarded as having performed satisfactory.
-    2 ≤ |Zs| ≤ 3 is generally regarded as questionable.
-        |Zs| > 3 is generally regarded as unacceptable.
+        |Zs| < 2 is regarded as satisfactory
+    2 ≤ |Zs| ≤ 3 is regarded as questionable
+        |Zs| > 3 is regarded as unacceptable
 
 In case of bioassay analysis:
-    False positive if |Zs| > 2 for solvent or blank.
-    False negative if |Zs| < 2 for positive control.
-    Hit value      if |Zs| > 2 for tested samples.
+    False positive if |Zs| > 2 for solvent or blank
+    False negative if |Zs| < 2 for positive control
+    Hit value      if |Zs| > 2 for tested samples
 
 ----------------------------------------------------------------------------------------------------
 {date_time}
