@@ -30,7 +30,6 @@ public class RefsBox extends JDialog implements ActionListener {
 
         // Generate the references
         StringBuilder sb = new StringBuilder();
-
         sb.append("A Practical Guide to Analytical Method Validation, Including Measurement Uncertainty and Accuracy Profiles. A. Gustavo González and M. Ángeles Herrador. TrAC Trends in Analytical Chemistry, volume 26, issue 3, pages 227-238. Elsevier Ltd. 2007.\n\n");
         sb.append("Aligning of Single and Multiple Wavelength Chromatographic Proﬁles for Chemometric Data Analysis Using Correlation Optimised Warping. Niels-Peter Vest Nielsen, Jens Michael Carstensen, Jørn Smedsgaard. Journal of Chromatography A, volume 805, issues 1-2, pages 17–35. Elsevier Science B.V. 1998.\n\n");
         sb.append("Analytical Aspects of High Performance Thin Layer Chromatography. Gunawan Indrayanto. In ManMohan Srivastava (ed.) Fast Identification of Molecules: HPTLC Technique, pages 179-201. Springer-Verlag Berlin Heidelberg. 2011.\n\n");
@@ -43,6 +42,7 @@ public class RefsBox extends JDialog implements ActionListener {
         sb.append("Improvement of the Decision Efficiency of the Accuracy Profile by Means of a Desirability Function for Analytical Methods Validation Application to Diacetyl-Monoxime Colorimetric Assay Used for the Determination of Urea in Transdermal Iontophoretic Extracts. E. Rozet, V. Wascotte, N. Lecouturier, V. Préat, W. Dewé, B. Boulanger, Ph. Hubert. Analytica Chimica Acta, volume 591, issue 2, pages 239-247. Elsevier B.V. 2007.\n\n");
         sb.append("International Standard ISO 8466-1. 1990.\n\n");
         sb.append("Intra-Laboratory Assessment of Method Accuracy (Trueness and Precision) by Using Validation Standards. A. Gustavo González, M. Ángeles Herrador, and Agustín G. Asuero. Talanta, volume 82, issue 5, pages 1995–1998. Elsevier B.V. 2010.\n\n");
+        sb.append("ISO 8466-1, Part 1, Statistical Evaluation of the Linear Calibration Function. International Organization for Standardization, Geneva, Switzerland. 1999.\n\n");
         sb.append("Key Aspects of Analytical Method Validation and Linearity Evaluation. Pedro Araujo. Journal of Chromatography B, volume 877, issue 23, pages 2224-2234. Elsevier B.V. 2009.\n\n");
         sb.append("Linearity. Joachim Ermer. In Joachim Ermer and John H. McB. Miller (Ed). Method Validation in Pharmaceutical Analysis, pages 80-98. Wiley-VCH. 2005.\n\n");
         sb.append("Method Validation in Pharmaceutical Analysis, Second, Completely Revised and Updated Edition. Joachim Ermer and Phil Nethercote (ed.). Wiley-VCH. 2015.\n\n");
