@@ -1,4 +1,4 @@
-!define PRD_VERSION   1.5.1.1 # Synchronize it with 'GUIMain.java'
+!define PRD_VERSION   1.5.1.2 # Synchronize it with 'GUIMain.java'
 !define APP_VERSION   1.5.1   # ---
 
 VIProductVersion      "${PRD_VERSION}"

@@ -65,6 +65,26 @@ public class AboutBox extends JDialog implements ActionListener {
         GUtil.addWithGbc(mainPanel, gbc, Box.createRigidArea(new Dimension(0, 25)));
         GUtil.addWithGbc(mainPanel, gbc, new JLabel("<html><body><i>" + _S("dlg_abox_donation").replace(" ", "&nbsp;") + "</i></body></html>", null, JLabel.CENTER));
 
+        final String strPPHead  = "PayPal: ";
+        final String strPPEmail = "aloysius.indrayanto@gmail.com";
+        final String strPPLabel =  "<html><body><i>" + (strPPHead + strPPEmail).replace(" ", "&nbsp;") + "</i></body></html>";
+        if(asSplashScreen) {
+            GUtil.addWithGbc(mainPanel, gbc, new JLabel(strPPLabel, null, JLabel.CENTER));
+        }
+        else {
+            JPanel pnlPP = new JPanel(null, true);
+                pnlPP.setLayout(new BoxLayout(pnlPP, BoxLayout.X_AXIS));
+                pnlPP.add(new JLabel(strPPHead));
+
+                JTextField txtPPEmail = new JTextField(strPPEmail);
+                txtPPEmail.setEditable(false);
+                txtPPEmail.setHorizontalAlignment(JTextField.CENTER);
+                txtPPEmail.setFont(new Font(GUtil.getSysFontName("SansSerif"), Font.BOLD, 12));
+                pnlPP.add(txtPPEmail);
+
+            GUtil.addWithGbc(mainPanel, gbc, pnlPP);
+        }
+
         // Add some reference texts
         if(!asSplashScreen) {
             String strRef = "<html><body>"
@@ -117,7 +137,7 @@ public class AboutBox extends JDialog implements ActionListener {
 
         // Splash-screen mode - close the dialog after a few seconds
         if(asSplashScreen) {
-            _timer = new Timer(3000, this);
+            _timer = new Timer(5000, this);
             _timer.start();
         }
 
