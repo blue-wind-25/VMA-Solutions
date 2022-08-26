@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2010-2021 Aloysius Indrayanto
+    Copyright (C) 2010-2022 Aloysius Indrayanto
                             VMA Consultant
 */
 

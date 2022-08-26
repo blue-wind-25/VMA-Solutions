@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2010-2021 Aloysius Indrayanto
+    Copyright (C) 2010-2022 Aloysius Indrayanto
                             VMA Consultant
 */
 
@@ -32,7 +32,7 @@ import anemonesoft.lic.*;
 public class GUIMain extends JApplet implements ActionListener {
     // Application information constants
     public static final String APP_VERSION       = "1.5.1b"; // Synchronize it with 'vma.nsi'
-    public static final String APP_COPY_YEAR     = "2011-2021";
+    public static final String APP_COPY_YEAR     = "2010-2022";
     public static final String APP_COPY_NAME     = "VMA Consultant\u2122";
 
     public static final String APP_DATA_MAGIC    = "VMA-DS";
