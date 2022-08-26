@@ -20,3 +20,9 @@ We offer several variation of licenses:
 **This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.**
 
+
+---
+
+
+*It is possible that your antivirus program will not allow you to copy the JAR file to your computer or run it. In this case, please temporarily disable the antivirus program.*
+
