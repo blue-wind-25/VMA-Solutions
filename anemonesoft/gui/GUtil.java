@@ -158,7 +158,7 @@ public class GUtil {
 
         if(mnemonic > 0) menuItem.setMnemonic(mnemonic);
         if(accelerator >= 0) {
-            menuItem.setAccelerator(KeyStroke.getKeyStroke((accelerator > 0) ? accelerator : mnemonic, ctrlMask ? Event.CTRL_MASK : 0));
+            menuItem.setAccelerator(KeyStroke.getKeyStroke((accelerator > 0) ? accelerator : mnemonic, ctrlMask ? InputEvent.CTRL_DOWN_MASK : 0));
         }
         menuItem.addActionListener(listener);
 
@@ -190,11 +190,11 @@ public class GUtil {
     {
         JTextComponent.KeyBinding[] kba = {
             new JTextComponent.KeyBinding(
-                KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK),
+                KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK),
                 DefaultEditorKit.beepAction
             ),
             new JTextComponent.KeyBinding(
-                KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK),
+                KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK),
                 DefaultEditorKit.beepAction
             )
         };
@@ -206,15 +206,15 @@ public class GUtil {
     {
         JTextComponent.KeyBinding[] kba = {
             new JTextComponent.KeyBinding(
-                KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_MASK),
+                KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK),
                 DefaultEditorKit.copyAction
             ),
             new JTextComponent.KeyBinding(
-                KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK),
+                KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK),
                 DefaultEditorKit.cutAction
             ),
             new JTextComponent.KeyBinding(
-                KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK),
+                KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK),
                 DefaultEditorKit.pasteAction
             )
         };

@@ -27,11 +27,11 @@ public class StringTranslator {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Initialize the translator
-    public static void init(String country, String languange)
+    public static void init(String country, String language)
     {
         if(_locale != null) return;
 
-        _locale    = new Locale(languange, country);
+        _locale    = new Locale.Builder().setLanguage(language).setRegion(country).build();
         _mformat   = new MessageFormat("");
         _rbundle   = ResourceBundle.getBundle("anemonesoft/i18n/text/MessagesBundle", _locale);
         _formatter = new Formatter(_fsbuilder, _locale);

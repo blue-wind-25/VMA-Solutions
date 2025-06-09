@@ -283,7 +283,7 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
 
         int maxNameLen = _S("res_apf_conc").length();
         for(int i = 0; i < anlOWANO.length; ++i) {
-            String nm = (new Double(anlOWANO[i].getTVal())).toString();
+            String nm = (Double.valueOf(anlOWANO[i].getTVal())).toString();
             int    ln = nm.length();
             if(ln > maxNameLen) maxNameLen = ln;
         }
@@ -318,7 +318,7 @@ public class APGonzalesPanel extends ResultPanel implements Saveable {
 
         String format = "%-" + maxIdxLen + "d    %-" + maxNameLen + "s    %" + maxDLen + "s    %" + maxBLenH + "s ; %" + maxBLenL + "s";
         for(int i = 0; i < anlOWANO.length; ++i) {
-            String nm = (new Double(anlOWANO[i].getTVal())).toString();
+            String nm = (Double.valueOf(anlOWANO[i].getTVal())).toString();
             details.append(StringTranslator.format(format, i + 1, nm, strDelta[i], strBETIh[i], strBETIl[i]));
             if(i < anlOWANO.length - 1) details.append("\n");
         }

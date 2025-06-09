@@ -29,10 +29,10 @@ import anemonesoft.lic.*;
 // The main applet class
 // This class must not be instantiated more than once
 //
-public class GUIMain extends JApplet implements ActionListener {
+public class GUIMain /*extends JApplet*/ extends JFrame implements ActionListener {
     // Application information constants
-    public static final String APP_VERSION       = "1.5.1b"; // Synchronize it with 'vma.nsi'
-    public static final String APP_COPY_YEAR     = "2010-2022";
+    public static final String APP_VERSION       = "1.5.2"; // Synchronize it with 'vma.nsi'
+    public static final String APP_COPY_YEAR     = "2010-2025";
     public static final String APP_COPY_NAME     = "VMA Consultant\u2122";
 
     public static final String APP_DATA_MAGIC    = "VMA-DS";
@@ -334,7 +334,7 @@ public class GUIMain extends JApplet implements ActionListener {
                     return false;
                 }
                 // Instantiate the class
-                ResultPanel resultPanel = (ResultPanel) cls.newInstance();
+                ResultPanel resultPanel = (ResultPanel) cls.getDeclaredConstructor().newInstance();
                 // Read the tab's caption
                 String tabCaption = (tdsver >= 2) ? ds.readUTF() : resultPanel.getTabCaption(); /** Available from tab interface version 2 */
                 // Add the class to the tab
@@ -465,8 +465,8 @@ public class GUIMain extends JApplet implements ActionListener {
                                             ));
 
         // Initialize the string translator
-        String country  = getParameter("country");
-        String language = getParameter("language");
+        String country  = null; //getParameter("country");
+        String language = null; //getParameter("language");
         StringTranslator.init((country != null) ? country : "US", (language != null) ? language : "en");
 
         // Public key raw data
@@ -1078,7 +1078,7 @@ public class GUIMain extends JApplet implements ActionListener {
         if(nrpClass != null) {
             showWaitCursor();
             try {
-                ResultPanel newTab = (ResultPanel) nrpClass.newInstance();
+                ResultPanel newTab = (ResultPanel) nrpClass.getDeclaredConstructor().newInstance();
                 newTab.init(true);
                 GUtil.addTab(_tbpMain, newTab.getTabCaption(), newTab.getTabIcon(), newTab.getTabCaption(), newTab, false);
                 _tbpMain.setSelectedComponent(newTab);

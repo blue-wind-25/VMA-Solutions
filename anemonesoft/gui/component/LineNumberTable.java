@@ -27,7 +27,7 @@ public class LineNumberTable extends JTable  {
         setAutoCreateColumnsFromModel(false);
         setModel(_mainTable.getModel());
         setSelectionModel(mainTable.getSelectionModel());
-        
+
         addColumn(new TableColumn());
         getColumnModel().getColumn(0).setCellRenderer(_mainTable.getTableHeader().getDefaultRenderer());
         getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -41,7 +41,7 @@ public class LineNumberTable extends JTable  {
 
     // Return the row number
     public Object getValueAt(int row, int column)
-    { return new Integer(row + 1); }
+    { return Integer.valueOf(row + 1); }
 
     // Return the row height
     public int getRowHeight(int row)

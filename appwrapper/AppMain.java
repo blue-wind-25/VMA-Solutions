@@ -23,15 +23,18 @@ public class AppMain {
     private static final int HEIGHT = 540;
 
     // Instantiate the root frame and applet objects
+    /*
     private static JFrame  frame  = new JFrame();
     private static JApplet applet = new GUIMain(frame);
+    */
+    private static GUIMain frame  = new GUIMain(null);
 
     // Shortcut for obtaining an i18n string
     private static String _S(String s)
     { return StringTranslator.getString(s); }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-   
+
     // Program start-up point
     public static void main(String argv[])
     {
@@ -44,7 +47,7 @@ public class AppMain {
         SUtil._dump(result); System.out.println();
         System.exit(0);
         */
-        
+
         // Get the screen size
         Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -55,21 +58,27 @@ public class AppMain {
             {
                 if(!GUtil.showYesNoQuestionDialog(GUIMain.instance.getRootFrame(), _S("dlg_quit_app_confirm"))) return;
 
+                /*
                 applet.stop();
                 applet.destroy();
+                */
+                frame.dispose();
                 System.exit(0);
             }
         });
-        frame.getContentPane().add("Center", applet);
+        //frame.getContentPane().add("Center", applet);
         //frame.setUndecorated(true);
         //frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
         frame.getRootPane().setDoubleBuffered(true);
         frame.setIconImage(GUtil.newImage("vma_icon.png").getImage());
 
+        /*
         // Initialize the applet
         applet.setStub(new SimpleAppletStub(argv, applet));
         applet.init();
         applet.start();
+        */
+        frame.init();
 
         // Set the title of the main application frame
         frame.setTitle(_S("dlg_app_title"));

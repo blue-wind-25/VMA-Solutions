@@ -137,8 +137,10 @@ public abstract class ResultPanel extends JPanel implements ActionListener {
         initSettingsAccordion(title, pane);
 
         // Determine the width of the accordion panel based on the JRE version
-        int jver = Integer.parseInt("" + System.getProperty("java.version").charAt(2));
-        int acrw = (jver >= 7) ? 217 : 193;
+
+        String sver = System.getProperty("java.version");
+        int    jver = Integer.parseInt( "" + ( (sver.length() >= 3) ? sver.charAt(2) : sver ) );
+        int    acrw = (jver >= 7) ? 217 : 193;
 
         // Left panel
         JPanel leftPanel = new JPanel(new BorderLayout(), true);

@@ -12,10 +12,11 @@ import javax.swing.JApplet;
 //
 // A simple applet-stub class
 //
-class SimpleAppletStub implements AppletStub {
+class SimpleAppletStub /*implements AppletStub*/ {
+/*
     private JApplet                   _applet;
     private Hashtable<String, String> _properties;
-  
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public SimpleAppletStub(String argv[], JApplet a)
@@ -57,4 +58,5 @@ class SimpleAppletStub implements AppletStub {
 
     public boolean isActive ()
     { return true; }
+*/
 }
