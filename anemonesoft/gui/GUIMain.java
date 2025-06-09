@@ -31,7 +31,7 @@ import anemonesoft.lic.*;
 //
 public class GUIMain /*extends JApplet*/ extends JFrame implements ActionListener {
     // Application information constants
-    public static final String APP_VERSION       = "1.5.2"; // Synchronize it with 'vma.nsi'
+    public static final String APP_VERSION       = "1.5.2-beta"; // Synchronize it with 'vma.nsi'
     public static final String APP_COPY_YEAR     = "2010-2025";
     public static final String APP_COPY_NAME     = "VMA Consultant\u2122";
 
