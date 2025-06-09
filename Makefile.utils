@@ -5,8 +5,8 @@
 
 %.class: %.java
 	@echo Compiling "`pwd`/$<" ...
-	@CLASSPATH='$(CLASSPATH)' $(JAVAC)  -Xlint:deprecation -O $<
-# --release 8
+	@CLASSPATH='$(CLASSPATH)' $(JAVAC) --release 8 -Xlint:deprecation -O $<
+
 clean:
 	@echo Deleting generated files in `pwd` ...
 	@rm -f *.class

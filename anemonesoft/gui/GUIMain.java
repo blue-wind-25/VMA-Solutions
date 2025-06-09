@@ -442,7 +442,7 @@ public class GUIMain /*extends JApplet*/ extends JFrame implements ActionListene
         instance = this;
 
         _isApplet  = false;
-        _rootFrame = rootFrame;
+        _rootFrame = this;//rootFrame;
     }
 
     // Initialize the application
